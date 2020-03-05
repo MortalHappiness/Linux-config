@@ -31,6 +31,16 @@
 # [TARGET]                   [LINK_NAME]
 # (relative to $PWD)         (relative to $HOME)
 
-git-config/gitconfig         .gitconfig            # This will create link "$HOME/.gitconfig -> $PWD/git-config/gitconfig"
+bash-config/bashrc           .bashrc                # This will create link "$HOME/.bashrc -> $PWD/bash-config/bashrc"
+bash-config/bash_profile     .bash_profile
+
+X11-config/bspwm             .config/bspwm          # This will create link "$HOME/.config/bspwm -> $PWD/X11-config/bspwm"
+X11-config/sxhkd             .config/sxhkd
+X11-config/xinitrc           .xinitrc
+X11-config/Xresources        .Xresources
+
+git-config/gitconfig         .gitconfig             # This will create link "$HOME/.gitconfig -> $PWD/git-config/gitconfig"
+
+vim-config/vimrc             .vimrc          
  ```
  By this mean, you can group your related configuration files in the same directory for easy maintenance.
