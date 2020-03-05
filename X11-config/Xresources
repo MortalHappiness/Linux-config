@@ -1,0 +1,4 @@
+XTerm.termName: xterm-256color
+xterm*foreground: rgb:ff/ff/ff
+xterm*background: rgb:00/00/00
+xterm*font: 7x13
