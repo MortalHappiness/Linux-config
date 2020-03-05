@@ -4,7 +4,7 @@
 " Sections:
 "    -> General
 "    -> Interface
-"    -> Colors related
+"    -> Color related
 "    -> Text related
 "    -> Mappings
 "    -> Helper functions
@@ -17,12 +17,26 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""
 
+" Use Vim settings instead of Vi settings
+if &compatible
+    set nocompatible
+endif
+
 " Remove all autocmd
 autocmd!
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid, when inside an event handler
+" (happens when dropping a file on gvim) and for a commit message (it's
+" likely a different one than last time).
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
 
 " Auto read when a file is changed from outside
 set autoread
@@ -33,6 +47,21 @@ set backspace=indent,eol,start
 
 " Encoding
 set encoding=utf-8
+
+" History
+set history=50
+
+" In many terminal emulators the mouse works just fine.  By enabling it you
+" can position the cursor, Visually select and scroll with the mouse.
+" Only xterm can grab the mouse events when using the shift key, for other
+" terminals use ":", select text and press Esc.
+if has('mouse')
+  if &term =~ 'xterm'
+    set mouse=a
+  else
+    set mouse=nvi
+  endif
+endif
 
 " Let .tex files be recognized as filetype=tex
 let g:tex_flavor = "latex"
@@ -63,7 +92,7 @@ set incsearch
 set foldcolumn=0
 
 """"""""""""""""""""""""""""""""""""""""
-" => Colors related
+" => Color related
 """"""""""""""""""""""""""""""""""""""""
 
 " Syntax highlighting
@@ -89,6 +118,8 @@ highlight CursorLine cterm=none ctermbg=black ctermfg=none
 " => Text related
 """"""""""""""""""""""""""""""""""""""""
 
+autocmd FileType text setlocal textwidth=78
+
 " Auto indentation
 set autoindent
 
@@ -109,17 +140,34 @@ autocmd FileType html,css,scss,javascript,json
 
 " Trim trailing spaces before saving files
 let ftToIgnore = ['text', 'markdown']
-autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | :%s/\s\+$//e
+autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
+    \ :call <SID>trimTrailingWhitespaces()
 
 """"""""""""""""""""""""""""""""""""""""
 " => Mappings
 """"""""""""""""""""""""""""""""""""""""
 
+" Don't use Ex mode, use Q for formatting.
+" Revert with ":unmap Q".
+map Q gq
+
 """"""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """"""""""""""""""""""""""""""""""""""""
+function! <SID>trimTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
 """"""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""
+
+" matchit: makes the % command work better
+" eg. HTML tags, if/else/endif
+if has('syntax') && has('eval')
+    packadd! matchit
+endif
 
