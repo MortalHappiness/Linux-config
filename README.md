@@ -23,3 +23,13 @@
  bash setup.sh remove
  ```
  
+ Example `_links.conf`
+ ```
+# Symbolic links to be created
+
+
+# [TARGET]                   [LINK_NAME]
+# (relative to $PWD)         (relative to $HOME)
+
+git-config/gitconfig         .gitconfig            # This will create link "$HOME/.gitconfig -> $PWD/git-config/gitconfig"
+ ```
