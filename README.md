@@ -33,3 +33,4 @@
 
 git-config/gitconfig         .gitconfig            # This will create link "$HOME/.gitconfig -> $PWD/git-config/gitconfig"
  ```
+ By this mean, you can group your related configuration files in the same directory for easy maintenance.
