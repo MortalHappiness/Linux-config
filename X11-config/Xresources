@@ -3,7 +3,7 @@ XTerm.vt100.locale: true
 xterm*foreground: white
 xterm*background: black
 
-!XTerm.vt100.faceName: Liberation Mono:size=10:antialias=false
+XTerm.vt100.faceName: Cousine-Regrlar:size=15:antialias=true
 
 ! Copy and Paste
 XTerm.vt100.translations: #override \n\
