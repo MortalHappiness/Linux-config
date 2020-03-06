@@ -14,6 +14,14 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# open clipmenu
+super + c
+	clipmenu
+
+# delete all entries in clipmenu
+super + ctrl + c
+	clipdel -d ".*"
+
 # open google-chrome
 super + ctrl + g
 	google-chrome
@@ -27,7 +35,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout

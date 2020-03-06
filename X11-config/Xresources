@@ -1,12 +1,27 @@
+!================
+! xterm
+!================
+
+! General
 XTerm.termName: xterm-256color
 XTerm.vt100.locale: true
-xterm*foreground: white
-xterm*background: black
+XTerm.vt100.foreground: white
+XTerm.vt100.background: black
 
-XTerm.vt100.faceName: Cousine-Regrlar:size=15:antialias=true
+! Fonts
+XTerm.vt100.faceName: Cousine-Regrlar:antialias=true
+XTerm*faceSize: 17
+XTerm*faceSize1: 8
+XTerm*faceSize2: 10
+XTerm*faceSize3: 13
+XTerm*faceSize4: 22
+XTerm*faceSize5: 25
+XTerm*faceSize6: 30
 
-! Copy and Paste
+! Key Bindings
 XTerm.vt100.translations: #override \n\
     Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> minus: smaller-vt-font()
 
