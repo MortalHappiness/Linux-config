@@ -38,9 +38,11 @@ fi
 
 
 
-xinput set-prop 'FTE1200:00 0B05:0501 Touchpad' 'libinput Tapping Enabled' 1
-xinput set-prop 'FTE1200:00 0B05:0501 Touchpad' 'libinput Natural Scrolling Enabled' 1
-xinput set-prop 'FTE1200:00 0B05:0501 Touchpad' 'libinput Horizontal Scroll Enabled' 0
+# Touchpad setting
+TOUCHPAD="$(xinput list --name-only | grep 'Touchpad')"
+xinput set-prop "$TOUCHPAD" 'libinput Tapping Enabled' 1
+xinput set-prop "$TOUCHPAD" 'libinput Natural Scrolling Enabled' 1
+xinput set-prop "$TOUCHPAD" 'libinput Horizontal Scroll Enabled' 0
 
 export LC_CTYPE=zh_TW.UTF-8
 export XMODIFIERS="@im=gcin"

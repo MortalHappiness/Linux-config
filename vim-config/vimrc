@@ -166,7 +166,7 @@ endfun
 """"""""""""""""""""""""""""""""""""""""
 
 " matchit: makes the % command work better
-" eg. HTML tags, if/else/endif
+" e.g. HTML tags, if/else/endif
 if has('syntax') && has('eval')
     packadd! matchit
 endif
