@@ -49,4 +49,6 @@ export CM_MAX_CLIPS=8    # maximum number of clips to store
 export CM_HISTLENGTH=8   # number of lines to show in dmenu
 clipmenud &
 
+# bspwm
+chmod a+x ~/.config/bspwm/bspwmrc
 exec bspwm

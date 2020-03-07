@@ -9,7 +9,7 @@ XTerm.vt100.foreground: white
 XTerm.vt100.background: black
 
 ! Fonts
-XTerm.vt100.faceName: Cousine-Regrlar:antialias=true
+XTerm.vt100.faceName: Cousine:antialias=true
 XTerm*faceSize: 17
 XTerm*faceSize1: 8
 XTerm*faceSize2: 10
