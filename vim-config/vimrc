@@ -51,17 +51,8 @@ set encoding=utf-8
 " History
 set history=50
 
-" In many terminal emulators the mouse works just fine.  By enabling it you
-" can position the cursor, Visually select and scroll with the mouse.
-" Only xterm can grab the mouse events when using the shift key, for other
-" terminals use ":", select text and press Esc.
-if has('mouse')
-  if &term =~ 'xterm'
-    set mouse=a
-  else
-    set mouse=nvi
-  endif
-endif
+" Do not use mouse
+set mouse=""
 
 " Let .tex files be recognized as filetype=tex
 let g:tex_flavor = "latex"
