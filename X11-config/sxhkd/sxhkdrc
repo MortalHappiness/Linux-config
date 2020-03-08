@@ -23,27 +23,27 @@ super + ctrl + c
     clipmenu
 
 # screenshot
-Print
-    termite
+#Print
+#    termite
 
 # ==================================
 # fn keys
 # ==================================
 
 XF86MonBrightness{Down,Up}
-    brightnessctl set {10%-,+10%}
+    brightnessctl set {5%-,+5%}
 
 #XF86ScreenSaver
 #    termite
-#
-#XF86TouchpadToggle
-#    termite
-#
-#XF86AudioMute
-#    termite
-#
-#XF86Audio{Lower,Raise}Volume
-#    termite
+
+XF86TouchpadToggle
+    bash $HOME/.config/sxhkd/scripts/touchpad.sh
+
+XF86Audio{Mute}
+    bash $HOME/.config/sxhkd/scripts/sound.sh mute
+
+XF86Audio{Lower,Raise}Volume
+    bash $HOME/.config/sxhkd/scripts/sound.sh {lower,raise}
 
 # ==================================
 # bspwm hotkeys
