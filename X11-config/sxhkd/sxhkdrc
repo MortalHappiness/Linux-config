@@ -31,7 +31,7 @@ super + ctrl + c
 # ==================================
 
 XF86MonBrightness{Down,Up}
-    brightnessctl set {5%-,+5%}
+    bash $HOME/.config/sxhkd/scripts/backlight.sh {down,up}
 
 #XF86ScreenSaver
 #    termite

@@ -2,21 +2,22 @@
 #
 # Sound control
 
-# Unmute all
-amixer set Master unmute
-amixer set Speaker unmute
-amixer set Headphone unmute
 
 case "$1" in
     "mute")
         amixer set Master mute
+        bash $HOME/.config/sxhkd/scripts/notify.sh "Volume" "Muted"
         ;;
     "lower")
         amixer set Master unmute
         amixer set Master 5%-
+        volume=$(amixer get Master | tail -n 1 | awk '{print $4}')
+        bash $HOME/.config/sxhkd/scripts/notify.sh "Volume" $volume
         ;;
     "raise")
         amixer set Master unmute
         amixer set Master 5%+
+        volume=$(amixer get Master | tail -n 1 | awk '{print $4}')
+        bash $HOME/.config/sxhkd/scripts/notify.sh "Volume" $volume
         ;;
 esac
