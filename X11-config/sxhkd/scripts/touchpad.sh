@@ -7,9 +7,9 @@ state=$(xinput list-props "$touchpad" | grep 'Device Enabled' | cut -f3)
 
 if [ "$state" == 1 ]; then
     xinput disable "$touchpad"
-    bash $HOME/.config/sxhkd/scripts/notify.sh "Touchpad" "Locked"
+    bash $HOME/.config/sxhkd/scripts/notify.sh "Touchpad" "Locked" 300
 else
     xinput enable "$touchpad"
-    bash $HOME/.config/sxhkd/scripts/notify.sh "Touchpad" "Enabled"
+    bash $HOME/.config/sxhkd/scripts/notify.sh "Touchpad" "Enabled" 300
 fi
 

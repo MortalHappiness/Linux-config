@@ -27,8 +27,8 @@ super + ctrl + c
     clipmenu
 
 # screenshot
-#Print
-#    termite
+Print
+    bash $HOME/.config/sxhkd/scripts/screenshot.sh
 
 # ==================================
 # fn keys

@@ -4,11 +4,11 @@
 
 title=$1
 msg=$2
+width=$3
 
 screen_width=1920
 screen_height=1080
 
-width=300
 title_height=70
 msg_height=70
 
