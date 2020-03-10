@@ -22,19 +22,19 @@
 
 ## Screenshots
 
-System Information popup window
+### System Information popup window
 ![info\_popup](/images/info_popup.png)
 
-Screenshot popup window
-![screenshot\_popup](/images/screensho_popup.png)
+### Screenshot popup window
+![screenshot\_popup](/images/screenshot_popup.png)
 
-Backlight changed popup window
+### Backlight changed popup window
 ![backlight\_popup](/images/backlight_popup.png)
 
-Clipmenu
+### Clipmenu
 ![clipmenu](/images/clipmenu.png)
 
-Visual selection in termite terminal
+### Visual selection in termite terminal
 ![selection](/images/selection.png)
  
  ## Installation
