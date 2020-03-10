@@ -17,7 +17,7 @@
 | scrot | Screenshot |
 | brightnessctl | Backlight control |
 | amixer | Sound control |
-| [clipmenu](https://github.com/cdown/clipmenu/) | Clipboard manager, can select previous clipped text |
+| [clipmenu](https://github.com/cdown/clipmenu/) | Clipboard manager allow us to select previously clipped text into CLIPBOARD buffer |
 | Cousine | Font |
 
 ## Screenshots
