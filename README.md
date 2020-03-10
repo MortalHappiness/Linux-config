@@ -1,11 +1,45 @@
 # Linux-config
 
- My personal linux configuration files(dotfiles) backup using git for quick reinstallation setup.
+ My personal linux configuration files.
  
- ## Feature
- ### Structural links maintenance
+ #### Goal: Keyboard driven workflow, lightweight system mainly for coding
+ #### Distribution: Arch Linux
+ #### Device: Notebook
  
- Clone this repository and put it *anywhere* in your linux system, modify `_links.conf`, and then execute
+ ## Dependencies
+ 
+| Package | Description |
+| ------- | ----------- |
+| [bspwm](https://github.com/baskerville/bspwm) | A tiling window manager |
+| [sxhkd](https://github.com/baskerville/sxhkd) | Dependency of bspwm, hotkey control |
+| [Termite](https://github.com/thestinger/termite) | Terminal emulator with Vim-like hotkeys |
+| [dzen2](https://github.com/robm/dzen) | To create popup windows |
+| scrot | Screenshot |
+| brightnessctl | Backlight control |
+| amixer | Sound control |
+| [clipmenu](https://github.com/cdown/clipmenu/) | Clipboard manager, can select previous clipped text |
+| Cousine | Font |
+
+## Screenshots
+
+System Information popup window
+![info\_popup](/images/info_popup.png)
+
+Screenshot popup window
+![screenshot\_popup](/images/screensho_popup.png)
+
+Backlight changed popup window
+![backlight\_popup](/images/backlight_popup.png)
+
+Clipmenu
+![clipmenu](/images/clipmenu.png)
+
+Visual selection in termite terminal
+![selection](/images/selection.png)
+ 
+ ## Installation
+ 
+ Clone this repository, modify `_links.conf` if your want to make some different links, and then execute
  ```sh
  bash setup.sh install
  ```
@@ -32,15 +66,20 @@
 # (relative to $PWD)         (relative to $HOME)
 
 bash-config/bashrc           .bashrc                # This will create link "$HOME/.bashrc -> $PWD/bash-config/bashrc"
-bash-config/bash_profile     .bash_profile
-
 X11-config/bspwm             .config/bspwm          # This will create link "$HOME/.config/bspwm -> $PWD/X11-config/bspwm"
-X11-config/sxhkd             .config/sxhkd
-X11-config/xinitrc           .xinitrc
-X11-config/Xresources        .Xresources
-
 git-config/gitconfig         .gitconfig             # This will create link "$HOME/.gitconfig -> $PWD/git-config/gitconfig"
-
-vim-config/vimrc             .vimrc          
  ```
- By this mean, you can group your related configuration files in the same directory for easy maintenance.
+
+## Current Hotkeys
+
+| Key | Function |
+| ----| -------- |
+| fn keys | Function as expected(backlight,sound,touchpad) |
+| prt sc sysrq | Take Screenshot |
+| super + Return | Open termite terminal |
+| super + ctrl + i | Show system information (workspace,battery,volume,backlight,touchpad,date,time) |
+| super + ctrl + g | Open Google-chrome |
+| super + ctrl + c | Open clipmenu |
+| bspwm related keys | See sxhkdrc for details |
+| termite related keys | See termite(1) for details |
+
