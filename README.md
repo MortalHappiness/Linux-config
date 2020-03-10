@@ -23,12 +23,15 @@
 ## Screenshots
 
 ### System Information popup window
+I use a hotkey to open this window instead of using bar to track system information.
 ![info\_popup](/images/info_popup.png)
 
 ### Screenshot popup window
+This will show up when `prt sc sysrq` key is pressed.
 ![screenshot\_popup](/images/screenshot_popup.png)
 
 ### Backlight changed popup window
+When fn keys are pressed, laughch events related to backlight, sound, touchpad and show this popup window.
 ![backlight\_popup](/images/backlight_popup.png)
 
 ### Clipmenu
