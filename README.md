@@ -12,7 +12,7 @@
 | ------- | ----------- |
 | [bspwm](https://github.com/baskerville/bspwm) | A tiling window manager |
 | [sxhkd](https://github.com/baskerville/sxhkd) | Dependency of bspwm, hotkey control |
-| [Termite](https://github.com/thestinger/termite) | Terminal emulator with Vim-like hotkeys |
+| [termite](https://github.com/thestinger/termite) | Terminal emulator with Vim-like hotkeys |
 | [dzen2](https://github.com/robm/dzen) | To create popup windows |
 | scrot | Screenshot |
 | brightnessctl | Backlight control |
