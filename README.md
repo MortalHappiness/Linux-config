@@ -14,6 +14,7 @@
 | [sxhkd](https://github.com/baskerville/sxhkd) | Dependency of bspwm, hotkey control |
 | [termite](https://github.com/thestinger/termite) | Terminal emulator with Vim-like hotkeys |
 | [dzen2](https://github.com/robm/dzen) | To create popup windows |
+| unclutter | To hide cursor when touchpad locked |
 | scrot | Screenshot |
 | brightnessctl | Backlight control |
 | amixer | Sound control |

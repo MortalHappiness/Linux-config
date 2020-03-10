@@ -36,6 +36,11 @@ TOUCHPAD="$(xinput list --name-only | grep 'Touchpad')"
 xinput set-prop "$TOUCHPAD" 'libinput Tapping Enabled' 1
 xinput set-prop "$TOUCHPAD" 'libinput Natural Scrolling Enabled' 1
 xinput set-prop "$TOUCHPAD" 'libinput Horizontal Scroll Enabled' 0
+xinput disable "$TOUCHPAD"
+unclutter --timeout 0 &
+
+# Sound setting
+amixer set Master mute
 
 # gcin
 export LC_CTYPE=zh_TW.UTF-8
