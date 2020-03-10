@@ -87,3 +87,6 @@ git-config/gitconfig         .gitconfig             # This will create link "$HO
 | bspwm related keys | See sxhkdrc for details |
 | termite related keys | See termite(1) for details |
 
+## Note:
+For Google-Chrome, I install [Vimium](https://github.com/philc/vimium) for keyboard driven.
+
