@@ -1,0 +1,21 @@
+{
+  "settingsVersion": "1.66",
+  "exclusionRules": [],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "unmapAll\n\n# Scroll\nmap j scrollDown\nmap k scrollUp\nmap h scrollLeft\nmap l scrollRight\nmap J scrollPageDown\nmap K scrollPageUp\nmap gg scrollToTop\nmap G scrollToBottom\n\n# Tab\nmap H previousTab\nmap L nextTab\n\n# Link Hint\nmap f LinkHints.activateMode\nmap F LinkHints.activateModeToOpenInNewTab\nmap <a-f> LinkHints.activateModeWithQueue\n\n# URL\nmap yy copyCurrentUrl\nmap yf LinkHints.activateModeToCopyLinkUrl\n\n# Visual Mode\nmap v enterVisualMode\nmap V enterVisualLineMode\n\n# Find Mode\nmap / enterFindMode\nmap n performFind\nmap N performBackwardsFind\n\n# Vomnibar\nmap o Vomnibar.activate\nmap O Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarks\nmap B Vomnibar.activateBookmarksInNewTab\n\n# Miscellaneous\nmap ? showHelp",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
