@@ -8,7 +8,9 @@
 "    -> Text related
 "    -> Mappings
 "    -> Helper functions
+"    -> Packages
 "    -> Plugins
+"    -> Plugin Configurations
 "
 """"""""""""""""""""""""""""""""""""""""
 
@@ -21,9 +23,6 @@
 if &compatible
     set nocompatible
 endif
-
-" Remove all autocmd
-autocmd!
 
 " Enable filetype plugins
 filetype plugin on
@@ -89,21 +88,22 @@ set foldcolumn=0
 " Syntax highlighting
 syntax enable
 
+" Colorsheme
+colorscheme default
+
 " Number of colors
 set t_Co=256
 
-" Color scheme
-colorscheme default
-"colorscheme monokai
+" Cursorline
+hi CursorLine cterm=none ctermfg=none ctermbg=235
+hi CursorLineNr cterm=none ctermfg=none ctermbg=235
+set cursorline
 
 " Color the column to keep code short
-highlight ColorColumn ctermbg=Red
+hi ColorColumn ctermbg=red
 set colorcolumn=80
 autocmd FileType text,html
     \ setlocal colorcolumn=
-
-" The color of the cursorline
-highlight CursorLine cterm=none ctermbg=black ctermfg=none
 
 """"""""""""""""""""""""""""""""""""""""
 " => Text related
@@ -142,6 +142,9 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 " Revert with ":unmap Q".
 map Q gq
 
+" Code block (curly brace) auto-completion
+inoremap {<CR> {<CR>}<Esc>ko
+
 """"""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """"""""""""""""""""""""""""""""""""""""
@@ -153,7 +156,7 @@ function! <SID>trimTrailingWhitespaces()
 endfun
 
 """"""""""""""""""""""""""""""""""""""""
-" => Plugins
+" => Packages
 """"""""""""""""""""""""""""""""""""""""
 
 " matchit: makes the % command work better
@@ -161,4 +164,80 @@ endfun
 if has('syntax') && has('eval')
     packadd! matchit
 endif
+
+""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""""""""""""
+
+" Install Vim-Plug if it has not been installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Load plugins
+call plug#begin('~/.vim/plugged')
+
+" EditorConfig plugin for Vim
+Plug 'editorconfig/editorconfig-vim'
+
+" Zen-coding
+Plug 'mattn/emmet-vim', {'for': 'html'}
+
+" Comments (auto detect filetype, toggle comments in visual mode)
+Plug 'preservim/nerdcommenter'
+
+" Browse directory hierachies
+Plug 'preservim/nerdtree'
+
+" Browse the tags of the current file (get overview of its structure)
+Plug 'majutsushi/tagbar'
+
+" Use <Tab> to do insersion completion
+Plug 'ervandew/supertab'
+
+" Easy modify surrondings in pairs
+Plug 'tpope/vim-surround'
+
+" The python snippet engine
+Plug 'SirVer/ultisnips'
+
+" A repository contains snippets files for various programming languages
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""
+" => Plugin Configurations
+""""""""""""""""""""""""""""""""""""""""
+
+" => mattn/emmet-vim
+autocmd FileType html nmap <Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html imap <Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html vmap <Tab> <plug>(emmet-expand-abbr)
+
+" => preservim/nerdcommenter
+nmap <c-p> <plug>NERDCommenterToggle
+vmap <c-p> <plug>NERDCommenterToggle
+
+" => preservim/nerdtree
+map <F7> :NERDTreeToggleVCS<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 'h'}, 'dir': {}}
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1
+    \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" => majutsushi/tagbar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_left=1
+
+" => ervandew/supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" => SirVer/ultisnips
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
