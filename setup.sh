@@ -7,11 +7,6 @@ if [ "$#" != "1" ]; then
     exit 0
 fi
 
-for key in "${!LINKS[@]}"
-do
-    echo "ln -s $key ${LINKS[$key]}"
-done
-
 if [ ! -e .backup ]; then
     mkdir .backup
 fi
