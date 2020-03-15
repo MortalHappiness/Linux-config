@@ -4,13 +4,13 @@
 " Sections:
 "    -> General
 "    -> Interface
-"    -> Color related
-"    -> Text related
+"    -> Color_related
+"    -> Text_related
 "    -> Mappings
-"    -> Helper functions
+"    -> Helper_functions
 "    -> Packages
 "    -> Plugins
-"    -> Plugin Configurations
+"    -> Plugin_configurations
 "
 """"""""""""""""""""""""""""""""""""""""
 
@@ -82,7 +82,7 @@ set incsearch
 set foldcolumn=0
 
 """"""""""""""""""""""""""""""""""""""""
-" => Color related
+" => Color_related
 """"""""""""""""""""""""""""""""""""""""
 
 " Syntax highlighting
@@ -96,7 +96,7 @@ set t_Co=256
 
 " Cursorline
 hi CursorLine cterm=none ctermfg=none ctermbg=235
-hi CursorLineNr cterm=none ctermfg=none ctermbg=235
+hi CursorLineNr cterm=none ctermfg=yellow ctermbg=235
 set cursorline
 
 " Color the column to keep code short
@@ -106,7 +106,7 @@ autocmd FileType text,html
     \ setlocal colorcolumn=
 
 """"""""""""""""""""""""""""""""""""""""
-" => Text related
+" => Text_related
 """"""""""""""""""""""""""""""""""""""""
 
 autocmd FileType text setlocal textwidth=78
@@ -146,7 +146,7 @@ map Q gq
 inoremap {<CR> {<CR>}<Esc>ko
 
 """"""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" => Helper_functions
 """"""""""""""""""""""""""""""""""""""""
 function! <SID>trimTrailingWhitespaces()
     let l = line(".")
@@ -203,13 +203,10 @@ Plug 'tpope/vim-surround'
 " The python snippet engine
 Plug 'SirVer/ultisnips'
 
-" A repository contains snippets files for various programming languages
-Plug 'honza/vim-snippets'
-
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""
-" => Plugin Configurations
+" => Plugin_configurations
 """"""""""""""""""""""""""""""""""""""""
 
 " => mattn/emmet-vim
@@ -232,12 +229,15 @@ autocmd bufenter * if (winnr("$") == 1
 " => majutsushi/tagbar
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_left=1
+hi TagbarHighlight ctermbg=red
 
 " => ervandew/supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " => SirVer/ultisnips
-let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
