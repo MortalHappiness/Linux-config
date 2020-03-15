@@ -122,7 +122,7 @@ set wrap
 
 " Use spaces to replace tabs except for makefile
 set expandtab
-autocmd FileType make setlocal noexpandtab
+autocmd FileType make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=4 shiftwidth=4
@@ -130,7 +130,7 @@ autocmd FileType html,css,scss,javascript,json
     \ setlocal tabstop=2 shiftwidth=2
 
 " Trim trailing spaces before saving files
-let ftToIgnore = ['text', 'markdown']
+let ftToIgnore = ['text', 'markdown', 'snippets']
 autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
 
@@ -141,9 +141,6 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 " Don't use Ex mode, use Q for formatting.
 " Revert with ":unmap Q".
 map Q gq
-
-" Code block (curly brace) auto-completion
-inoremap {<CR> {<CR>}<Esc>ko
 
 """"""""""""""""""""""""""""""""""""""""
 " => Helper_functions
