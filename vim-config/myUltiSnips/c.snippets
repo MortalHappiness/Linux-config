@@ -58,6 +58,16 @@ else {
 }$0
 endsnippet
 
+snippet ifel "if ... else if ... else" b
+if (${1:/* condition */}) {
+	${2}
+}${3: else if (${4:/* condition */}) {
+	${5}
+}}${6: else {
+	${7}
+}}$0
+endsnippet
+
 snippet switch "switch"
 switch (${1:/* variable */}) {
 	case ${3:/* variable case */}:
@@ -109,7 +119,7 @@ snippet fund "function declaration" b
 ${1:void} ${2:function_name}($3);
 endsnippet
 
-snippet input "Read file" b
+snippet read "Read file" b
 ${1:#include <stdio.h>}
 void read_file(const char *filename${2:, args}) {
 	FILE *pFile;
@@ -121,7 +131,7 @@ void read_file(const char *filename${2:, args}) {
 $0
 endsnippet
 
-snippet output "Write file" b
+snippet write "Write file" b
 ${1:#include <stdio.h>}
 void write_file(const char *filename${2:, const int n}) {
 	FILE *pFile;

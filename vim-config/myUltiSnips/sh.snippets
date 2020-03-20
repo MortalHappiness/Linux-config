@@ -33,6 +33,17 @@ else; then
 	${0:${VISUAL}}
 endsnippet
 
+snippet ifel "if ... elif ... else ... fi" b
+if [[ ${1:condition} ]]; then
+	${2}${3:
+elif [[ ${4:condition} ]]; then
+	${5}}${6:
+else; then
+	${7}
+}fi
+endsnippet
+
+
 snippet case "case .. esac (case)" b
 case ${1:word} in
 	${3:pattern})

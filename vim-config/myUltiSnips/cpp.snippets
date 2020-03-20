@@ -49,7 +49,7 @@ std::cout << "\n";
 $0
 endsnippet
 
-snippet input "Read file" b
+snippet read "Read file" b
 ${1:#include <fstream.h>}
 void read_file(const char *filename${2:, std::vector<int>& nums}) {
 	std::fstream fin(filename);
@@ -60,7 +60,7 @@ void read_file(const char *filename${2:, std::vector<int>& nums}) {
 $0
 endsnippet
 
-snippet output "Write file" b
+snippet write "Write file" b
 ${1:#include <fstream.h>}
 void write_file(const char *filename${2:, const int n}) {
 	std::fstream fout;

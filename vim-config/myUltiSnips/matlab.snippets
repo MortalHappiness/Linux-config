@@ -1,0 +1,28 @@
+snippet ifel "if ... elseif ... else ... end" b
+if ${1:condition}
+	${2}${3:
+elseif ${4:condition}
+	${5}}${6:
+else
+	${7}}
+end
+$0
+endsnippet
+
+
+snippet switch "switch ... otherwise"
+switch ${1:expression}
+	case ${3:case}
+		$0
+	otherwise
+		${2}
+end
+endsnippet
+
+snippet func "Function definition" b
+function ${1:[y1, ..., yN]} = ${2:funcName}(${3:x1, ..., xM})
+	${4}
+end
+$0
+endsnippet
+
