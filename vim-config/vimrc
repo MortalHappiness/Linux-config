@@ -88,8 +88,9 @@ set foldcolumn=0
 " Syntax highlighting
 syntax enable
 
-" Colorsheme
+" Colorsheme and background
 colorscheme default
+set background=dark
 
 " Number of colors
 set t_Co=256
@@ -126,7 +127,7 @@ autocmd FileType make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=4 shiftwidth=4
-autocmd FileType html,css,scss,javascript,json
+autocmd FileType html,css,scss,javascript,javascriptreact,json
     \ setlocal tabstop=2 shiftwidth=2
 
 " Trim trailing spaces before saving files
@@ -141,6 +142,9 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 " Don't use Ex mode, use Q for formatting.
 " Revert with ":unmap Q".
 map Q gq
+
+" Auto closing html tags using omni completion
+autocmd FileType html inoremap </ </<c-x><c-o>
 
 """"""""""""""""""""""""""""""""""""""""
 " => Helper_functions
@@ -180,7 +184,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 
 " Zen-coding
-Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'mattn/emmet-vim', {'for': ['html', 'javascriptreact']}
 
 " Comments (auto detect filetype, toggle comments in visual mode)
 Plug 'preservim/nerdcommenter'
@@ -207,9 +211,9 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""
 
 " => mattn/emmet-vim
-autocmd FileType html nmap <Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html imap <Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html vmap <Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html,javascriptreact nmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html,javascriptreact imap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html,javascriptreact vmap <S-Tab> <plug>(emmet-expand-abbr)
 
 " => preservim/nerdcommenter
 nmap <c-p> <plug>NERDCommenterToggle

@@ -1,0 +1,50 @@
+extends javascript
+
+# ========================================
+
+priority 1
+
+snippet com "React class component definition" b
+class ${1:ComponentName} extends React.Component {${2:
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+
+	componentDidMount() {
+	}
+
+	componentWillUnmount() {
+	}
+}
+	render() {
+		return (
+			${3:<div>
+				Hello, \{this.props.name\}
+			</div>}
+		);
+	}
+}
+$0
+endsnippet
+
+snippet render "ReactDOM.render" b
+ReactDOM.render(
+	${1:element},
+	${2:document.getElementById('root')}
+);
+$0
+endsnippet
+
+snippet state "this.setState(object)"
+this.setState({
+	${1:foo: 'bar'}
+});
+endsnippet
+
+snippet statefun "this.setState(function)"
+this.setState((state, props) => ({
+	${1:foo: state.bar + props.bar1}
+}));
+endsnippet
+
