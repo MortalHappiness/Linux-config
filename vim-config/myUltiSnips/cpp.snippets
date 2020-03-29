@@ -4,9 +4,22 @@ extends c
 
 priority 1
 
+snippet main "main() (main)"
+int main(int argc, char *argv[]) {
+	$0
+	return 0;
+}
+endsnippet
+
 snippet inc "#include (library)" b
 #include <${1:iostream}>
 $0
+endsnippet
+
+snippet func "function" b
+${1:void} ${2:function_name}($3) {
+	${0:${VISUAL}}
+}
 endsnippet
 
 snippet class "class" b
