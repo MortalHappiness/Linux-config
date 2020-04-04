@@ -4,13 +4,13 @@
 " Sections:
 "    -> General
 "    -> Interface
-"    -> Color_related
 "    -> Text_related
 "    -> Mappings
 "    -> Helper_functions
 "    -> Packages
 "    -> Plugins
 "    -> Plugin_configurations
+"    -> Color_related
 "
 """"""""""""""""""""""""""""""""""""""""
 
@@ -60,6 +60,12 @@ let g:tex_flavor = "latex"
 " => Interface
 """"""""""""""""""""""""""""""""""""""""
 
+" Syntax highlighting
+syntax enable
+
+" Number of colors
+set t_Co=256
+
 " Show what the current mode is
 set showmode
 
@@ -82,31 +88,6 @@ set incsearch
 set foldcolumn=0
 
 """"""""""""""""""""""""""""""""""""""""
-" => Color_related
-""""""""""""""""""""""""""""""""""""""""
-
-" Syntax highlighting
-syntax enable
-
-" Colorsheme and background
-colorscheme default
-set background=dark
-
-" Number of colors
-set t_Co=256
-
-" Cursorline
-hi CursorLine cterm=none ctermfg=none ctermbg=235
-hi CursorLineNr cterm=none ctermfg=yellow ctermbg=235
-set cursorline
-
-" Color the column to keep code short
-hi ColorColumn ctermbg=red
-set colorcolumn=80
-autocmd FileType text,html
-    \ setlocal colorcolumn=
-
-""""""""""""""""""""""""""""""""""""""""
 " => Text_related
 """"""""""""""""""""""""""""""""""""""""
 
@@ -121,9 +102,9 @@ set smartindent
 " Wrap lines
 set wrap
 
-" Use spaces to replace tabs except for makefile
+" Use spaces to replace tabs
 set expandtab
-autocmd FileType make,snippets setlocal noexpandtab
+autocmd FileType text,make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=4 shiftwidth=4
@@ -204,6 +185,12 @@ Plug 'tpope/vim-surround'
 " The python snippet engine
 Plug 'SirVer/ultisnips'
 
+" Display indentation levels with vertical lines
+Plug 'Yggdroot/indentLine'
+
+Plug 'crusoexia/vim-monokai'
+Plug 'reewr/vim-monokai-phoenix'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""
@@ -241,4 +228,25 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
+
+" => Yggdroot/indentLine
+let g:indentLine_char_list = ['⎸']
+
+""""""""""""""""""""""""""""""""""""""""
+" => Color_related
+""""""""""""""""""""""""""""""""""""""""
+
+" Colorsheme and background
+colorscheme monokai-phoenix
+
+" Cursorline
+hi CursorLine cterm=none ctermfg=none ctermbg=236
+hi CursorLineNr cterm=none ctermfg=yellow ctermbg=236
+set cursorline
+
+" Color the column to keep code short
+hi ColorColumn ctermbg=red
+set colorcolumn=80
+autocmd FileType text,html
+    \ setlocal colorcolumn=
 

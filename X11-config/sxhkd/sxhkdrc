@@ -26,6 +26,10 @@ super + ctrl + g
 super + ctrl + c
     clipmenu
 
+# FoxitReader
+super + ctrl + f
+    FoxitReader
+
 # screenshot
 Print
     bash $HOME/.config/sxhkd/scripts/screenshot.sh
