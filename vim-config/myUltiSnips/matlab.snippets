@@ -1,3 +1,17 @@
+global !p
+
+def line(n = 40):
+	return "% " + "="*n
+
+endglobal
+
+# ========================================
+
+snippet line "40 =" b
+`!p snip.rv = line()`
+$0
+endsnippet
+
 snippet ifel "if ... elseif ... else ... end" b
 if ${1:condition}
 	${2}${3:
@@ -9,7 +23,6 @@ end
 $0
 endsnippet
 
-
 snippet switch "switch ... otherwise"
 switch ${1:expression}
 	case ${3:case}
@@ -19,10 +32,16 @@ switch ${1:expression}
 end
 endsnippet
 
-snippet func "Function definition" b
-function ${1:[y1, ..., yN]} = ${2:funcName}(${3:x1, ..., xM})
-	${4}
+snippet for "For loop" b
+for ${1:n = 1:N}
+	$0
 end
-$0
+endsnippet
+
+
+snippet func "Function definition" b
+function ${1:[y1, ..., yN] = funcName(x1, ..., xM)}
+	$0
+end
 endsnippet
 
