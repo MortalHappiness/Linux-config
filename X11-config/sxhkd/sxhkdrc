@@ -14,6 +14,10 @@ super + Escape
 super + Return
     termite
 
+# file manager
+super + ctrl + r
+    rox
+
 # Show information
 super + ctrl + i
     bash $HOME/.config/sxhkd/scripts/info.sh
