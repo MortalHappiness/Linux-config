@@ -14,6 +14,9 @@
 "
 """"""""""""""""""""""""""""""""""""""""
 
+" Whether to enable plugins
+let g:plugins_enable = 1
+
 
 """"""""""""""""""""""""""""""""""""""""
 " => General
@@ -121,7 +124,7 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 """"""""""""""""""""""""""""""""""""""""
 
 " Don't use Ex mode, use Q for formatting.
-" Revert with ":unmap Q".
+" Revert with ':unmap Q'.
 map Q gq
 
 " Auto closing html tags using omni completion
@@ -151,6 +154,9 @@ endif
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""
 
+" Only load plugins when `g:plugins_enable` set to true
+if g:plugins_enable
+
 " Install Vim-Plug if it has not been installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -165,7 +171,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 
 " Zen-coding
-Plug 'mattn/emmet-vim', {'for': ['html', 'javascriptreact']}
+Plug 'mattn/emmet-vim', {'for': ['html']}
 
 " Comments (auto detect filetype, toggle comments in visual mode)
 Plug 'preservim/nerdcommenter'
@@ -188,7 +194,7 @@ Plug 'SirVer/ultisnips'
 " Display indentation levels with vertical lines
 Plug 'Yggdroot/indentLine'
 
-Plug 'crusoexia/vim-monokai'
+" Colorscheme
 Plug 'reewr/vim-monokai-phoenix'
 
 call plug#end()
@@ -198,16 +204,16 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""
 
 " => mattn/emmet-vim
-autocmd FileType html,javascriptreact nmap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html,javascriptreact imap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html,javascriptreact vmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html nmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html imap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd FileType html vmap <S-Tab> <plug>(emmet-expand-abbr)
 
 " => preservim/nerdcommenter
 nmap <c-p> <plug>NERDCommenterToggle
 vmap <c-p> <plug>NERDCommenterToggle
 
 " => preservim/nerdtree
-map <F7> :NERDTreeToggleVCS<CR>
+map <F7> :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 'h'}, 'dir': {}}
 " close vim if the only window left open is a NERDTree
@@ -234,12 +240,19 @@ let g:indentLine_char_list = ['⎸']
 autocmd FileType json
     \ :IndentLinesDisable
 
+" endif of `if g:plugins_enable`
+endif
+
 """"""""""""""""""""""""""""""""""""""""
 " => Color_related
 """"""""""""""""""""""""""""""""""""""""
 
 " Colorsheme and background
-colorscheme monokai-phoenix
+if g:plugins_enable
+    colorscheme monokai-phoenix
+else
+    colorscheme default
+endif
 
 " Cursorline
 hi CursorLine cterm=none ctermfg=none ctermbg=236
