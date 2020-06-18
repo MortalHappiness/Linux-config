@@ -1,10 +1,11 @@
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""{{{
 " Author: Chi-Sheng Liu
 "
 " Sections:
 "    -> General
 "    -> Interface
 "    -> Text_related
+"    -> Syntax_related
 "    -> Mappings
 "    -> Helper_functions
 "    -> Packages
@@ -12,7 +13,7 @@
 "    -> Plugin_configurations
 "    -> Color_related
 "
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""}}}
 
 " Whether to enable plugins
 let g:plugins_enable = 1
@@ -21,11 +22,15 @@ let g:plugins_enable = 1
 """"""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " Use Vim settings instead of Vi settings
 if &compatible
     set nocompatible
 endif
+
+" Turn off modeline for security
+set modelines=0
+set nomodeline
 
 " Enable filetype plugins
 filetype plugin on
@@ -58,16 +63,19 @@ set mouse=""
 
 " Let .tex files be recognized as filetype=tex
 let g:tex_flavor = "latex"
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Interface
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " Syntax highlighting
 syntax enable
 
 " Number of colors
 set t_Co=256
+
+" Text width
+set textwidth=80
 
 " Show what the current mode is
 set showmode
@@ -87,13 +95,16 @@ set cmdheight=1
 " Show searching result while still typing
 set incsearch
 
-" The margin to the left border
-set foldcolumn=0
-
+" Folding
+set foldcolumn=3
+set foldtext=MyFoldText()
+autocmd filetype c,cpp setlocal foldmethod=syntax
+set viewoptions=cursor,folds,slash,unix
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Text_related
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 autocmd FileType text setlocal textwidth=78
 
 " Auto indentation
@@ -118,11 +129,18 @@ autocmd FileType html,css,scss,javascript,javascriptreact,json
 let ftToIgnore = ['text', 'markdown', 'snippets']
 autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
-
+"}}}
+""""""""""""""""""""""""""""""""""""""""
+" => Syntax_related
+""""""""""""""""""""""""""""""""""""""""
+"{{{
+" Identify python docstring as comments
+autocmd FileType python syn region Comment start=/"""/ end=/"""/
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Mappings
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " Don't use Ex mode, use Q for formatting.
 " Revert with ':unmap Q'.
 map Q gq
@@ -130,30 +148,52 @@ map Q gq
 " Auto closing html tags using omni completion
 autocmd FileType html inoremap </ </<c-x><c-o>
 
+" Folding
+nnoremap <Space> za
+vnoremap <Space> zf
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Helper_functions
 """"""""""""""""""""""""""""""""""""""""
+"{{{
+
 function! <SID>trimTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
     call cursor(l, c)
-endfun
+endfunction
 
+" Reference: https://vim.fandom.com/wiki/Customize_text_for_closed_folds
+function! MyFoldText()
+    " clear fold from fillchars to set it up the way we want later
+    let &l:fillchars = substitute(&l:fillchars,',\?fold:.','','gi')
+    let l:numwidth = &numberwidth
+    let l:foldtext = ' '.(v:foldend-v:foldstart+1).
+                     \' lines folded'.v:folddashes.'|'
+    let l:endofline = (&textwidth>0 ? &textwidth : 80)
+    let l:linetext = strpart(
+                     \getline(v:foldstart),0,l:endofline-strlen(l:foldtext))
+    let l:align = l:endofline-strlen(l:linetext)
+    setlocal fillchars+=fold:-
+    return printf('%s%*s', l:linetext, l:align, l:foldtext)
+endfunction
+
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Packages
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " matchit: makes the % command work better
 " e.g. HTML tags, if/else/endif
 if has('syntax') && has('eval')
     packadd! matchit
 endif
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " Only load plugins when `g:plugins_enable` set to true
 if g:plugins_enable
 
@@ -194,15 +234,27 @@ Plug 'SirVer/ultisnips'
 " Display indentation levels with vertical lines
 Plug 'Yggdroot/indentLine'
 
+" Python folding
+Plug 'tmhedberg/SimpylFold', {'for': ['python']}
+
+" Markdown folding
+Plug 'masukomi/vim-markdown-folding', {'for': ['markdown']}
+
+" Fast Folding
+Plug 'Konfekt/FastFold'
+
+" Keep editing state (cursor position and folding)
+Plug 'zhimsel/vim-stay'
+
 " Colorscheme
 Plug 'reewr/vim-monokai-phoenix'
 
 call plug#end()
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Plugin_configurations
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " => mattn/emmet-vim
 autocmd FileType html nmap <S-Tab> <plug>(emmet-expand-abbr)
 autocmd FileType html imap <S-Tab> <plug>(emmet-expand-abbr)
@@ -240,13 +292,19 @@ let g:indentLine_char_list = ['⎸']
 autocmd FileType json
     \ :IndentLinesDisable
 
+" => zhimsel/vim-stay
+autocmd User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif
+
+" => masukomi/vim-markdown-folding
+let g:markdown_fold_override_foldtext = 0
+
 " endif of `if g:plugins_enable`
 endif
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Color_related
 """"""""""""""""""""""""""""""""""""""""
-
+"{{{
 " Colorsheme and background
 if g:plugins_enable
     colorscheme monokai-phoenix
@@ -256,12 +314,23 @@ endif
 
 " Cursorline
 hi CursorLine cterm=none ctermfg=none ctermbg=236
-hi CursorLineNr cterm=none ctermfg=yellow ctermbg=236
+hi CursorLineNr cterm=none ctermfg=226 ctermbg=236
 set cursorline
+
+" Folding
+hi Folded cterm=bold ctermfg=232 ctermbg=228
+hi FoldColumn cterm=bold ctermfg=46 ctermbg=none
+
+" Comment
+hi Comment cterm=none ctermfg=67 ctermbg=NONE
+
+" Todo
+hi Todo cterm=bold ctermfg=none ctermbg=red
 
 " Color the column to keep code short
 hi ColorColumn ctermbg=red
 set colorcolumn=80
 autocmd FileType text,html
     \ setlocal colorcolumn=
+"}}}
 
