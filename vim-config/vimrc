@@ -148,6 +148,9 @@ map Q gq
 " Auto closing html tags using omni completion
 autocmd FileType html inoremap </ </<c-x><c-o>
 
+" Toggle relative number
+nnoremap <F6> :call ToggleRelativeNumber()<CR>
+
 " Folding
 nnoremap <Space> za
 vnoremap <Space> zf
@@ -164,8 +167,16 @@ function! <SID>trimTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
+function ToggleRelativeNumber()
+    if &rnu
+        set nornu
+    else
+        set rnu
+    endif
+endfunction
+
 " Reference: https://vim.fandom.com/wiki/Customize_text_for_closed_folds
-function! MyFoldText()
+function MyFoldText()
     " clear fold from fillchars to set it up the way we want later
     let &l:fillchars = substitute(&l:fillchars,',\?fold:.','','gi')
     let l:numwidth = &numberwidth
