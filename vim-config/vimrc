@@ -61,8 +61,9 @@ set history=50
 " Do not use mouse
 set mouse=""
 
-" Let .tex files be recognized as filetype=tex
-let g:tex_flavor = "latex"
+" Session
+set sessionoptions-=options
+
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Interface
@@ -100,6 +101,11 @@ set foldcolumn=3
 set foldtext=MyFoldText()
 autocmd filetype c,cpp setlocal foldmethod=syntax
 set viewoptions=cursor,folds,slash,unix
+
+" Tabpages
+set showtabline=2
+"set tabline=%!MyTabLine()
+
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Text_related
@@ -134,8 +140,13 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 " => Syntax_related
 """"""""""""""""""""""""""""""""""""""""
 "{{{
+
 " Identify python docstring as comments
 autocmd FileType python syn region Comment start=/"""/ end=/"""/
+
+" Let .tex files be recognized as filetype=tex
+let g:tex_flavor = "latex"
+
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Mappings
@@ -173,6 +184,9 @@ function ToggleRelativeNumber()
     else
         set rnu
     endif
+endfunction
+
+function MyTabLine()
 endfunction
 
 " Reference: https://vim.fandom.com/wiki/Customize_text_for_closed_folds
@@ -230,9 +244,6 @@ Plug 'preservim/nerdcommenter'
 " Browse directory hierachies
 Plug 'preservim/nerdtree'
 
-" Browse the tags of the current file (get overview of its structure)
-Plug 'majutsushi/tagbar'
-
 " Use <Tab> to do insersion completion
 Plug 'ervandew/supertab'
 
@@ -256,6 +267,13 @@ Plug 'Konfekt/FastFold'
 
 " Keep editing state (cursor position and folding)
 Plug 'zhimsel/vim-stay'
+
+" Show and deal with marks
+Plug 'kshenoy/vim-signature'
+
+" Session manager
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 " Colorscheme
 Plug 'reewr/vim-monokai-phoenix'
@@ -283,11 +301,6 @@ let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 'h'}, 'dir': {}}
 autocmd bufenter * if (winnr("$") == 1
     \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" => majutsushi/tagbar
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_left=1
-hi TagbarHighlight ctermbg=red
-
 " => ervandew/supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -309,6 +322,11 @@ autocmd User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif
 " => masukomi/vim-markdown-folding
 let g:markdown_fold_override_foldtext = 0
 
+" => xolox/vim-misc
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
+let g:session_command_aliases = 1
+
 " endif of `if g:plugins_enable`
 endif
 "}}}
@@ -325,7 +343,7 @@ endif
 
 " Cursorline
 hi CursorLine cterm=none ctermfg=none ctermbg=236
-hi CursorLineNr cterm=none ctermfg=226 ctermbg=236
+hi CursorLineNr cterm=bold ctermfg=226 ctermbg=236
 set cursorline
 
 " Folding
@@ -333,10 +351,19 @@ hi Folded cterm=bold ctermfg=232 ctermbg=228
 hi FoldColumn cterm=bold ctermfg=46 ctermbg=none
 
 " Comment
-hi Comment cterm=none ctermfg=67 ctermbg=NONE
+hi Comment cterm=none ctermfg=67 ctermbg=none
 
 " Todo
 hi Todo cterm=bold ctermfg=none ctermbg=red
+
+" Sign
+hi SignColumn cterm=none ctermfg=none ctermbg=none
+hi SignatureMarkText cterm=bold ctermfg=201 ctermbg=none
+
+" TabLine
+hi TabLine cterm=none ctermfg=none ctermbg=236
+hi TabLineSel cterm=none ctermfg=232 ctermbg=207
+hi TabLineFill cterm=none ctermfg=none ctermbg=none
 
 " Color the column to keep code short
 hi ColorColumn ctermbg=red
