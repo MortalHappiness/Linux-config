@@ -2,12 +2,25 @@
 " Author: Chi-Sheng Liu
 "
 " Sections:
+"    -> Helper_functions
 "    -> Plugins
 "    -> Plugin_configurations
 "
 """""""""""""""""""""""""""""""""""""""""}}}
 
 
+""""""""""""""""""""""""""""""""""""""""
+" => Helper_functions
+""""""""""""""""""""""""""""""""""""""""
+"{{{
+
+" Conditional activation
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""
@@ -66,6 +79,9 @@ Plug 'kshenoy/vim-signature'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
+" Asynchronous Lint Engine (Syntax checking)
+Plug 'dense-analysis/ale'
+
 " Colorscheme
 Plug 'reewr/vim-monokai-phoenix'
 
@@ -89,7 +105,7 @@ vmap <c-p> <plug>NERDCommenterToggle
 " => preservim/nerdtree
 map <F7> :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
-let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 'h'}, 'dir': {}}
+let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1
     \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -106,8 +122,8 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
 " => Yggdroot/indentLine
 let g:indentLine_char_list = ['⎸']
-autocmd FileType json, help
-    \ :IndentLinesDisable
+let g:indentLine_fileTypeExclude = ['json']
+let g:indentLine_bufTypeExclude = ['help']
 
 " => zhimsel/vim-stay
 autocmd User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif

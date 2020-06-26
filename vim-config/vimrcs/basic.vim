@@ -58,6 +58,7 @@ set mouse=""
 
 " Session
 set sessionoptions-=options
+set sessionoptions+=curdir
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""
