@@ -12,7 +12,7 @@ super + Escape
 
 # terminal emulator
 super + Return
-    termite
+    xterm
 
 # file manager
 super + ctrl + r
