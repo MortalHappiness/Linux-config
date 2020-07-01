@@ -137,30 +137,7 @@ autocmd User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif
 let g:markdown_fold_override_foldtext = 0
 
 " => junegunn/fzf.vim
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>t :BTags<CR>
-nnoremap <Leader>s :Snippets<CR>
-let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-x': 'split',
-    \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = {'left': '50%'}
-let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment']
-  \}
+source ~/.vim/vimrcs/plugin_config/fzf.vim
 
 " => dense-analysis/ale
 nmap sn <Plug>(ale_next_wrap)
@@ -182,7 +159,7 @@ let g:ale_fixers = {
 \}
 
 " => vim-airline/vim-airline
-source ~/.vim/vimrcs/plugin_airline.vim
+source ~/.vim/vimrcs/plugin_config/airline.vim
 
 "}}}
 

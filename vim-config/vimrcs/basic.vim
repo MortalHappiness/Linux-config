@@ -77,6 +77,9 @@ set background=light
 
 " Text width
 set textwidth=80
+autocmd FileType text setlocal textwidth=78
+autocmd FileType html,json,qf
+    \ setlocal textwidth=0
 
 " Status line
 set laststatus=2
@@ -105,8 +108,8 @@ set signcolumn=yes
 " Folding
 set foldcolumn=3
 set foldtext=MyFoldText()
-autocmd filetype vim setlocal foldmethod=marker
-autocmd filetype c,cpp setlocal foldmethod=syntax
+autocmd Filetype vim setlocal foldmethod=marker
+autocmd Filetype c,cpp setlocal foldmethod=syntax
 set viewoptions=cursor,folds,slash,unix
 
 " Tabline
@@ -118,8 +121,6 @@ set tabline=%!MyTabLine()
 " => Text_related
 """"""""""""""""""""""""""""""""""""""""
 "{{{
-
-autocmd FileType text setlocal textwidth=78
 
 " Auto indentation
 set autoindent
