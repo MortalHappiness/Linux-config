@@ -30,7 +30,7 @@ endfunction
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd my_plugin VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Load plugins
@@ -38,6 +38,26 @@ call plug#begin('~/.vim/plugged')
 
 " Colorscheme
 Plug 'reewr/vim-monokai-phoenix'
+
+" A set of operators to deal with surroundings
+Plug 'machakann/vim-sandwich'
+
+" The following are all related to text objects
+" Indent text object (ii/ai)
+Plug 'michaeljsmith/vim-indent-object'
+" A library plugin to create custom text objects
+Plug 'kana/vim-textobj-user'
+" The following are text objects implemented using 'kana/vim-textobj-user'
+" Function text objects (if,af)
+Plug 'kana/vim-textobj-function'
+" Segment in variable names(snake case or camel case) (iv/av)
+Plug 'Julian/vim-textobj-variable-segment'
+" Comma-seperated text objects (i,/a,)
+Plug 'sgur/vim-textobj-parameter'
+" Text objects for folding (iz,az)
+Plug 'kana/vim-textobj-fold'
+" Text objects for python functions and classes (if/af);(ic/ac)
+Plug 'bps/vim-textobj-python'
 
 " EditorConfig plugin for Vim
 Plug 'editorconfig/editorconfig-vim'
@@ -82,6 +102,13 @@ Plug 'junegunn/fzf.vim'
 " Asynchronous Lint Engine (Syntax checking)
 Plug 'dense-analysis/ale'
 
+
+
+"Plug 'liuchengxu/vista.vim'
+
+" Make vim as smart as VSCode
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Beautiful status line
 Plug 'vim-airline/vim-airline'
 
@@ -93,17 +120,30 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""
 "{{{
 
+" => junegunn/vim-plug
+nnoremap <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>pc :PlugClean<CR>
+
 " => reewr/vim-monokai-phoenix
 colorscheme monokai-phoenix
 
+" => machakann/vim-sandwich
+let g:sandwich_no_default_key_mappings = 1
+nmap sa <Plug>(operator-sandwich-add)
+nmap ds <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+nmap cs <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+vmap sa <Plug>(operator-sandwich-add)
+" Turn off highlight for delete
+call operator#sandwich#set('delete', 'all', 'highlight', 0)
+
 " => mattn/emmet-vim
-autocmd FileType html nmap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html imap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd FileType html vmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html nmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html imap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html vmap <S-Tab> <plug>(emmet-expand-abbr)
 
 " => preservim/nerdcommenter
 let g:NERDCommentWholeLinesInVMode = 1
-let g:NERDDefaultAlign="left"
+let g:NERDDefaultAlign='left'
 nmap <c-p> <plug>NERDCommenterToggle
 vmap <c-p> <plug>NERDCommenterToggle
 
@@ -112,26 +152,27 @@ map <F7> :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 " close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1
+autocmd my_plugin bufenter * if (winnr("$") == 1
     \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " => ervandew/supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " => SirVer/ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsListSnippets="<c-l>"
+inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsListSnippets='<c-l>'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
 " => Yggdroot/indentLine
+scriptencoding utf-8
 let g:indentLine_char_list = ['⎸']
+scriptencoding
 let g:indentLine_fileTypeExclude = ['json']
 let g:indentLine_bufTypeExclude = ['help']
 
 " => zhimsel/vim-stay
-autocmd User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif
+autocmd my_plugin User BufStayLoadPost if &ft == 'vim' | set foldmethod=marker | endif
 
 " => masukomi/vim-markdown-folding
 let g:markdown_fold_override_foldtext = 0
@@ -140,23 +181,10 @@ let g:markdown_fold_override_foldtext = 0
 source ~/.vim/vimrcs/plugin_config/fzf.vim
 
 " => dense-analysis/ale
-nmap sn <Plug>(ale_next_wrap)
-let g:ale_sign_column_always = 1
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-    \'c': ['gcc'],
-    \'cpp': ['gcc'],
-    \'javascript': ['eslint'],
-    \'javascriptreact': ['eslint'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-    \'c': [],
-    \'cpp': [],
-    \'javascript': ['prettier', 'eslint'],
-    \'javascriptreact': ['prettier', 'eslint'],
-    \'json': ['prettier'],
-\}
+source ~/.vim/vimrcs/plugin_config/ale.vim
+
+" => neoclide/coc.nvim
+source ~/.vim/vimrcs/plugin_config/coc.vim
 
 " => vim-airline/vim-airline
 source ~/.vim/vimrcs/plugin_config/airline.vim

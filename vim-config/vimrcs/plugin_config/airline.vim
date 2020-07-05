@@ -69,7 +69,7 @@ function! AirlineInit()
     let g:airline_section_a = airline#section#create_left([
         \'my_mode', 'crypt', 'paste', 'keymap', 'spell', 'capslock', 'xkblayout', 'iminsert'])
     let g:airline_section_b = '%{fnamemodify(getcwd(), ":p:~")}'
-    if exists("+autochdir") && &autochdir == 1
+    if exists('+autochdir') && &autochdir == 1
         let g:airline_section_c = airline#section#create(['%<', 'path', spc, 'my_readonly'])
     else
         let g:airline_section_c = airline#section#create(['%<', 'file', spc, 'my_readonly', 'coc_status'])
@@ -82,7 +82,7 @@ function! AirlineInit()
         let g:airline_section_z = airline#section#create(['%3p%%'.spc, 'linenr',  ':%3v'])
     endif
 endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+autocmd my_plugin User AirlineAfterInit call AirlineInit()
 
 "}}}
 " ========================================

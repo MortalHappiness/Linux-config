@@ -18,6 +18,9 @@
 """"""""""""""""""""""""""""""""""""""""
 "{{{
 
+" Define augroups and clear autocmds
+source ~/.vim/vimrcs/augroups.vim
+
 " Use Vim settings instead of Vi settings
 if &compatible
     set nocompatible
@@ -35,14 +38,14 @@ filetype indent on
 " Don't do it when the position is invalid, when inside an event handler
 " (happens when dropping a file on gvim) and for a commit message (it's
 " likely a different one than last time).
-autocmd BufReadPost *
+autocmd my_file BufReadPost *
   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
   \ |   exe "normal! g`\""
   \ | endif
 
 " Auto read when a file is changed from outside
 set autoread
-autocmd FocusGained,BufEnter * checktime
+autocmd my_file FocusGained,BufEnter * checktime
 
 " Make backspace functions normally
 set backspace=indent,eol,start
@@ -77,18 +80,22 @@ set background=light
 
 " Text width
 set textwidth=80
-autocmd FileType text setlocal textwidth=78
-autocmd FileType html,json,qf
+autocmd my_text_width FileType text
+    \ setlocal textwidth=78
+autocmd my_text_width FileType html,json,qf
     \ setlocal textwidth=0
 
 " Status line
 set laststatus=2
 
+" Cmd height
+set cmdheight=1
+
 " Show what the current mode is
 set showmode
 
 " Show line number
-set nu
+set number
 
 " Show current position
 set ruler
@@ -108,8 +115,8 @@ set signcolumn=yes
 " Folding
 set foldcolumn=3
 set foldtext=MyFoldText()
-autocmd Filetype vim setlocal foldmethod=marker
-autocmd Filetype c,cpp setlocal foldmethod=syntax
+autocmd my_folding Filetype vim setlocal foldmethod=marker
+autocmd my_folding Filetype c,cpp setlocal foldmethod=syntax
 set viewoptions=cursor,folds,slash,unix
 
 " Tabline
@@ -131,19 +138,28 @@ set smartindent
 " Wrap lines
 set wrap
 
+" Do not show whitespace characters
+set nolist
+
+" Whitespace characters format when set list
+set listchars=tab:\|_
+
 " Use spaces to replace tabs
 set expandtab
-autocmd FileType text,make,snippets setlocal noexpandtab
+autocmd my_indent FileType text,make,snippets setlocal noexpandtab
 
 " The size of tabs
-set tabstop=4 shiftwidth=4
-autocmd FileType html,css,scss,javascript,javascriptreact,typescript,json
-    \ setlocal tabstop=2 shiftwidth=2
+set tabstop=2 shiftwidth=2
+autocmd my_indent FileType c,cpp,make,python
+    \ setlocal tabstop=4 shiftwidth=4
 
 " Trim trailing spaces before saving files
 let ftToIgnore = ['text', 'markdown', 'snippets']
-autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
+autocmd my_file BufWritePre * if index(ftToIgnore, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
+
+" Options for insert completion menu
+set completeopt=longest,menuone
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""
@@ -152,10 +168,26 @@ autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 |
 "{{{
 
 " Identify python docstring as comments
-autocmd FileType python syn region Comment start=/"""/ end=/"""/
+autocmd my_syntax FileType python syn region Comment start=/"""/ end=/"""/
+
+" Match leading spaces in makefile as error
+autocmd my_syntax FileType make syn match Error '\v^ +'
+
+" Highlight extra whitespaces and trailing whitespaces
+hi link ExtraWhitespace Error
+let ftToIgnore = ['text', 'help', 'snippets']
+" Match trailing whitespace:
+autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+    \ syn match ExtraWhitespace /\s\+$/
+" Match spaces before a tab:
+autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+    \ syn match ExtraWhitespace / \+\ze\t/
+" Match tabs that are not at the start of a line:
+autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+    \ syn match ExtraWhitespace /[^\t]\zs\t\+/
 
 " Let .tex files be recognized as filetype=tex
-let g:tex_flavor = "latex"
+let g:tex_flavor = 'latex'
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""
@@ -163,10 +195,39 @@ let g:tex_flavor = "latex"
 """"""""""""""""""""""""""""""""""""""""
 "{{{
 
-let mapleader = ","
+let mapleader = ','
+
+map s <Nop>
+
+" Edit vimrcs
+nnoremap <Leader>v :tabe ~/.vim/vimrcs<CR>
+
+" Sourcing vimrc
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
+
+" Toggle relative number
+nnoremap <Leader>r :set relativenumber!<CR>
+
+" Toggle highlight search
+nnoremap <Leader>h :set hlsearch!<CR>
+
+" Use <CR> to accept currently selected popup menu entry
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+" Use <C-j> and <C-k> to go up and down in popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<c-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+" Keep showing the completion menu when further typing
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Open omni completion menu or move down the menu
+inoremap <expr> <A-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Insert current filename at cursor position
+inoremap <C-f> <C-r>=expand("%:t")<CR>
 
 " Folding
 nnoremap <Space> za
@@ -174,6 +235,7 @@ vnoremap <Space> zf
 
 " Quickfix go to next error wrapped
 nnoremap sj :call Wrapped_cn()<CR>
+nnoremap sk :call Wrapped_cp()<CR>
 
 " Window swapping
 nnoremap <C-w>H :call MarkWindowSwap()<CR> <C-w>h :call DoWindowSwap()<CR>
@@ -213,14 +275,15 @@ nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 "{{{
 
 function! <SID>trimTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+  let l:l_num = 1
+  for l:line in getline(1, '$')
+    call setline(l:l_num, substitute(line, '\s\+$', '', 'e'))
+    let l:l_num += 1
+  endfor
 endfunction
 
 function! ExecuteMacroOverVisualRange()
-  echo "@".getcmdline()
+  echo '@'.getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
@@ -234,11 +297,18 @@ function Wrapped_cn()
     endtry
 endfunction
 
+function Wrapped_cp()
+    try
+        cp
+    catch
+        clast
+    endtry
+endfunction
+
 " Reference: https://vim.fandom.com/wiki/Customize_text_for_closed_folds
 function MyFoldText()
     " clear fold from fillchars to set it up the way we want later
     let &l:fillchars = substitute(&l:fillchars,',\?fold:.','','gi')
-    let l:numwidth = &numberwidth
     let l:foldtext = ' '.(v:foldend-v:foldstart+1).
                      \' lines folded'.v:folddashes.'|'
     let l:endofline = (&textwidth>0 ? &textwidth : 80)
@@ -264,27 +334,27 @@ function MyTabLine()
         let buftype = getbufvar(bufnr, '&buftype')
 
         " Normal buffer
-        if buftype == ''
+        if buftype ==# ''
             " Extract tail of the filename
             let filename = fnamemodify(filename, ':t')
-            if filename == ''
+            if filename ==# ''
                 let filename = '[No Name]'
             endif
-            if getbufvar(bufnr, "&modified")
+            if getbufvar(bufnr, '&modified')
                 let filename .= '[+]'
             endif
-        elseif buftype == 'help'
+        elseif buftype ==# 'help'
             let filename = '[help] '.fnamemodify(filename, ':t')
-        elseif buftype == 'terminal'
+        elseif buftype ==# 'terminal'
             let filename = '[Terminal]'
-        elseif buftype == 'quickfix'
+        elseif buftype ==# 'quickfix'
             let filename = '[quickfix]'
         else
             let filename = '['.filename.']'
         endif
 
         if (i == t)
-            if getbufvar(bufnr, "&modified")
+            if getbufvar(bufnr, '&modified')
                 let s .= '%#TabNumSelModified# '.i.' '
                 let s .= '%#TabLineSelModified#'
             else
@@ -310,16 +380,16 @@ endfunction
 function! DoWindowSwap()
     "Mark destination
     let curNum = winnr()
-    let curBuf = bufnr( "%" )
-    exe g:markedWinNum . "wincmd w"
+    let curBuf = bufnr( '%' )
+    exec g:markedWinNum . 'wincmd w'
     "Switch to source and shuffle dest->source
-    let markedBuf = bufnr( "%" )
+    let markedBuf = bufnr( '%' )
     "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' curBuf
+    exec 'hide buf' curBuf
     "Switch to dest and shuffle source->dest
-    exe curNum . "wincmd w"
+    exec curNum . 'wincmd w'
     "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' markedBuf
+    exec 'hide buf' markedBuf
 endfunction
 
 "}}}

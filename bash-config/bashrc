@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export HISTSIZE=2000
+export HISTFILESIZE=2000
+
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -a'

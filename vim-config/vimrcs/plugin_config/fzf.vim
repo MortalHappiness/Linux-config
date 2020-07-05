@@ -1,3 +1,9 @@
+"
+" Settings of the plugin 'junegunn/fzf.vim'
+"
+
+" ========================================
+
 nnoremap <Leader>f :FZF<CR>
 "nnoremap <Leader>b :call fzf#run({})<CR>
 "nnoremap <Leader>t :BTags<CR>
@@ -7,3 +13,4 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = {'left': '50%'}
+
