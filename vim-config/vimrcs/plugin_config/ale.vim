@@ -22,11 +22,16 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \'c': [],
     \'cpp': [],
+    \'css': ['prettier'],
+    \'html': ['prettier'],
     \'javascript': ['prettier', 'eslint'],
     \'javascriptreact': ['prettier', 'eslint'],
+    \'json': ['prettier'],
+    \'markdown': ['prettier'],
+    \'scss': ['prettier'],
     \'typescript': ['prettier', 'eslint'],
     \'typescriptreact': ['prettier', 'eslint'],
-    \'json': ['prettier'],
+    \'yaml': ['prettier'],
 \}
 "let g:ale_disable_lsp = 1
 

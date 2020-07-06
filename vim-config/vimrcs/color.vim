@@ -24,6 +24,10 @@ hi SpecialKey cterm=none ctermfg=197 ctermbg=none
 hi SignColumn cterm=none ctermfg=none ctermbg=none
 hi SignatureMarkText cterm=bold ctermfg=201 ctermbg=none
 
+" Popup Menu
+hi Pmenu cterm=none ctermfg=232 ctermbg=255
+hi PmenuSel cterm=none ctermfg=231 ctermbg=242
+
 " TabLine
 hi TabLine cterm=none ctermfg=255 ctermbg=238
 hi TabLineSel cterm=none ctermfg=17 ctermbg=190
