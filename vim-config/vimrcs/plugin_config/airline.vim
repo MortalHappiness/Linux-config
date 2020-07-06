@@ -74,13 +74,15 @@ function! AirlineInit()
     else
         let g:airline_section_c = airline#section#create(['%<', 'file', spc, 'my_readonly', 'coc_status'])
     endif
-    let g:airline_section_x = airline#section#create_right(['bookmark', 'tagbar', 'vista', 'gutentags', 'grepper', 'filetype'])
+    let g:airline_section_x = airline#section#create_right(['vista', 'gutentags', 'grepper', 'filetype'])
     let g:airline_section_y = airline#section#create_right(['ffenc'])
     if airline#util#winwidth() > 79
-        let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.spc, 'linenr', 'maxlinenr', spc.':%3v'])
+        let g:airline_section_z = airline#section#create(['%3p%%'.spc, 'linenr', 'maxlinenr', spc.':%3v'])
     else
         let g:airline_section_z = airline#section#create(['%3p%%'.spc, 'linenr',  ':%3v'])
     endif
+    let g:airline_section_error = airline#section#create(['ale_error_count', 'coc_error_count'])
+    let g:airline_section_warning = airline#section#create(['ale_warning_count', 'whitespace', 'coc_warning_count'])
 endfunction
 autocmd my_plugin User AirlineAfterInit call AirlineInit()
 
@@ -91,9 +93,9 @@ autocmd my_plugin User AirlineAfterInit call AirlineInit()
 let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#error_symbol = 'Error: '
 let airline#extensions#ale#warning_symbol = 'Warning: '
-let airline#extensions#ale#show_line_numbers = 1
-let airline#extensions#ale#open_lnum_symbol = ' (Line '
-let airline#extensions#ale#close_lnum_symbol = ')'
+let airline#extensions#ale#show_line_numbers = 0
+"let airline#extensions#ale#open_lnum_symbol = ' (Line '
+"let airline#extensions#ale#close_lnum_symbol = ')'
 
 "}}}
 
