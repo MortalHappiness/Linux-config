@@ -205,6 +205,9 @@ nnoremap <Leader>v :tabe ~/.vim/vimrcs<CR>
 " Sourcing vimrc
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
+" Sourcing current file
+nnoremap <Leader>ss :source %<CR>
+
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 

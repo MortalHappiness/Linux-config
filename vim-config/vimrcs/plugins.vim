@@ -10,18 +10,6 @@
 
 
 """"""""""""""""""""""""""""""""""""""""
-" => Helper_functions
-""""""""""""""""""""""""""""""""""""""""
-"{{{
-
-" Conditional activation
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
-"}}}
-""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""
 "{{{
@@ -102,8 +90,7 @@ Plug 'junegunn/fzf.vim'
 " Asynchronous Lint Engine (Syntax checking)
 Plug 'dense-analysis/ale'
 
-
-
+" View and search LSP symbols and tags
 "Plug 'liuchengxu/vista.vim'
 
 " Make vim as smart as VSCode
@@ -161,7 +148,6 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 " => SirVer/ultisnips
 inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-let g:UltiSnipsListSnippets='<c-l>'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
 " => Yggdroot/indentLine
@@ -183,8 +169,17 @@ source ~/.vim/vimrcs/plugin_config/fzf.vim
 " => dense-analysis/ale
 source ~/.vim/vimrcs/plugin_config/ale.vim
 
+" => liuchengxu/vista.vim
+"nnoremap <F8> :Vista!!<CR>
+"let g:vista_sidebar_width = 35
+"let g:vista_fold_toggle_icons = ['▼', '▶']
+"let g:vista_icon_indent = ['└ ', '│ ']
+"let g:vista_echo_cursor = 0
+"let g:vista_fzf_preview = ['right:50%']
+"let g:vista#renderer#enable_icon = 0
+
 " => neoclide/coc.nvim
-source ~/.vim/vimrcs/plugin_config/coc.vim
+"source ~/.vim/vimrcs/plugin_config/coc.vim
 
 " => vim-airline/vim-airline
 source ~/.vim/vimrcs/plugin_config/airline.vim
