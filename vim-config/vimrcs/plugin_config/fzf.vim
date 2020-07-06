@@ -25,6 +25,9 @@ nnoremap <Leader>fg :GFiles<CR>
 " Buffers
 nnoremap <Leader>fb :Buffers<CR>
 
+" Tags
+nnoremap <Leader>ft :BTags<CR>
+
 " Snippets
 inoremap <C-l> <C-r>=fzf#vim#snippets(0)<CR>
 

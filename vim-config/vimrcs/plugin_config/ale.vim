@@ -14,6 +14,8 @@ let g:ale_linters = {
     \'cpp': ['gcc'],
     \'javascript': ['eslint'],
     \'javascriptreact': ['eslint'],
+    \'typescript': ['tsserver', 'eslint'],
+    \'typescriptreact': ['tsserver', 'eslint'],
     \'vim': ['vint'],
 \}
 let g:ale_fix_on_save = 1
@@ -22,7 +24,9 @@ let g:ale_fixers = {
     \'cpp': [],
     \'javascript': ['prettier', 'eslint'],
     \'javascriptreact': ['prettier', 'eslint'],
+    \'typescript': ['prettier', 'eslint'],
+    \'typescriptreact': ['prettier', 'eslint'],
     \'json': ['prettier'],
 \}
-let g:ale_disable_lsp = 1
+"let g:ale_disable_lsp = 1
 
