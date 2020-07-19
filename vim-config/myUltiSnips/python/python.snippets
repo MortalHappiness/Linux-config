@@ -31,26 +31,9 @@ snippet line "40 =" b
 $0
 endsnippet
 
-snippet main "main function" b
-def main():
-	$1
-
-`!p snip.rv = line()`
-
+snippet ifmain "if __name__ == '__main__'" b
 if __name__ == '__main__':
-	main()
-$0
-endsnippet
-
-snippet mainsys "main function with sys.argv" b
-def main(script, $1):
-	$2
-
-`!p snip.rv = line()`
-
-if __name__ == '__main__':
-	main(*sys.argv)
-$0
+	$0
 endsnippet
 
 snippet enum "For loop + enumerate" b
@@ -64,4 +47,3 @@ class ${1:ClassName}:
 	def __init__(self$2):`!p write_init(snip, t[2])`
 		$0
 endsnippet
-

@@ -29,5 +29,5 @@ nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>ft :BTags<CR>
 
 " Snippets
-inoremap <C-l> <C-r>=fzf#vim#snippets(0)<CR>
+inoremap <C-l> <C-r>=fzf#vim#snippets({'options': ['--layout=reverse']}, 0)<CR>
 

@@ -1,0 +1,17 @@
+snippet test "unittest test_XXX() function" b
+def test_${1:XXX}(`!p
+if snip.indent:
+	snip.rv = 'self'
+else:
+	snip.rv = ''`):
+	"""${2:Description}"""
+	$0
+endsnippet
+
+snippet testc "unittest TextXXX class" b
+class Test${1:XXX}(unittest.TestCase):
+
+	def test_${2:XXX}(self):
+		"""${3:Description}"""
+		$0
+endsnippet

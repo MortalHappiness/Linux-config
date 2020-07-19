@@ -34,6 +34,10 @@ super + ctrl + c
 super + ctrl + f
     FoxitReader
 
+# Postman
+super + ctrl + p
+    Postman
+
 # screenshot
 Print
     bash $HOME/.config/sxhkd/scripts/screenshot.sh

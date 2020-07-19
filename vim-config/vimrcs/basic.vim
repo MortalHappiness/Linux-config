@@ -150,7 +150,7 @@ autocmd my_indent FileType text,make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=2 shiftwidth=2
-autocmd my_indent FileType c,cpp,make,python
+autocmd my_indent FileType c,cpp,make,python,snippets
     \ setlocal tabstop=4 shiftwidth=4
 
 " Trim trailing spaces before saving files
@@ -207,6 +207,9 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " Sourcing current file
 nnoremap <Leader>ss :source %<CR>
+
+" Edit Snippets
+nnoremap <Leader>es :tabe ~/.vim/myUltiSnips<CR>
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
