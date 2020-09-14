@@ -30,6 +30,9 @@ Plug 'reewr/vim-monokai-phoenix'
 " A set of operators to deal with surroundings
 Plug 'machakann/vim-sandwich'
 
+" Move lines up and down (and selections left and right)
+Plug 'matze/vim-move'
+
 " The following are all related to text objects
 " Indent text object (ii/ai)
 Plug 'michaeljsmith/vim-indent-object'

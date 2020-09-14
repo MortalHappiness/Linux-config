@@ -56,8 +56,15 @@ set encoding=utf-8
 " History
 set history=50
 
-" Do not use mouse
-set mouse=""
+" Use mouse
+if has('mouse')
+  set mouse=a
+endif
+
+" Copy to system clipboard
+if has('unnamedplus')
+  set clipboard=unnamedplus
+endif
 
 " Session
 set sessionoptions-=options
@@ -82,7 +89,7 @@ set background=light
 set textwidth=80
 autocmd my_text_width FileType text
     \ setlocal textwidth=78
-autocmd my_text_width FileType html,json,qf
+autocmd my_text_width FileType html,json,qf,markdown
     \ setlocal textwidth=0
 
 " Status line
@@ -95,7 +102,10 @@ set cmdheight=1
 set showmode
 
 " Show line number
-set number
+set number relativenumber
+
+autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   * set norelativenumber
 
 " Show current position
 set ruler
@@ -114,6 +124,7 @@ set signcolumn=yes
 
 " Folding
 set foldcolumn=3
+set foldlevelstart=99
 set foldtext=MyFoldText()
 autocmd my_folding Filetype vim setlocal foldmethod=marker
 autocmd my_folding Filetype c,cpp setlocal foldmethod=syntax
@@ -122,6 +133,15 @@ set viewoptions=cursor,folds,slash,unix
 " Tabline
 set showtabline=2
 set tabline=%!MyTabLine()
+
+" Terminal
+autocmd my_terminal TerminalOpen,BufEnter * if &buftype == 'terminal' |
+  \ setlocal nonumber |
+  \ setlocal norelativenumber |
+  \ setlocal foldcolumn=0 |
+  \ setlocal signcolumn=no |
+  \ setlocal colorcolumn= |
+  \ endif
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""

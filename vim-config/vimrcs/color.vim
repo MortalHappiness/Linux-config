@@ -41,6 +41,6 @@ hi tabnumselmodified cterm=bold ctermfg=231 ctermbg=55
 " Color the column to keep code short
 hi ColorColumn ctermbg=red
 set colorcolumn=80
-autocmd my_colorcolumn FileType text,html,json,qf
+autocmd my_colorcolumn FileType text,html,json,qf,markdown
     \ setlocal colorcolumn=
 

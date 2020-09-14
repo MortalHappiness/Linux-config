@@ -3,27 +3,35 @@
 """"""""""""""""""""""""""""""""""""""""
 
 augroup my_file
-    autocmd!
+  autocmd!
 augroup END
 
 augroup my_text_width
-    autocmd!
+  autocmd!
 augroup END
 
 augroup my_folding
-    autocmd!
+  autocmd!
 augroup END
 
 augroup my_indent
-    autocmd!
+  autocmd!
 augroup END
 
 augroup my_syntax
-    autocmd!
+  autocmd!
 augroup END
 
 augroup my_colorcolumn
-    autocmd!
+  autocmd!
+augroup END
+
+augroup my_numbertoggle
+  autocmd!
+augroup END
+
+augroup my_terminal
+  autocmd!
 augroup END
 
 " ========================================
@@ -33,6 +41,6 @@ augroup END
 " Plugins related
 
 augroup my_plugin
-    autocmd!
+  autocmd!
 augroup END
 
