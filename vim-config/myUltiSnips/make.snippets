@@ -1,31 +1,11 @@
-snippet base_c "Base for c" b
+snippet base "Base" b
 .PHONY: clean
 CC = gcc
-CFLAGS = -c
+CFLAGS = -Wall
 
 all: $1
-	@echo -n ""
 
 %.o: %.c
-	\$(CC) \$(CFLAGS) -c -o \$@ \$<
-
-${1:out}: $1.o
-	\$(CC) \$(CFLAGS) -o \$@ \$+
-
-clean:
-	rm -f $1 *.o
-$0
-endsnippet
-
-snippet base_cpp "Base for c++" b
-.PHONY: clean
-CC = g++
-CFLAGS = -c
-
-all: $1
-	@echo -n ""
-
-%.o: %.cpp %.h
 	\$(CC) \$(CFLAGS) -c -o \$@ \$<
 
 ${1:out}: $1.o
