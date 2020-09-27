@@ -6,11 +6,12 @@ function help_message() {
     echo "Usage: bash setup.sh [COMMAND]"
     echo ""
     echo "Commands:"
-    echo "   install    Create symbolic links to the configuration files and"
-    echo "              move files to be overwritten to ./.backup/"
-    echo "   remove     Remove all symbolic links."
-    echo "   revert     Remove all symbolic links and put backup files back"
-    echo "              to original position."
+    echo "   install [FILE]   Read symbolic links configuration in FILE and"
+    echo "                    create symbolic links and move files to be"
+    echo "                    overwritten to ./.backup/"
+    echo "   remove           Remove all symbolic links."
+    echo "   revert           Remove all symbolic links and put backup files back"
+    echo "                    to original position."
 }
 
 # read configuration file
@@ -41,7 +42,7 @@ function _install() {
     _remove
     touch .backup_record
 
-    read_conf _links.conf |
+    read_conf "$1" |
     while read -a line
     do
         # If there are files to be overwritten, move it into .backup

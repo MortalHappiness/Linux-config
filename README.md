@@ -1,13 +1,13 @@
 # Linux-config
 
  My personal linux configuration files.
- 
+
  #### Goal: Keyboard driven workflow, lightweight system mainly for coding
  #### Distribution: Arch Linux
  #### Device: Notebook
- 
+
  ## Dependencies
- 
+
 | Package | Description |
 | ------- | ----------- |
 | [bspwm](https://github.com/baskerville/bspwm) | A tiling window manager |
@@ -40,27 +40,27 @@ When fn keys are pressed, laughch events related to backlight, sound, touchpad a
 
 ### Visual selection in termite terminal
 ![selection](/images/selection.png)
- 
+
  ## Installation
- 
+
  Clone this repository, modify `_links.conf` if your want to make some different links, and then execute
  ```sh
- bash setup.sh install
+ bash setup.sh install _links.conf
  ```
- This will create several symbolic links from your home directory to this directory based on the rules in `_links.conf`.  
+ This will create several symbolic links from your home directory to this directory based on the rules in `_links.conf`.
  If there are files to be overwritten, then they will be moved into `.backup` folder.
- 
+
  Type
  ```sh
  bash setup.sh revert
  ```
  can recover the backup files.
- 
+
  To remove all symbolic links created, run
  ```sh
  bash setup.sh remove
  ```
- 
+
  Example `_links.conf`
  ```
 # Symbolic links to be created
