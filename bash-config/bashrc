@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 

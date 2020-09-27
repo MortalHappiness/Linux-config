@@ -49,6 +49,8 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'kana/vim-textobj-fold'
 " Text objects for python functions and classes (if/af);(ic/ac)
 Plug 'bps/vim-textobj-python'
+" XML/HTML attributes (ix, ax)
+Plug 'whatyouhide/vim-textobj-xmlattr'
 
 " EditorConfig plugin for Vim
 Plug 'editorconfig/editorconfig-vim'
