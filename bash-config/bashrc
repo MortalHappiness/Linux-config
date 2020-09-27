@@ -18,8 +18,6 @@ alias grep='grep --color=auto'
 alias vi='vim'
 
 PS1='\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# used on workstation
-# PS1='[\[\033[01;32m\]\u\[\033[01;31m\]@\H \[\033[01;34m\]\w\[\033[00m\]]\$ '
 
 export TERMINFO=/usr/share/terminfo
 export PATH="$HOME/bin:$PATH"
