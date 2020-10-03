@@ -152,6 +152,8 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " => SirVer/ultisnips
 inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
+xnoremap <C-J> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+snoremap <C-J> <Esc>:call UltiSnips#ExpandSnippet()<CR>
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
