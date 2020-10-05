@@ -192,4 +192,3 @@ source ~/.vim/vimrcs/plugin_config/ale.vim
 source ~/.vim/vimrcs/plugin_config/airline.vim
 
 "}}}
-

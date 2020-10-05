@@ -77,4 +77,3 @@ function _revert() {
     done < .backup_record
     rm .backup_record
 }
-

@@ -24,16 +24,18 @@ let g:ale_fixers = {
     \'c': [],
     \'cpp': [],
     \'css': ['prettier'],
+    \'html': ['prettier'],
     \'javascript': ['prettier', 'eslint'],
     \'javascriptreact': ['prettier', 'eslint'],
     \'json': ['prettier'],
-    \'html': ['prettier'],
     \'markdown': ['prettier'],
     \'python': ['autopep8'],
     \'scss': ['prettier'],
+    \'snippets': ['remove_trailing_lines'],
     \'typescript': ['prettier', 'eslint'],
     \'typescriptreact': ['prettier', 'eslint'],
+    \'vim': ['remove_trailing_lines', 'trim_whitespace'],
+    \'sh': ['remove_trailing_lines', 'trim_whitespace'],
     \'yaml': ['prettier'],
 \}
 "let g:ale_disable_lsp = 1
-

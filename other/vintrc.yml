@@ -12,4 +12,3 @@ cmdargs:
 policies:
   ProhibitSetNoCompatible:
     enabled: false
-

@@ -174,8 +174,8 @@ autocmd my_indent FileType c,cpp,make,python,snippets
     \ setlocal tabstop=4 shiftwidth=4
 
 " Trim trailing spaces before saving files
-let ftToIgnore = ['text', 'markdown', 'snippets']
-autocmd my_file BufWritePre * if index(ftToIgnore, &ft) < 0 |
+let ftToIgnoreTrim = ['text', 'markdown', 'snippets']
+autocmd my_file BufWritePre * if index(ftToIgnoreTrim, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
 
 " Options for insert completion menu
@@ -195,15 +195,15 @@ autocmd my_syntax FileType make syn match Error '\v^ +'
 
 " Highlight extra whitespaces and trailing whitespaces
 hi link ExtraWhitespace Error
-let ftToIgnore = ['text', 'help', 'snippets']
+let ftToIgnoreHighlight = ['text', 'help', 'snippets']
 " Match trailing whitespace:
-autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+autocmd my_syntax Syntax * if index(ftToIgnoreHighlight, &ft) < 0 |
     \ syn match ExtraWhitespace /\s\+$/
 " Match spaces before a tab:
-autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+autocmd my_syntax Syntax * if index(ftToIgnoreHighlight, &ft) < 0 |
     \ syn match ExtraWhitespace / \+\ze\t/
 " Match tabs that are not at the start of a line:
-autocmd my_syntax Syntax * if index(ftToIgnore, &ft) < 0 |
+autocmd my_syntax Syntax * if index(ftToIgnoreHighlight, &ft) < 0 |
     \ syn match ExtraWhitespace /[^\t]\zs\t\+/
 
 " Let .tex files be recognized as filetype=tex
@@ -431,4 +431,3 @@ if has('syntax') && has('eval')
 endif
 
 "}}}
-

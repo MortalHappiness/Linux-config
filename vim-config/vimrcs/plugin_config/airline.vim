@@ -98,4 +98,3 @@ let airline#extensions#ale#show_line_numbers = 0
 "let airline#extensions#ale#close_lnum_symbol = ')'
 
 "}}}
-

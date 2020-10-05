@@ -43,4 +43,3 @@ augroup END
 augroup my_plugin
   autocmd!
 augroup END
-

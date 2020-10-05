@@ -37,4 +37,3 @@ case "$1" in
         help_message
         ;;
 esac
-
