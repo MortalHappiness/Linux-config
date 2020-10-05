@@ -264,10 +264,10 @@ nnoremap sj :call Wrapped_cn()<CR>
 nnoremap sk :call Wrapped_cp()<CR>
 
 " Window swapping
-noremap <C-w>H :call MarkWindowSwap()<CR><C-w>h:call DoWindowSwap()<CR>
-noremap <C-w>J :call MarkWindowSwap()<CR><C-w>j:call DoWindowSwap()<CR>
-noremap <C-w>K :call MarkWindowSwap()<CR><C-w>k:call DoWindowSwap()<CR>
-noremap <C-w>L :call MarkWindowSwap()<CR><C-w>l:call DoWindowSwap()<CR>
+nnoremap <C-w>H :call MarkWindowSwap()<CR><C-w>h:call DoWindowSwap()<CR>
+nnoremap <C-w>J :call MarkWindowSwap()<CR><C-w>j:call DoWindowSwap()<CR>
+nnoremap <C-w>K :call MarkWindowSwap()<CR><C-w>k:call DoWindowSwap()<CR>
+nnoremap <C-w>L :call MarkWindowSwap()<CR><C-w>l:call DoWindowSwap()<CR>
 
 " Tabpage
 nnoremap <Leader>1 1gt

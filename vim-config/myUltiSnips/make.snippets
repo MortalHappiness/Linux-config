@@ -37,7 +37,7 @@ $(BUILD_DIRS):
 
 $(DEP_PATH)/%.d: $(SRC_PATH)/%.c* | $(BUILD_DIRS)
 	@set -e; rm -f $@; \
-	$(CC) -MM $< | \
+	$(CC) -MM $(CPPFLAGS) $< | \
 	sed 's,\($*\)\.o[ :]*,${OBJ_PATH}/\1.o ${DBG_PATH}/\1.o $@ : ,g' > $@;
 
 $(TARGET): $(OBJ) | $(BUILD_DIRS)
