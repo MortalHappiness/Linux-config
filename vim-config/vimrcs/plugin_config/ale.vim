@@ -21,8 +21,8 @@ let g:ale_linters = {
 \}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-    \'c': [],
-    \'cpp': [],
+    \'c': ['clang-format'],
+    \'cpp': ['clang-format'],
     \'css': ['prettier'],
     \'html': ['prettier'],
     \'javascript': ['prettier', 'eslint'],
