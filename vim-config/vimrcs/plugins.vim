@@ -79,6 +79,9 @@ Plug 'tmhedberg/SimpylFold', {'for': ['python']}
 " Markdown folding
 Plug 'masukomi/vim-markdown-folding', {'for': ['markdown']}
 
+" mdx syntax highlighting
+Plug 'jxnblk/vim-mdx-js'
+
 " Fast Folding
 Plug 'Konfekt/FastFold'
 
