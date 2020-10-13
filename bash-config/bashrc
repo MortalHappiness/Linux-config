@@ -26,5 +26,5 @@ if [[ $SSH_CLIENT ]]; then
   PS1='[\[\033[01;32m\]\u\[\033[01;31m\]@\H \[\033[01;34m\]\w\[\033[00m\]]\$ '
 fi
 
-# Custom local settings
+# Custom bashrc settings
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
