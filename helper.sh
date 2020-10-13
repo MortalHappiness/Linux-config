@@ -54,6 +54,12 @@ function _install() {
             mv "$LINK_NAME" "$PWD/.backup/"
             backup_file="$PWD/.backup/${line[1]}"
         fi
+        # Create necessary folder
+        LINK_PARENT_FOLDER="$(dirname $LINK_NAME)"
+        if [ ! -e $LINK_PARENT_FOLDER ]; then
+          echo "Create folder $LINK_PARENT_FOLDER"
+          mkdir -p "$LINK_PARENT_FOLDER"
+        fi
         # Create link
         echo "Create link $LINK_NAME -> $TARGET"
         ln -s "$TARGET" "$LINK_NAME"
