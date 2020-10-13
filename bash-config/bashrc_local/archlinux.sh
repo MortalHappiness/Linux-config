@@ -1,5 +1,3 @@
-PS1='\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 export TERMINFO=/usr/share/terminfo
