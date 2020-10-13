@@ -22,8 +22,8 @@ super + ctrl + g
 # fn keys
 # ==================================
 
-#XF86TouchpadToggle
-#    bash $HOME/.config/sxhkd/scripts/touchpad.sh
+XF86TouchpadToggle
+    bash $HOME/.config/sxhkd/scripts/touchpad.sh
 
 # ==================================
 # bspwm hotkeys
