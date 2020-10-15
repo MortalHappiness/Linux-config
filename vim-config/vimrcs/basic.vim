@@ -190,6 +190,9 @@ set completeopt=longest,menuone
 " Identify python docstring as comments
 autocmd my_syntax FileType python syn region Comment start=/"""/ end=/"""/
 
+" SageMath
+autocmd my_syntax BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
+
 " Match leading spaces in makefile as error
 autocmd my_syntax FileType make syn match Error '\v^ +'
 
