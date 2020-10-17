@@ -135,7 +135,6 @@ set showtabline=2
 set tabline=%!MyTabLine()
 
 " Terminal
-if exists('##TerminalOpen')
 autocmd my_terminal TerminalOpen,BufEnter * if &buftype == 'terminal' |
   \ setlocal nonumber |
   \ setlocal norelativenumber |
@@ -143,7 +142,6 @@ autocmd my_terminal TerminalOpen,BufEnter * if &buftype == 'terminal' |
   \ setlocal signcolumn=no |
   \ setlocal colorcolumn= |
   \ endif
-endif
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""
