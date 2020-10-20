@@ -1,5 +1,5 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,xfce-text-editor.desktop,exo-web-browser.desktop,kali-www.desktop,kali-docs.desktop,kali-bugs.desktop,offsec-training.desktop,exploit-database.desktop,vulnhub.desktop,xfce-settings-manager.desktop,google-chrome.desktop
-recent=debian-xterm.desktop,xfce-keyboard-settings.desktop,xfce-settings-manager.desktop,xfce-wm-settings.desktop,xfce-wmtweaks-settings.desktop,xfce-workspaces-settings.desktop,kali-beef.desktop,xfce4-notifyd-config.desktop,kali-burpsuite.desktop,exo-preferred-applications.desktop
+recent=xfce-keyboard-settings.desktop,thunar.desktop,exo-file-manager.desktop,debian-xterm.desktop,xfce-settings-manager.desktop,xfce-wm-settings.desktop,xfce-wmtweaks-settings.desktop,xfce-workspaces-settings.desktop,kali-beef.desktop,xfce4-notifyd-config.desktop
 button-icon=kali-panel-menu
 button-single-row=false
 show-button-title=false
