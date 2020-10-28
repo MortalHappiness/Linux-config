@@ -88,7 +88,7 @@
     <property name="plugin-16" type="string" value="statusnotifier"/>
     <property name="plugin-17" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chrome.instance1293;chrome.instance1463;chrome.instance14908;chrome.instance1495;chrome.instance1519;chrome.instance1546;chrome.instance1655"/>
+      <property name="mpris-players" type="string" value="chrome.instance1293;chrome.instance1318;chrome.instance1463;chrome.instance14908;chrome.instance1495;chrome.instance1519;chrome.instance1546;chrome.instance1655"/>
     </property>
     <property name="plugin-18" type="string" value="notification-plugin"/>
     <property name="plugin-19" type="string" value="power-manager-plugin"/>

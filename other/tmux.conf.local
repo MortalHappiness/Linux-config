@@ -326,14 +326,14 @@ bind h if -F '#{pane_at_left}'   '' 'select-pane -L'
 bind l if -F '#{pane_at_right}'  '' 'select-pane -R'
 
 # swap pane, no-wrap
-unbind J
-unbind K
-unbind H
-unbind L
-bind J if -F '#{pane_at_bottom}' '' "swap-pane -D"
-bind K if -F '#{pane_at_top}'    '' "swap-pane -U"
-bind H if -F '#{pane_at_left}'   '' "swap-pane -s '{left-of}'"
-bind L if -F '#{pane_at_right}'  '' "swap-pane -s '{right-of}'"
+#unbind J
+#unbind K
+#unbind H
+#unbind L
+#bind J if -F '#{pane_at_bottom}' '' "swap-pane -D"
+#bind K if -F '#{pane_at_top}'    '' "swap-pane -U"
+#bind H if -F '#{pane_at_left}'   '' "swap-pane -s '{left-of}'"
+#bind L if -F '#{pane_at_right}'  '' "swap-pane -s '{right-of}'"
 
 # break pane to new window
 unbind !
