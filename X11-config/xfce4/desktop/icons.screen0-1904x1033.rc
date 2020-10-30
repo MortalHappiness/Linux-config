@@ -5,17 +5,21 @@
 row=0
 col=2
 
-[/home/mortalhappiness/Desktop/FoxitReader.desktop]
-row=3
-col=0
-
 [/home/mortalhappiness/Desktop/kali-burpsuite.desktop]
 row=1
 col=2
 
+[/home/mortalhappiness/Desktop/FoxitReader.desktop]
+row=3
+col=0
+
 [/home/mortalhappiness/Desktop/google-chrome.desktop]
 row=2
 col=0
+
+[/home/mortalhappiness/Desktop/Postman.desktop]
+row=2
+col=2
 
 [Trash]
 row=1

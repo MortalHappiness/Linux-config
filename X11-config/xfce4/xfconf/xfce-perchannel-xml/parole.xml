@@ -18,5 +18,6 @@
   <property name="playlist" type="empty">
     <property name="show-playlist" type="bool" value="true"/>
     <property name="repeat" type="bool" value="true"/>
+    <property name="shuffle" type="bool" value="false"/>
   </property>
 </channel>
