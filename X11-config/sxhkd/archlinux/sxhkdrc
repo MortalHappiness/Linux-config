@@ -15,8 +15,8 @@ super + Return
     xterm
 
 # file manager
-super + ctrl + r
-    rox
+super + f
+    thunar
 
 # Show information
 super + ctrl + i
