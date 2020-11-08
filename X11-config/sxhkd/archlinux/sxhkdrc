@@ -62,7 +62,15 @@ XF86Audio{Lower,Raise}Volume
     bash $HOME/.config/sxhkd/scripts/sound.sh {lower,raise}
 
 # ==================================
-# bspwm hotkeys
+# custom bspwm hotkeys
+# ==================================
+
+# focus the next occupied desktop in the current monitor
+alt + Tab
+    bspc desktop -f next.occupied.local
+
+# ==================================
+# default bspwm hotkeys
 # ==================================
 
 # quit/restart bspwm
