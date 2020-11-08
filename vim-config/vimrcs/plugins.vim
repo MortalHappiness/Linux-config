@@ -56,7 +56,7 @@ Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'editorconfig/editorconfig-vim'
 
 " Zen-coding
-Plug 'mattn/emmet-vim', {'for': ['html']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'php']}
 
 " Comments (auto detect filetype, toggle comments in visual mode)
 Plug 'preservim/nerdcommenter'
@@ -135,9 +135,9 @@ vmap sa <Plug>(operator-sandwich-add)
 call operator#sandwich#set('delete', 'all', 'highlight', 0)
 
 " => mattn/emmet-vim
-autocmd my_plugin FileType html nmap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd my_plugin FileType html imap <S-Tab> <plug>(emmet-expand-abbr)
-autocmd my_plugin FileType html vmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html,php nmap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html,php imap <S-Tab> <plug>(emmet-expand-abbr)
+autocmd my_plugin FileType html,php vmap <S-Tab> <plug>(emmet-expand-abbr)
 
 " => preservim/nerdcommenter
 let g:NERDCommentWholeLinesInVMode = 1

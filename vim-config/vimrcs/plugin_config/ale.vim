@@ -14,6 +14,7 @@ let g:ale_linters = {
     \'cpp': ['gcc'],
     \'javascript': ['eslint'],
     \'javascriptreact': ['eslint'],
+    \'php': ['php'],
     \'python': ['pycodestyle'],
     \'solidity': ['solc'],
     \'typescript': ['tsserver', 'eslint'],
