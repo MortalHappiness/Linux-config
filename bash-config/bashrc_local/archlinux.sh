@@ -1,7 +1,7 @@
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 export TERMINFO=/usr/share/terminfo
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

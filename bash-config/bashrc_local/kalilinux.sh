@@ -1,7 +1,7 @@
 alias pip=pip3
 alias python=python3
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
