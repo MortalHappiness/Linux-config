@@ -48,7 +48,7 @@
       <property name="TouchpadToggle" type="string" value="/home/mortalhappiness/utils/touchpad.sh"/>
       <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Primary&gt;&lt;Super&gt;g" type="string" value="exo-open --launch WebBrowser"/>
-      <property name="&lt;Primary&gt;&lt;Super&gt;f" type="string" value="exo-open --launch FileManager"/>
+      <property name="&lt;Super&gt;f" type="string" value="exo-open --launch FileManager"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

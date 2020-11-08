@@ -1,5 +1,5 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,xfce-text-editor.desktop,exo-web-browser.desktop,kali-www.desktop,kali-docs.desktop,kali-bugs.desktop,offsec-training.desktop,exploit-database.desktop,vulnhub.desktop,xfce-settings-manager.desktop,google-chrome.desktop
-recent=kali-rainbowcrack.desktop,ophcrack.desktop,wireshark.desktop,xfce-keyboard-settings.desktop,thunar.desktop,exo-file-manager.desktop,debian-xterm.desktop,xfce-settings-manager.desktop,xfce-wm-settings.desktop,xfce-wmtweaks-settings.desktop
+recent=xfce-keyboard-settings.desktop,offsec-training.desktop,kali-pth-winexe.desktop,kali-rainbowcrack.desktop,ophcrack.desktop,wireshark.desktop,thunar.desktop,exo-file-manager.desktop,debian-xterm.desktop,xfce-settings-manager.desktop
 button-icon=kali-panel-menu
 button-single-row=false
 show-button-title=false
