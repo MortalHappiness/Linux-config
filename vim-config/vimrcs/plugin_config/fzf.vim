@@ -17,7 +17,7 @@ let g:fzf_buffers_jump = 1
 " Mappings
 
 " Files in current directory
-nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>f :Files<CR>
 
 " Files in git repository (without files specified in .gitignore)
 nnoremap <Leader>fg :GFiles<CR>
@@ -26,7 +26,7 @@ nnoremap <Leader>fg :GFiles<CR>
 nnoremap <Leader>fb :Buffers<CR>
 
 " Tags
-nnoremap <Leader>ft :BTags<CR>
+nnoremap <Leader>t :BTags<CR>
 
 " Snippets
 inoremap <C-l> <C-r>=fzf#vim#snippets({'options': ['--layout=reverse']}, 0)<CR>

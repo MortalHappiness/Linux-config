@@ -104,8 +104,13 @@ set showmode
 " Show line number
 set number relativenumber
 
-autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave * set relativenumber
-autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   * set norelativenumber
+"autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave * set relativenumber
+"autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   * set norelativenumber
+let ftToIgnoreNumToggle = ['nerdtree', 'tagbar']
+autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave *
+    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set relativenumber
+autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   *
+    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set norelativenumber
 
 " Show current position
 set ruler
@@ -170,7 +175,7 @@ autocmd my_indent FileType text,make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=2 shiftwidth=2
-autocmd my_indent FileType c,cpp,make,python,snippets
+autocmd my_indent FileType c,cpp,make,python,snippets,sh
     \ setlocal tabstop=4 shiftwidth=4
 
 " Trim trailing spaces before saving files

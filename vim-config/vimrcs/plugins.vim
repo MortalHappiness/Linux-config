@@ -64,6 +64,9 @@ Plug 'preservim/nerdcommenter'
 " Browse directory hierachies
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 
+" Tag bar
+Plug 'preservim/tagbar'
+
 " Use <Tab> to do insersion completion
 Plug 'ervandew/supertab'
 
@@ -152,6 +155,9 @@ let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 " close vim if the only window left open is a NERDTree
 autocmd my_plugin bufenter * if (winnr("$") == 1
     \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" => preservim/tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " => ervandew/supertab
 let g:SuperTabDefaultCompletionType = '<c-n>'
