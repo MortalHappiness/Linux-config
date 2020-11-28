@@ -1,25 +1,37 @@
 # Linux-config
 
- My personal linux configuration files (dotfiles).
+My personal linux configuration files (dotfiles).
 
- ## Installation
+## Installation
 
- Clone this repository, add or modify configuration files in `conf/` folder, and then execute
- ```sh
- bash setup.sh install conf/<conf_filename>
- ```
- This will create several symbolic links from your home directory to this directory based on the rules in the configuration file.
- If there are files to be overwritten, then they will be moved into `.backup` folder.
+Clone this repository, add or modify configuration files in `conf/` folder, and then execute
 
- Type
- ```sh
- bash setup.sh revert
- ```
- can recover the backup files.
+```sh
+bash setup.sh install conf/<conf_filename>
+```
 
- To remove all symbolic links created, run
- ```sh
- bash setup.sh remove
- ```
+This will create several symbolic links from your home directory to this directory based on the rules in the configuration file.
 
- See `conf/` folder for example configuration file.
+For example, if you only want to use vim configuration, type the following command
+
+```sh
+bash setup.sh install conf/vim.conf
+```
+
+If there are files to be overwritten, then they will be moved into `.backup` folder.
+
+Type
+
+```sh
+bash setup.sh revert
+```
+
+can recover the backup files.
+
+To remove all symbolic links created, run
+
+```sh
+bash setup.sh remove
+```
+
+See `conf/` folder for example configuration file.
