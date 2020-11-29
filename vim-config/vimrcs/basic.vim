@@ -185,7 +185,7 @@ autocmd my_indent FileType text,make,snippets setlocal noexpandtab
 
 " The size of tabs
 set tabstop=2 shiftwidth=2
-autocmd my_indent FileType c,cpp,make,python,snippets,sh
+autocmd my_indent FileType c,cpp,make,python,snippets,sh,verilog
     \ setlocal tabstop=4 shiftwidth=4
 
 " Trim trailing spaces before saving files
