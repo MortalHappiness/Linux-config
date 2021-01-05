@@ -339,6 +339,30 @@ bind l if -F '#{pane_at_right}'  '' 'select-pane -R'
 unbind !
 bind T break-pane
 
+# Reference: https://www.mmbyte.com/article/42312.html
+# Double LMB Select & Copy (Word)
+bind-key -T copy-mode-vi DoubleClick1Pane \
+    select-pane \; \
+    send-keys -X select-word-no-clear \; \
+    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
+bind-key -n DoubleClick1Pane \
+    select-pane \; \
+    copy-mode -M \; \
+    send-keys -X select-word \; \
+    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
+
+# Triple LMB Select & Copy (Line)
+bind-key -T copy-mode-vi TripleClick1Pane \
+    select-pane \; \
+    send-keys -X select-line \; \
+    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
+bind-key -n TripleClick1Pane \
+    select-pane \; \
+    copy-mode -M \; \
+    send-keys -X select-line \; \
+    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
+
+# Reference: https://www.freecodecamp.org/news/tmux-in-practice-local-and-nested-remote-tmux-sessions-4f7ba5db8795/
 # Use F12 to toggle prefix-key on/off (for ssh nested tmux session)
 color_status_text="colour245"
 color_window_off_status_bg="colour238"
