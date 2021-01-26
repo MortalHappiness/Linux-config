@@ -12,6 +12,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
     \'c': ['gcc'],
     \'cpp': ['gcc'],
+    \'java': ['javac'],
     \'javascript': ['eslint'],
     \'javascriptreact': ['eslint'],
     \'php': ['php'],
@@ -27,6 +28,7 @@ let g:ale_fixers = {
     \'cpp': ['clang-format'],
     \'css': ['prettier'],
     \'html': ['prettier'],
+    \'java': ['google_java_format'],
     \'javascript': ['prettier', 'eslint'],
     \'javascriptreact': ['prettier', 'eslint'],
     \'json': ['prettier'],
