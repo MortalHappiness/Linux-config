@@ -62,7 +62,7 @@ Plug 'mattn/emmet-vim', {'for': ['html', 'php']}
 Plug 'preservim/nerdcommenter'
 
 " Browse directory hierachies
-Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'preservim/nerdtree'
 
 " Tag bar
 Plug 'preservim/tagbar'
@@ -151,10 +151,13 @@ vmap <c-p> <plug>NERDCommenterToggle
 " => preservim/nerdtree
 map <F7> :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
-let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
-" close vim if the only window left open is a NERDTree
-autocmd my_plugin bufenter * if (winnr("$") == 1
-    \ && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NEADTreeMouseMode=3
+" let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
+" Exit Vim if NERDTree is the only window left.
+autocmd WinEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+" Open the existing NERDTree on each new tab.
+autocmd my_plugin BufWinEnter * silent NERDTreeMirror
 
 " => preservim/tagbar
 nmap <F8> :TagbarToggle<CR>
