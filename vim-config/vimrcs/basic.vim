@@ -26,6 +26,8 @@ if &compatible
     set nocompatible
 endif
 
+set hidden
+
 " Turn off modeline for security
 set modelines=0
 set nomodeline
@@ -70,6 +72,9 @@ endif
 set sessionoptions-=options
 set sessionoptions+=curdir
 
+" Updatetime
+set updatetime=300
+
 " Fix alt key shortcut on gnome terminal
 " Reference: https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
 let c='a'
@@ -106,7 +111,7 @@ autocmd my_text_width FileType html,json,qf,markdown
 set laststatus=2
 
 " Cmd height
-set cmdheight=1
+set cmdheight=2
 
 " Show what the current mode is
 set showmode
@@ -127,9 +132,6 @@ set ruler
 
 " Show command
 set showcmd
-
-" The height of the command bar
-set cmdheight=1
 
 " Show searching result while still typing
 set incsearch
@@ -259,10 +261,7 @@ nnoremap <Leader>r :set relativenumber!<CR>
 nnoremap <Leader>h :set hlsearch!<CR>
 
 " Use <CR> to accept currently selected popup menu entry
-inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
-" Use <C-j> and <C-k> to go up and down in popup menu
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<c-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+" inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 " Keep showing the completion menu when further typing
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

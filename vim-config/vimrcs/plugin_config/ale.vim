@@ -16,7 +16,6 @@ let g:ale_linters = {
     \'javascript': ['eslint'],
     \'javascriptreact': ['eslint'],
     \'php': ['php'],
-    \'python': ['pycodestyle'],
     \'solidity': ['solc'],
     \'typescript': ['tsserver', 'eslint'],
     \'typescriptreact': ['tsserver', 'eslint'],

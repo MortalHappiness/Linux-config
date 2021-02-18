@@ -94,7 +94,7 @@ let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#error_symbol = 'Error: '
 let airline#extensions#ale#warning_symbol = 'Warning: '
 let airline#extensions#ale#show_line_numbers = 0
-"let airline#extensions#ale#open_lnum_symbol = ' (Line '
-"let airline#extensions#ale#close_lnum_symbol = ')'
+let airline#extensions#coc#error_symbol = 'Error: '
+let airline#extensions#coc#warning_symbol = 'Warning: '
 
 "}}}

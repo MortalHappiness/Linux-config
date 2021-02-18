@@ -33,22 +33,13 @@ Plug 'machakann/vim-sandwich'
 " Move lines up and down (and selections left and right)
 Plug 'matze/vim-move'
 
-" The following are all related to text objects
-" Indent text object (ii/ai)
-Plug 'michaeljsmith/vim-indent-object'
 " A library plugin to create custom text objects
 Plug 'kana/vim-textobj-user'
 " The following are text objects implemented using 'kana/vim-textobj-user'
-" Function text objects (if,af)
-Plug 'kana/vim-textobj-function'
 " Segment in variable names(snake case or camel case) (iv/av)
 Plug 'Julian/vim-textobj-variable-segment'
 " Comma-seperated text objects (i,/a,)
 Plug 'sgur/vim-textobj-parameter'
-" Text objects for folding (iz,az)
-Plug 'kana/vim-textobj-fold'
-" Text objects for python functions and classes (if/af);(ic/ac)
-Plug 'bps/vim-textobj-python'
 " XML/HTML attributes (ix, ax)
 Plug 'whatyouhide/vim-textobj-xmlattr'
 
@@ -102,13 +93,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Asynchronous Lint Engine (Syntax checking)
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 " View and search LSP symbols and tags
 "Plug 'liuchengxu/vista.vim'
 
 " Make vim as smart as VSCode
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Beautiful status line
 Plug 'vim-airline/vim-airline'
@@ -154,7 +145,7 @@ let NERDTreeHighlightCursorline=1
 let NEADTreeMouseMode=3
 " let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 " Exit Vim if NERDTree is the only window left.
-autocmd WinEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+autocmd my_plugin WinEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 " Open the existing NERDTree on each new tab.
 autocmd my_plugin BufWinEnter * silent NERDTreeMirror
@@ -166,7 +157,8 @@ nmap <F8> :TagbarToggle<CR>
 let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " => SirVer/ultisnips
-inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
+"inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
+inoremap <expr> <C-J> "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
 xnoremap <C-J> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
 snoremap <C-J> <Esc>:call UltiSnips#ExpandSnippet()<CR>
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
@@ -189,7 +181,7 @@ let g:markdown_fold_override_foldtext = 0
 source ~/.vim/vimrcs/plugin_config/fzf.vim
 
 " => dense-analysis/ale
-source ~/.vim/vimrcs/plugin_config/ale.vim
+"source ~/.vim/vimrcs/plugin_config/ale.vim
 
 " => liuchengxu/vista.vim
 "nnoremap <F8> :Vista!!<CR>
@@ -201,7 +193,7 @@ source ~/.vim/vimrcs/plugin_config/ale.vim
 "let g:vista#renderer#enable_icon = 0
 
 " => neoclide/coc.nvim
-"source ~/.vim/vimrcs/plugin_config/coc.vim
+source ~/.vim/vimrcs/plugin_config/coc.vim
 
 " => vim-airline/vim-airline
 source ~/.vim/vimrcs/plugin_config/airline.vim
