@@ -16,9 +16,5 @@
   ],
 
   // coc-pyright
-  "python.formatting.autopep8Path": "/usr/bin/autopep8",
-
-  // coc-tsserver
-  "tsserver.enableJavascript": false,
-  "clangd.path": "/home/mortalhappiness/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
+  "python.formatting.autopep8Path": "/usr/bin/autopep8"
 }
