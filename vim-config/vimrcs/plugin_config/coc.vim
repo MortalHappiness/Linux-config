@@ -63,3 +63,5 @@ hi CocErrorSign cterm=bold ctermfg=red
 hi CocWarningSign cterm=bold ctermfg=166
 hi CocInfoSign cterm=bold ctermfg=26
 hi CocHintSign cterm=bold ctermfg=165
+
+hi CocFloating cterm=bold ctermfg=232 ctermbg=255
