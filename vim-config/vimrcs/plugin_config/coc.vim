@@ -7,6 +7,7 @@ let g:coc_global_extensions = [
   \'coc-eslint',
   \'coc-tsserver',
   \'coc-clangd',
+  \'coc-go',
 \]
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)

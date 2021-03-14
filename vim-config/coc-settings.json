@@ -12,7 +12,8 @@
     "scss",
     "typescript",
     "typescriptreact",
-    "yaml"
+    "yaml",
+    "go"
   ],
 
   // coc-pyright
