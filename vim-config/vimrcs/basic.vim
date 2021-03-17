@@ -195,6 +195,9 @@ let ftToIgnoreTrim = ['text', 'markdown', 'snippets']
 autocmd my_file BufWritePre * if index(ftToIgnoreTrim, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
 
+" Auto-indent files on save
+autocmd my_file BufWritePre * if &ft ==# 'sh' | call Indent() | endif
+
 " Options for insert completion menu
 set completeopt=longest,menuone
 
@@ -433,6 +436,39 @@ function! DoWindowSwap()
     exec curNum . 'wincmd w'
     "Hide and open so that we aren't prompted and keep history
     exec 'hide buf' markedBuf
+endfunction
+
+" Reference: https://stackoverflow.com/questions/15992163/how-to-tell-vim-to-auto-indent-before-saving
+" Restore cursor position, window position, and last search after running a command.
+function! Preserve(command)
+  " Save the last search.
+  let search = @/
+
+  " Save the current cursor position.
+  let cursor_position = getpos('.')
+
+  " Save the current window position.
+  normal! H
+  let window_position = getpos('.')
+  call setpos('.', cursor_position)
+
+  " Execute the command.
+  execute a:command
+
+  " Restore the last search.
+  let @/ = search
+
+  " Restore the previous window position.
+  call setpos('.', window_position)
+  normal! zt
+
+  " Restore the previous cursor position.
+  call setpos('.', cursor_position)
+endfunction
+
+" Re-indent the whole buffer.
+function! Indent()
+  call Preserve('normal gg=G')
 endfunction
 
 "}}}
