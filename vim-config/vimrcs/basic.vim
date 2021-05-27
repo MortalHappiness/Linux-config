@@ -117,15 +117,16 @@ set cmdheight=2
 set showmode
 
 " Show line number
-set number relativenumber
+set number
+"set number relativenumber
 
 "autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave * set relativenumber
 "autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   * set norelativenumber
-let ftToIgnoreNumToggle = ['nerdtree', 'tagbar']
-autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave *
-    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set relativenumber
-autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   *
-    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set norelativenumber
+"let ftToIgnoreNumToggle = ['nerdtree', 'tagbar']
+"autocmd my_numbertoggle BufEnter,FocusGained,InsertLeave *
+"    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set relativenumber
+"autocmd my_numbertoggle BufLeave,FocusLost,InsertEnter   *
+"    \ if index(ftToIgnoreNumToggle, &ft) < 0 | set norelativenumber
 
 " Show current position
 set ruler
@@ -196,7 +197,7 @@ autocmd my_file BufWritePre * if index(ftToIgnoreTrim, &ft) < 0 |
     \ :call <SID>trimTrailingWhitespaces()
 
 " Auto-indent files on save
-autocmd my_file BufWritePre * if &ft ==# 'sh' | call Indent() | endif
+"autocmd my_file BufWritePre * if &ft ==# 'sh' | call Indent() | endif
 
 " Options for insert completion menu
 set completeopt=longest,menuone

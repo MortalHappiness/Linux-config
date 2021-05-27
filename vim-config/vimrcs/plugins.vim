@@ -71,7 +71,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tmhedberg/SimpylFold', {'for': ['python']}
 
 " Markdown folding
-Plug 'masukomi/vim-markdown-folding', {'for': ['markdown']}
+"Plug 'masukomi/vim-markdown-folding', {'for': ['markdown']}
 
 " mdx syntax highlighting
 Plug 'jxnblk/vim-mdx-js', {'for': ['markdown.mdx']}
@@ -80,7 +80,7 @@ Plug 'jxnblk/vim-mdx-js', {'for': ['markdown.mdx']}
 Plug 'tomlion/vim-solidity', {'for': ['solidity']}
 
 " Fast Folding
-Plug 'Konfekt/FastFold'
+"Plug 'Konfekt/FastFold'
 
 " Keep editing state (cursor position and folding)
 Plug 'zhimsel/vim-stay'
