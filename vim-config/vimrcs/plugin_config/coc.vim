@@ -1,6 +1,5 @@
 let g:coc_global_extensions = [
   \'coc-json',
-  \'coc-marketplace',
   \'coc-vimlsp',
   \'coc-pyright',
   \'coc-prettier',
@@ -58,6 +57,9 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Highlight groups
 hi CocErrorSign cterm=bold ctermfg=red
