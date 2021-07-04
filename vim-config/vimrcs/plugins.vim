@@ -80,7 +80,7 @@ Plug 'jxnblk/vim-mdx-js', {'for': ['markdown.mdx']}
 Plug 'tomlion/vim-solidity', {'for': ['solidity']}
 
 " Fast Folding
-"Plug 'Konfekt/FastFold'
+Plug 'Konfekt/FastFold'
 
 " Keep editing state (cursor position and folding)
 Plug 'zhimsel/vim-stay'
