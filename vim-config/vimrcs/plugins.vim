@@ -115,6 +115,7 @@ let g:go_highlight_fields = 1
 " => junegunn/vim-plug
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pc :PlugClean<CR>
+nnoremap <Leader>pu :PlugUpdate<CR>
 
 colorscheme my-colorscheme
 
