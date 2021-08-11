@@ -1,0 +1,23 @@
+[user]
+	name = MortalHappiness
+	email = b07901069@ntu.edu.tw
+[branch]
+	autosetuprebase = always
+[core]
+	autocrlf = input
+	editor = vim
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

@@ -1,0 +1,15 @@
+priority -10
+
+global !p
+
+def line(n = 40):
+	return "="*n
+
+endglobal
+
+# ========================================
+
+snippet line "40 ="
+`!p snip.rv = line()`
+$0
+endsnippet

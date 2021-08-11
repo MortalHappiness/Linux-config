@@ -1,0 +1,11 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+---
+Language:        Cpp
+AlignConsecutiveMacros: true
+AlignEscapedNewlines: Left
+IndentCaseLabels: true
+...
+

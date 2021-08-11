@@ -1,0 +1,45 @@
+snippet Test "unittest class" b
+import unittest
+
+# ========================================
+
+
+class Test${1:Program}(unittest.TestCase):
+	@classmethod
+	def setUpClass(cls):
+		pass
+
+	@classmethod
+	def tearDownClass(cls):
+		pass
+
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+	
+# ========================================
+
+
+if __name__ == "__main__":
+	unittest.main(verbosity=2)
+endsnippet
+
+snippet test "unittest test_XXX() function" b
+def test_${1:XXX}(`!p
+if snip.indent:
+	snip.rv = 'self'
+else:
+	snip.rv = ''`):
+	"""${2:Description}"""
+	$0
+endsnippet
+
+snippet testc "unittest TextXXX class" b
+class Test${1:XXX}(unittest.TestCase):
+
+	def test_${2:XXX}(self):
+		"""${3:Description}"""
+		$0
+endsnippet

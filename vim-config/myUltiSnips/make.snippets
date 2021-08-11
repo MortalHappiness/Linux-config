@@ -1,0 +1,62 @@
+snippet make "Makefile template" b
+.PHONY: all clean debug
+all: # The default target
+$0
+# tool macros
+CC := ${2:gcc}
+CFLAGS := -Wall
+DBGFLAGS := -g
+OPTFLAGS := -O2
+LDFLAGS :=
+
+# path macros
+BIN_PATH := bin
+OBJ_PATH := obj
+SRC_PATH := src
+DBG_PATH := dbg
+DEP_PATH := dep
+BUILD_DIRS := $(BIN_PATH) $(OBJ_PATH) $(DBG_PATH) $(DEP_PATH)
+
+# compile macros
+TARGET_NAME := ${1:a.out}
+TARGET := $(BIN_PATH)/$(TARGET_NAME)
+TARGET_DEBUG := $(DBG_PATH)/$(TARGET_NAME)
+
+# source files, object files, and dependency files
+SRC := $(wildcard $(SRC_PATH)/*.c*)
+OBJ := $(addprefix $(OBJ_PATH)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
+OBJ_DEBUG := $(addprefix $(DBG_PATH)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
+DEPS := $(addprefix $(DEP_PATH)/, $(addsuffix .d, $(notdir $(basename $(SRC)))))
+
+# include auto-generated dependency files
+include $(DEPS)
+
+# non-phony targets
+$(BUILD_DIRS):
+	mkdir $@
+
+$(DEP_PATH)/%.d: $(SRC_PATH)/%.c* | $(BUILD_DIRS)
+	@set -e; rm -f $@; \
+	$(CC) -MM $(CPPFLAGS) $< | \
+	sed 's,\($*\)\.o[ :]*,${OBJ_PATH}/\1.o ${DBG_PATH}/\1.o $@ : ,g' > $@;
+
+$(TARGET): $(OBJ) | $(BUILD_DIRS)
+	$(CC) $(CFLAGS) $(OPTFLAGS) -o $@ $^
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c* | $(BUILD_DIRS)
+	$(CC) $(CFLAGS) $(OPTFLAGS) -c -o $@ $<
+
+$(TARGET_DEBUG): $(OBJ_DEBUG) | $(BUILD_DIRS)
+	$(CC) $(CFLAGS) $(DBGFLAGS) -o $@ $^
+
+$(DBG_PATH)/%.o: $(SRC_PATH)/%.c* | $(BUILD_DIRS)
+	$(CC) $(CFLAGS) $(DBGFLAGS) -c -o $@ $<
+
+# phony rules
+all: $(TARGET)
+
+debug: $(TARGET_DEBUG)
+
+clean:
+	rm -rf core.* $(BUILD_DIRS)
+endsnippet

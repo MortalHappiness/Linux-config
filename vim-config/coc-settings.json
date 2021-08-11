@@ -1,0 +1,21 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "cpp",
+    "json",
+    "html",
+    "python",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "css",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "go"
+  ],
+
+  // coc-pyright
+  "python.formatting.autopep8Path": "/usr/bin/autopep8"
+}

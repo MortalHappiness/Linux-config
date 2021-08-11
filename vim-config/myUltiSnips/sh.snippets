@@ -1,0 +1,86 @@
+global !p
+
+def line(n = 40):
+	return "# " + "="*n
+
+endglobal
+
+# ========================================
+
+snippet line "40 ="
+`!p snip.rv = line()`
+$0
+endsnippet
+
+snippet #! "#!/bin/sh" b
+#!/bin/sh
+${0:${VISUAL}}
+endsnippet
+
+snippet if "if ... then (if)" b
+if ${2:[[ ${1:condition} ]]}; then
+	${0:${VISUAL}}
+fi
+endsnippet
+
+snippet elif "elif .. (elif)" b
+elif ${2:[[ ${1:condition} ]]}; then
+	${0:${VISUAL}}
+endsnippet
+
+snippet else "else" b
+else; then
+	${0:${VISUAL}}
+endsnippet
+
+snippet ifel "if ... elif ... else ... fi" b
+if [[ ${1:condition} ]]; then
+	${2}${3:
+elif [[ ${4:condition} ]]; then
+	${5}}${6:
+else; then
+	${7}
+}fi
+endsnippet
+
+
+snippet case "case .. esac (case)" b
+case ${1:word} in
+	${3:pattern})
+		${0:echo ""}
+		;;
+	*)
+		${2:echo ""}
+		;;
+esac
+endsnippet
+
+snippet for "for ... done (for)" b
+for (( ${1:i} = 0; $1 < ${2:count}; ++$1 )); do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet forin "for ... in ... done (forin)" b
+for ${1:i} in ${2:words}; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet while "while ... (done)" b
+while ${2:[[ ${1:condition} ]]}; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet until "until ... (done)" b
+until ${2:[[ ${1:condition} ]]}; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet func "function" b
+function ${1:function_name}() {
+	${0:${VISUAL}}
+}
+endsnippet

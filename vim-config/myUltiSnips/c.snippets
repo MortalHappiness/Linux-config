@@ -1,0 +1,57 @@
+global !p
+
+def line(n = 40):
+	return "// " + "="*n
+
+def header_guard(filename):
+	return '_' + filename.replace('.', '_').upper() + '_'
+
+endglobal
+
+# ========================================
+
+snippet line "40 =" b
+`!p snip.rv = line()`
+$0
+endsnippet
+
+snippet header "Header guard" b
+#ifndef `!p snip.rv = header_guard(fn)`
+#define `!p snip.rv = header_guard(fn)`
+$0
+#endif /* `!p snip.rv = header_guard(fn)` */
+endsnippet
+
+snippet main "main() (main)"
+int main(int argc, char *argv[]) {
+	$0
+	return 0;
+}
+endsnippet
+
+snippet inc "#include (library)" b
+#include <${1:stdio}.h>
+endsnippet
+
+snippet read "Read file" b
+${1:#include <stdio.h>}
+void read_file(const char *filename${2:, args}) {
+	FILE *pFile;
+	pFile = fopen(filename, "r");
+	if (pFile == NULL) { fputs("File error", stderr); }
+	${3}
+	fclose(pFile);
+}
+$0
+endsnippet
+
+snippet write "Write file" b
+${1:#include <stdio.h>}
+void write_file(const char *filename${2:, const int n}) {
+	FILE *pFile;
+	pFile = fopen(filename, "w");
+	if (pFile == NULL) { fputs("File error", stderr); }
+	${3}
+	fclose(pFile);
+$0
+endsnippet
