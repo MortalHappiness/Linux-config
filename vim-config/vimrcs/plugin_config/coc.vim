@@ -72,7 +72,7 @@ hi CocWarningSign cterm=bold ctermfg=166 ctermbg=NONE gui=bold guifg=#d75f00 gui
 hi CocInfoSign cterm=bold ctermfg=26 ctermbg=NONE gui=bold guifg=#005fd7 guibg=NONE
 hi CocHintSign cterm=bold ctermfg=165 ctermbg=NONE gui=bold guifg=#5fffd7 guibg=NONE
 
-hi CocFloating cterm=bold ctermfg=232 ctermbg=255 gui=bold guifg=#080808 guibg=#eeeeee
+hi CocFloating cterm=bold ctermfg=232 ctermbg=253 gui=bold guifg=#080808 guibg=#dadada
 
 " ========================================
 
