@@ -41,6 +41,7 @@ map <F5> <Action>(Run)
 map Q <Action>(ReformatCode)
 map <C-p> <Action>(CommentByLineComment)
 
+map K <Action>(QuickJavaDoc)
 map <Leader>rn <Action>(RenameElement)
 map gd <Action>(GotoImplementation)
 map gr <Action>(FindUsages)
