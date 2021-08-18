@@ -1,0 +1,60 @@
+let mapleader = ","
+
+""" Plugins  --------------------------------
+set NERDTree
+set surround
+set argtextobj
+
+""" Plugin settings ------------------------
+let g:argtextobj_pairs="(:),{:},<:>"
+
+""" Plugin mappings -------------------------
+" NERDTree
+map <F7> :NERDTreeFocus<CR>
+
+" surround
+map s <Nop>
+unmap ys
+nmap sa <Plug>YSurround
+
+" argtextobj
+unmap ia
+unmap aa
+map i, <Plug>InnerArgument
+map a, <Plug>OuterArgument
+
+""" Common settings -------------------------
+set clipboard=unnamedplus
+set incsearch
+set scrolloff=5
+set showmode
+
+""" Idea specific settings ------------------
+set clipboard+=ideaput
+set ideajoin
+set ideamarks
+
+""" Mappings --------------------------------
+
+map <Leader>sv <Action>(IdeaVim.ReloadVimRc.reload)
+map <F5> <Action>(Run)
+map Q <Action>(ReformatCode)
+map <C-p> <Action>(CommentByLineComment)
+
+map <Leader>rn <Action>(RenameElement)
+map gd <Action>(GotoImplementation)
+map gr <Action>(FindUsages)
+map ]g <Action>(GotoNextError)
+map [g <Action>(GotoPreviousError)
+
+nnoremap <Leader>, gT
+nnoremap <Leader>. gt
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
