@@ -261,7 +261,7 @@ hi graphqlTemplateString cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#fff
 
 " markdown
 hi htmlBold cterm=bold ctermfg=231 ctermbg=NONE gui=bold guifg=#ffffff guibg=NONE
-hi htmlH1 cterm=bold ctermfg=208 ctermbg=NONE gui=bold guifg=#ff8700 guibg=NONE
+hi htmlH1 cterm=bold ctermfg=81 ctermbg=NONE gui=bold guifg=#5fd7ff guibg=NONE
 hi mkdCodeDelimiter cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
 hi mkdHeading cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
 hi mkdListItem cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE

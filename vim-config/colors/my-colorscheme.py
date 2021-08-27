@@ -289,7 +289,7 @@ hi graphqlTemplateString $text_white
 
 " markdown
 hi htmlBold cterm=bold ctermfg=$white ctermbg=NONE
-hi htmlH1 cterm=bold ctermfg=$orange ctermbg=NONE
+hi htmlH1 cterm=bold ctermfg=$blue ctermbg=NONE
 hi mkdCodeDelimiter $text_pink
 hi mkdHeading $text_pink
 hi mkdListItem $text_pink
