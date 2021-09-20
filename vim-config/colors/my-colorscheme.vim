@@ -258,6 +258,7 @@ hi scssVariable cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg
 " graphql
 hi graphqlName cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg=NONE
 hi graphqlTemplateString cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#ffffff guibg=NONE
+hi graphqlStructure cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
 
 " markdown
 hi htmlBold cterm=bold ctermfg=231 ctermbg=NONE gui=bold guifg=#ffffff guibg=NONE

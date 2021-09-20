@@ -286,6 +286,7 @@ hi scssVariable $text_orange
 " graphql
 hi graphqlName $text_orange
 hi graphqlTemplateString $text_white
+hi graphqlStructure $text_pink
 
 " markdown
 hi htmlBold cterm=bold ctermfg=$white ctermbg=NONE
