@@ -162,7 +162,9 @@ hi jsoncBraces $text_white
 hi jsoncKeywordMatch $text_white
 
 " javascript
+hi jsBuiltins $text_blue
 hi jsClassKeyword $text_blue
+hi jsExceptions $text_blue
 hi jsExportDefault $text_pink
 hi jsFuncArgOperator $text_pink
 hi jsFuncArgs $text_orange

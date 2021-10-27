@@ -134,7 +134,9 @@ hi jsoncBraces cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#ffffff guibg=
 hi jsoncKeywordMatch cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#ffffff guibg=NONE
 
 " javascript
+hi jsBuiltins cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 hi jsClassKeyword cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
+hi jsExceptions cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 hi jsExportDefault cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
 hi jsFuncArgOperator cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
 hi jsFuncArgs cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg=NONE
