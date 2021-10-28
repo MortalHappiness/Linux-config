@@ -121,8 +121,7 @@ hi Error cterm=NONE ctermfg=231 ctermbg=160 gui=NONE guifg=#ffffff guibg=#d70000
 hi Todo cterm=bold ctermfg=NONE ctermbg=9 gui=bold guifg=NONE guibg=#ef2929
 
 " ========================================
-" Filetype specific syntax highlighting, including syntax groups coming from the
-" plugin 'sheerun/vim-polyglot'
+" Filetype specific syntax highlighting, including plugins
 
 " json
 hi jsonKeyword cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#ffffff guibg=NONE
@@ -325,3 +324,8 @@ hi typescriptTypeBracket cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff0
 hi typescriptTypeParameter cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg=NONE
 hi typescriptTypeReference cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 hi typescriptVariable cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
+
+" prisma
+hi prismaFunction cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
+hi prismaFunctionArgs cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg=NONE
+hi prismaValue cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE

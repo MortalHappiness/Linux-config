@@ -30,6 +30,9 @@ call plug#begin('~/.vim/plugged')
 " A collection of language packs
 Plug 'sheerun/vim-polyglot'
 
+" Syntax packs
+Plug 'pantharshit00/vim-prisma'
+
 " A library plugin to create custom text objects
 Plug 'kana/vim-textobj-user'
 " The following are text objects implemented using 'kana/vim-textobj-user'

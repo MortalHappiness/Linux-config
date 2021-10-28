@@ -149,8 +149,7 @@ hi Error cterm=NONE ctermfg=$white ctermbg=160
 hi Todo cterm=bold ctermfg=NONE ctermbg=9
 
 " ========================================
-" Filetype specific syntax highlighting, including syntax groups coming from the
-" plugin 'sheerun/vim-polyglot'
+" Filetype specific syntax highlighting, including plugins
 
 " json
 hi jsonKeyword $text_white
@@ -353,6 +352,11 @@ hi typescriptTypeBracket $text_pink
 hi typescriptTypeParameter $text_orange
 hi typescriptTypeReference $text_blue
 hi typescriptVariable $text_blue
+
+" prisma
+hi prismaFunction $text_blue
+hi prismaFunctionArgs $text_orange
+hi prismaValue $text_blue
 '''
 
 # ========================================

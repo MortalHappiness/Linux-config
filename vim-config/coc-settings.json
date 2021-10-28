@@ -13,9 +13,13 @@
     "typescript",
     "typescriptreact",
     "yaml",
-    "go"
+    "go",
+    "prisma"
   ],
 
   // coc-pyright
-  "python.formatting.autopep8Path": "/usr/bin/autopep8"
+  "python.formatting.autopep8Path": "/usr/bin/autopep8",
+
+  // coc-prisma
+  "prisma.prismaFmtBinPath": ""
 }
