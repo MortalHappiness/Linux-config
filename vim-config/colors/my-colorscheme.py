@@ -353,6 +353,11 @@ hi typescriptTypeParameter $text_orange
 hi typescriptTypeReference $text_blue
 hi typescriptVariable $text_blue
 
+" sql
+hi Quote $text_white
+hi sqlKeyword $text_pink
+hi sqlFunction $text_blue
+
 " prisma
 hi prismaFunction $text_blue
 hi prismaFunctionArgs $text_orange

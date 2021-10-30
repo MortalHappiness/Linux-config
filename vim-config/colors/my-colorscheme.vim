@@ -325,6 +325,11 @@ hi typescriptTypeParameter cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#f
 hi typescriptTypeReference cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 hi typescriptVariable cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 
+" sql
+hi Quote cterm=NONE ctermfg=231 ctermbg=NONE gui=NONE guifg=#ffffff guibg=NONE
+hi sqlKeyword cterm=NONE ctermfg=197 ctermbg=NONE gui=NONE guifg=#ff005f guibg=NONE
+hi sqlFunction cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
+
 " prisma
 hi prismaFunction cterm=NONE ctermfg=81 ctermbg=NONE gui=NONE guifg=#5fd7ff guibg=NONE
 hi prismaFunctionArgs cterm=NONE ctermfg=208 ctermbg=NONE gui=NONE guifg=#ff8700 guibg=NONE
