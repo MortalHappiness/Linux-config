@@ -149,6 +149,7 @@ vmap <c-p> <plug>NERDCommenterToggle
 map <F7> :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NEADTreeMouseMode=3
+let g:NERDTreeMapOpenVSplit = 'v'
 " let NERDTreeCustomOpenArgs={'file': {'reuse': 'all', 'where': 't'}, 'dir': {}}
 " Exit Vim if NERDTree is the only window left.
 augroup my_plugin_nerdtree

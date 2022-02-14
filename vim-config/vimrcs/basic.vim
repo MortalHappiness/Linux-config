@@ -316,10 +316,6 @@ inoremap <C-f> <C-r>=expand("%:t")<CR>
 nnoremap <Space> za
 vnoremap <Space> zf
 
-" Quickfix go to next error wrapped
-nnoremap sj :call Wrapped_cn()<CR>
-nnoremap sk :call Wrapped_cp()<CR>
-
 " Window swapping
 nnoremap <C-w>H :call MarkWindowSwap()<CR><C-w>h:call DoWindowSwap()<CR>
 nnoremap <C-w>J :call MarkWindowSwap()<CR><C-w>j:call DoWindowSwap()<CR>
@@ -377,24 +373,6 @@ endfunction
 function! ExecuteMacroOverVisualRange()
   echo '@'.getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
-endfunction
-
-" In quickfix mode, cn command is used to go to next error.
-" This function will go to first error when bottom is hit.
-function Wrapped_cn()
-  try
-    cn
-  catch
-    cfirst
-  endtry
-endfunction
-
-function Wrapped_cp()
-  try
-    cp
-  catch
-    clast
-  endtry
 endfunction
 
 " Reference: https://vim.fandom.com/wiki/Customize_text_for_closed_folds
