@@ -29,5 +29,14 @@ if [[ $SSH_CLIENT ]]; then
   PS1='[\[\033[01;32m\]\u\[\033[01;31m\]@\H \[\033[01;34m\]\w\[\033[00m\]]\$ '
 fi
 
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1${PATH:+":$PATH"}"
+    fi
+}
+
+pathadd "$HOME/bin"
+pathadd "$HOME/.local/bin"
+
 # Custom bashrc settings
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
