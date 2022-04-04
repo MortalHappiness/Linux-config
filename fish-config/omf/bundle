@@ -4,3 +4,4 @@ package fzf
 package nvm
 package sdk
 theme default
+theme mint
