@@ -234,7 +234,7 @@ augroup my_auto_indent
 augroup END
 
 " Options for insert completion menu
-set completeopt=longest,menuone
+"set completeopt=longest,menuone
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""
