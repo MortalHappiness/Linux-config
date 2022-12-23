@@ -142,8 +142,10 @@ augroup END
 " => preservim/nerdcommenter
 let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDDefaultAlign='left'
-nmap <c-p> <plug>NERDCommenterToggle
-vmap <c-p> <plug>NERDCommenterToggle
+nmap <c-/> <plug>NERDCommenterToggle
+vmap <c-/> <plug>NERDCommenterToggle
+nmap <c-_> <plug>NERDCommenterToggle
+vmap <c-_> <plug>NERDCommenterToggle
 
 " => preservim/nerdtree
 map <F7> :NERDTreeToggle<CR>
