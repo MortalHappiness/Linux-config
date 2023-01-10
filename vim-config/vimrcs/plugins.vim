@@ -27,6 +27,9 @@ endif
 " Load plugins
 call plug#begin('~/.vim/plugged')
 
+" Move between Vim panes and tmux splits seamlessly
+Plug 'christoomey/vim-tmux-navigator'
+
 " A collection of language packs
 Plug 'sheerun/vim-polyglot'
 
@@ -106,6 +109,13 @@ call plug#end()
 " => Plugin_configurations
 """"""""""""""""""""""""""""""""""""""""
 "{{{
+
+" => christoomey/vim-tmux-navigator
+" Set shell to sh to make vim-tmux-navigator faster
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 
 " => sheerun/vim-polyglot
 let g:go_highlight_operators = 1
