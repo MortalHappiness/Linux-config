@@ -337,7 +337,7 @@ tmux_conf_theme_clock_style="24"
 #   - disabled
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=true
+tmux_conf_copy_to_os_clipboard=false
 
 
 # -- user customizations -------------------------------------------------------
@@ -411,28 +411,14 @@ bind l if -F '#{pane_at_right}'  '' 'select-pane -R'
 unbind !
 bind T break-pane
 
-# Reference: https://www.mmbyte.com/article/42312.html
-# Double LMB Select & Copy (Word)
-bind-key -T copy-mode-vi DoubleClick1Pane \
-    select-pane \; \
-    send-keys -X select-word-no-clear \; \
-    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
-bind-key -n DoubleClick1Pane \
-    select-pane \; \
-    copy-mode -M \; \
-    send-keys -X select-word \; \
-    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
-
-# Triple LMB Select & Copy (Line)
-bind-key -T copy-mode-vi TripleClick1Pane \
-    select-pane \; \
-    send-keys -X select-line \; \
-    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
-bind-key -n TripleClick1Pane \
-    select-pane \; \
-    copy-mode -M \; \
-    send-keys -X select-line \; \
-    send-keys -X copy-pipe-no-clear "xclip -in -sel primary"
+# Reference: https://www.seanh.cc/2020/12/27/copy-and-paste-in-tmux/
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xsel -i"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xsel -i"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "xsel -i"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xsel -i"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xsel -i"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "xsel -i"
+bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"$(xsel -o)\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
 
 # Reference: https://www.freecodecamp.org/news/tmux-in-practice-local-and-nested-remote-tmux-sessions-4f7ba5db8795/
 # Use F12 to toggle prefix-key on/off (for ssh nested tmux session)
@@ -504,7 +490,12 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'christoomey/vim-tmux-navigator'
+
+# Override tmux-plugins/tmux-yank options
+set -g @copy_mode_yank 'Enter'
 
 # -- custom variables ----------------------------------------------------------
 
