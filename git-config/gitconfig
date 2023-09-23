@@ -1,6 +1,7 @@
 [user]
 	name = MortalHappiness
 	email = chishengliu@chishengliu.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDg+EFYQqZUfGtwITZWQMH1/kAwm1Q2+4WdCDk/FNj6K
 [branch]
 	autosetuprebase = always
 [core]
@@ -23,3 +24,9 @@
 	tool = vimdiff
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true
