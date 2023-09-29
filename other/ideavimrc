@@ -28,11 +28,31 @@ set clipboard=unnamedplus
 set incsearch
 set scrolloff=5
 set showmode
+set timeoutlen=200
 
 """ Idea specific settings ------------------
 set clipboard+=ideaput
 set ideajoin
 set ideamarks
+
+""" Handlers --------------------------------
+
+sethandler <C-c> a:ide
+
+sethandler <C-w> a:vim
+sethandler <C-f> a:vim
+sethandler <C-v> a:vim
+sethandler <C-r> a:vim
+sethandler <C-u> a:vim
+
+sethandler <C-n> a:vim
+sethandler <C-p> a:vim
+
+sethandler <C-i> a:vim
+sethandler <C-o> a:vim
+
+sethandler <C-a> a:vim
+sethandler <C-x> a:vim
 
 """ Mappings --------------------------------
 
@@ -48,6 +68,15 @@ map gd <Action>(GotoDeclaration)
 map gr <Action>(FindUsages)
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)
+
+sethandler <C-h> a:vim
+sethandler <C-l> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 nnoremap <Leader>, gT
 nnoremap <Leader>. gt
