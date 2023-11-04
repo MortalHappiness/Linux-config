@@ -34,3 +34,5 @@
 	autosquash = true
 [push]
 	default = current
+[alias]
+	pushnew = push -u origin HEAD
