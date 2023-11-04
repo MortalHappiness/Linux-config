@@ -54,6 +54,8 @@ sethandler <C-o> a:vim
 sethandler <C-a> a:vim
 sethandler <C-x> a:vim
 
+sethandler <C-e> a:ide
+
 """ Mappings --------------------------------
 
 map <Leader>sv <Action>(IdeaVim.ReloadVimRc.reload)
