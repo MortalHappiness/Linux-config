@@ -32,3 +32,5 @@
 	gpgsign = true
 [rebase]
 	autosquash = true
+[push]
+	default = current
