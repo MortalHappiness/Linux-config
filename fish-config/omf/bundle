@@ -1,6 +1,5 @@
 package bass
 package foreign-env
 package fzf
-package nvm
 theme default
 theme mint
