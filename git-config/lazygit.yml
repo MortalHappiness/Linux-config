@@ -1,0 +1,21 @@
+notARepository: quit
+git:
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
+gui:
+  sidePanelWidth: 0.2 # More space to show things side-by-side
+  branchColors:
+    # main use
+    feature: cyan
+    bugfix: yellow
+    docs: blue
+    release: green
+    hotfix: red
+    # local only
+    spike: magenta
+    wip: magenta
+    pr: magenta
+    # abbreviations
+    feat: cyan
+    fix: yellow
