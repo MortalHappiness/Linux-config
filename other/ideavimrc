@@ -73,9 +73,6 @@ map gr <Action>(FindUsages)
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)
 
-map { <Action>(MethodUp)
-map } <Action>(MethodDown)
-
 sethandler <C-h> a:vim
 sethandler <C-l> a:vim
 sethandler <C-j> a:vim
@@ -96,3 +93,14 @@ nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
+
+""" IDE specific settings -------------------
+
+if has('ide')
+  if &ide =~? 'datagrip'
+  else
+    " Mappings for other IDEs except DataGrip
+    map { <Action>(MethodUp)
+    map } <Action>(MethodDown)
+  endif
+endif
