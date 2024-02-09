@@ -73,6 +73,9 @@ map gr <Action>(FindUsages)
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)
 
+map { <Action>(MethodUp)
+map } <Action>(MethodDown)
+
 sethandler <C-h> a:vim
 sethandler <C-l> a:vim
 sethandler <C-j> a:vim

@@ -294,6 +294,10 @@ nnoremap <Leader>es :tabe ~/.vim/myUltiSnips<CR>
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+" Remap jump to paragraph to jump to method
+map { [m
+map } ]m
+
 " Toggle relative number
 nnoremap <Leader>r :set relativenumber!<CR>
 
