@@ -1,0 +1,7 @@
+% system
+
+# Show system infomation
+inxi -Fxzd
+
+# chmod 644/755 recursively
+chmod -R a=r,u+w,a+X <folder>

@@ -1,5 +1,0 @@
-package bass
-package foreign-env
-package fzf
-theme default
-theme mint

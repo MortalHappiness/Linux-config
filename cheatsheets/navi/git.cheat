@@ -1,0 +1,10 @@
+% git
+
+# Ignore files without using .gitignore
+vi .git/info/exclude
+
+# Clone GitHub repo with access token
+git clone https://<token>@github.com/<owner>/<repo_name>.git
+
+# Commit without change codes
+git commit --amend --no-edit

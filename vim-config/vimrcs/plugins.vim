@@ -102,6 +102,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Beautiful status line
 Plug 'vim-airline/vim-airline'
 
+" Markdown table editor
+Plug 'dhruvasagar/vim-table-mode'
+
 call plug#end()
 
 "}}}

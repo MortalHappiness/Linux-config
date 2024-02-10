@@ -1,8 +1,3 @@
-set -xg EDITOR vim
-umask 022
-
-set fish_greeting
-
 set -l gray 75715E
 set -l red FF0000
 set -l pink FF005F

@@ -1,0 +1,4 @@
+% backup, rsync, pcloud
+
+# Use rsync to backup my pCloud drive to external drive (labeled TOSHIBA_1TB), besure to unlock the crypto folder first.
+rsync -axHAXWS --numeric-ids --delete --info=progress2 --exclude={"lost+found/",".Trash-*"} /home/mortalhappiness/pCloudDrive/ /media/mortalhappiness/TOSHIBA_1TB/pCloudDrive/

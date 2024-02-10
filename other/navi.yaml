@@ -1,0 +1,7 @@
+style:
+  tag:
+    color: cyan
+  comment:
+    color: green
+  snippet:
+    color: white

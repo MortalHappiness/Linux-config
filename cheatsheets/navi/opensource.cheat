@@ -1,0 +1,9 @@
+% opensource
+
+# After cloning a forked open source project, prevent push to upstream remote
+git remote add upstream <upstream_repo_url>
+git remote set-url --push upstream no_push
+git remote -v
+
+# Use the prepare-commit-msg hook script in the parent folder
+ln -s (realpath ../prepare-commit-msg) .git/hooks/prepare-commit-msg
