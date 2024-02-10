@@ -91,4 +91,11 @@ end
 # notes
 if functions -q notes
   set -x NOTES_DIR $HOME/pCloudDrive/BACKUP/notes
+  if type -q md
+    set -x NOTES_MD_VIEWER md
+  end
+end
+
+if functions -q __auto_source_venv
+  __auto_source_venv
 end
