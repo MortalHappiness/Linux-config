@@ -99,3 +99,11 @@ end
 if functions -q __auto_source_venv
   __auto_source_venv
 end
+
+# ========================================
+# Include local config
+
+set -l local_config_file "$__fish_config_dir/config.local.fish"
+if test -f $local_config_file
+  source $local_config_file
+end
