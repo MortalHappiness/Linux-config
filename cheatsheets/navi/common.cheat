@@ -1,0 +1,3 @@
+% common
+
+$ true_or_false: echo 'true false' | tr ' ' '\n' --- --prevent-extra

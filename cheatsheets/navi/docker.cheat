@@ -1,0 +1,4 @@
+% docker
+
+# Keep Docker container running indefinitely
+docker run -d <image> tail -f /dev/null

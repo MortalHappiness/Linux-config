@@ -9,5 +9,5 @@ function __notes_find
   end
 
   find $argv[1] -iname '*.md' -exec basename -s .md {} \; |
-    fzf --bind "J:preview-down,K:preview-up,enter:become($md_view_cmd $notes_dir/{}.md),E:become($EDITOR $notes_dir/{}.md)" --preview "$glow_cmd $notes_dir/{}.md"
+    fzf --bind "J:preview-down,K:preview-up,enter:execute($md_view_cmd $notes_dir/{}.md),E:execute($EDITOR $notes_dir/{}.md)" --preview "$glow_cmd $notes_dir/{}.md"
 end
