@@ -157,8 +157,8 @@ let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDDefaultAlign='left'
 nmap <c-/> <plug>NERDCommenterToggle
 vmap <c-/> <plug>NERDCommenterToggle
-nmap <c-_> <plug>NERDCommenterToggle
-vmap <c-_> <plug>NERDCommenterToggle
+nmap <c-M> <plug>NERDCommenterToggle
+vmap <c-M> <plug>NERDCommenterToggle
 
 " => preservim/nerdtree
 map <F7> :NERDTreeToggle<CR>

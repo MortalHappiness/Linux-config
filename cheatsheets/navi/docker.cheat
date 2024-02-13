@@ -2,3 +2,6 @@
 
 # Keep Docker container running indefinitely
 docker run -d <image> tail -f /dev/null
+
+# Run a Ubuntu container with bash shell
+docker run -i -t ubuntu:latest /bin/bash

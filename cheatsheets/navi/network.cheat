@@ -1,7 +1,7 @@
 % network
 
 # Listen local TCP port
-nc -l <port>
+nc -l -k <port>
 
 # Test whether a port is open/listening
 nc -z <host> <port>

@@ -1,7 +1,6 @@
 let mapleader = ","
 
 """ Plugins  --------------------------------
-set NERDTree
 set surround
 set argtextobj
 
@@ -9,8 +8,6 @@ set argtextobj
 let g:argtextobj_pairs="(:),{:},<:>"
 
 """ Plugin mappings -------------------------
-" NERDTree
-map <F7> :NERDTreeFocus<CR>
 
 " surround
 map s <Nop>
@@ -58,9 +55,12 @@ sethandler <F5> a:vim
 
 sethandler <C-e> a:ide
 
+sethandler <F7> a:ide
+sethandler <F8> a:ide
+sethandler <F9> a:ide
+
 """ Mappings --------------------------------
 
-map <Leader>sv <Action>(IdeaVim.ReloadVimRc.reload)
 map <F5> <Action>(Run)
 map Q <Action>(ReformatCode)
 
