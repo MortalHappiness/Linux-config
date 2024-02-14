@@ -102,6 +102,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Beautiful status line
 Plug 'vim-airline/vim-airline'
 
+" Table alignment
+Plug 'junegunn/vim-easy-align'
+
 " Markdown table editor
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -208,6 +211,10 @@ augroup END
 
 " => masukomi/vim-markdown-folding
 let g:markdown_fold_override_foldtext = 0
+
+" => junegunn/vim-easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " => kshenoy/vim-signature
 hi SignatureMarkText cterm=bold ctermfg=201 ctermbg=NONE gui=bold guifg=#ff00ff guibg=NONE

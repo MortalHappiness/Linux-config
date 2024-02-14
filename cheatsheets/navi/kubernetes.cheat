@@ -2,7 +2,7 @@
 @ common
 
 # Run a Kubernetes pod that can use the curl command for debugging
-kubectl run curl --image=radial/busyboxplus:curl -i --tty
+kubectl run -i --tty curl --image=curlimages/curl --restart=Never
 
 # List all supported API resources in Kubernetes, either namespaced or non-namespaced resources
 kubectl api-resources --namespaced=<true_or_false> -o wide

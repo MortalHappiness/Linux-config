@@ -1,0 +1,10 @@
+# Environment variables
+SHELL=/bin/sh
+PATH=/home/mortalhappiness/bin:/sbin:/bin:/usr/sbin:/usr/bin
+RANDOM_DELAY=30
+
+# Anacron jobs will start between 6am and 8am.
+START_HOURS_RANGE=6-8
+
+# <period_in_days> <delay in minutes> <job-identifier> <command>
+1   0    tldr.daily     nice tldr --update

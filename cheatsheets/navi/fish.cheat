@@ -1,0 +1,4 @@
+% fish
+
+# Remove a path from the $PATH variable
+set --erase --universal fish_user_paths[<index>]

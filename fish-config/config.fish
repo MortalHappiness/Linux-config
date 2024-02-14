@@ -67,11 +67,6 @@ if type -q thefuck
   thefuck --alias | source
 end
 
-# Rancher Desktop
-if test -d $HOME/.rd/bin
-  fish_add_path $HOME/.rd/bin
-end
-
 # asdf
 if test -d $HOME/.asdf
   source ~/.asdf/asdf.fish
