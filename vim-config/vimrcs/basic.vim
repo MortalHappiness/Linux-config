@@ -207,7 +207,7 @@ augroup END
 set expandtab
 augroup my_expandtab
   autocmd!
-  autocmd FileType text,make,snippets setlocal noexpandtab
+  autocmd FileType text,make,snippets setlocal noexpandtab list
 augroup END
 
 " Wrap lines

@@ -1,23 +1,9 @@
-global !p
-
-def line(n = 40):
-	return "// " + "="*n
-
-endglobal
-
-# ========================================
-
-snippet line "40 =" b
-`!p snip.rv = line()`
-$0
-endsnippet
-
 snippet main "main function" b
 public static void main(String[] args) {
 	$0
 }
 endsnippet
 
-snippet sout "System.out.println" b
+snippet print "System.out.println" b
 System.out.println($0);
 endsnippet

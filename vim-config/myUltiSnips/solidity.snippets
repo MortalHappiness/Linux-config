@@ -1,17 +1,3 @@
-global !p
-
-def line(n = 40):
-	return "// " + "="*n
-
-endglobal
-
-# ========================================
-
-snippet line "40 =" b
-`!p snip.rv = line()`
-$0
-endsnippet
-
 snippet base "SPDX License Identifier and pragma" b
 // SPDX-License-Identifier: ${1:MIT}
 pragma solidity ${2:>=0.4.16 <0.8.0};

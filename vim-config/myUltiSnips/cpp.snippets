@@ -1,12 +1,8 @@
 extends c
 
-# ========================================
-
 priority 1
 
-snippet inc "#include (library)" b
-#include <${1:iostream}>
-endsnippet
+# ========================================
 
 snippet class "class" b
 class ${1:ClassName} {
@@ -18,33 +14,6 @@ public:
 private:
 
 };
-endsnippet
-
-snippet vec "std::vector"
-std::vector<${1:int}> ${2:v};
-$0
-endsnippet
-
-snippet uset "std::unordered_set"
-std::unordered_set<${1:T}> ${2:s};
-$0
-endsnippet
-
-snippet umap "std::unordered_map"
-std::unordered_map<${1:Key}, ${2:T}> ${3:u};
-$0
-endsnippet
-
-snippet cout "std::cout"
-std::cout << ${1} << "\n";
-endsnippet
-
-snippet print_arr "Print array contents" b
-for (int _arrIndex = 0; _arrIndex < ${1:arrName}.size(); ++_arrIndex) {
-	std::cout << $1[_arrIndex] << " ";
-}
-std::cout << "\n";
-$0
 endsnippet
 
 snippet read "Read file" b

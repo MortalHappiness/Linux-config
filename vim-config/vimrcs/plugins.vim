@@ -160,6 +160,8 @@ let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDDefaultAlign='left'
 nmap <c-/> <plug>NERDCommenterToggle
 vmap <c-/> <plug>NERDCommenterToggle
+nmap <c-_> <plug>NERDCommenterToggle
+vmap <c-_> <plug>NERDCommenterToggle
 nmap <c-M> <plug>NERDCommenterToggle
 vmap <c-M> <plug>NERDCommenterToggle
 
@@ -186,11 +188,9 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " => SirVer/ultisnips
 if g:my_plugin_ultisnips_loaded
-  "inoremap <expr> <C-J> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
-  inoremap <expr> <C-J> "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<CR>"
-  xnoremap <C-J> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
-  snoremap <C-J> <Esc>:call UltiSnips#ExpandSnippet()<CR>
-  let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+  let g:UltiSnipsExpandTrigger="<TAB>"
+  let g:UltiSnipsJumpForwardTrigger="<TAB>"
+  let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 endif
 
