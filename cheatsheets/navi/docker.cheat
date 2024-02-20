@@ -5,3 +5,31 @@ docker run -d <image> tail -f /dev/null
 
 # Run a Ubuntu container with bash shell
 docker run -i -t ubuntu:latest /bin/bash
+
+% docker-registry
+
+$ registry_url: echo 'http://localhost:5000 http://host.docker.internal:5000' | tr ' ' '\n'
+
+# Run a docker registry ui
+docker run --rm -p <host_port>:80 \
+  --add-host=host.docker.internal:host-gateway \
+  -e SINGLE_REGISTRY=true \
+  -e REGISTRY_TITLE='Docker Registry UI' \
+  -e DELETE_IMAGES=true \
+  -e SHOW_CONTENT_DIGEST=true \
+  -e NGINX_PROXY_PASS_URL=<registry_url> \
+  -e SHOW_CATALOG_NB_TAGS=true \
+  -e CATALOG_MIN_BRANCHES=1 \
+  -e CATALOG_MAX_BRANCHES=1 \
+  -e TAGLIST_PAGE_SIZE=100 \
+  -e REGISTRY_SECURED=false \
+  -e CATALOG_ELEMENTS_LIMIT=1000 \
+  joxit/docker-registry-ui:main
+
+$ host_port: echo -e '8000\n'
+
+# Show all repositories
+curl <registry_url>/v2/_catalog
+
+# Show all image tags in a repository
+curl <registry_url>/v2/<repository_name>/tags/list

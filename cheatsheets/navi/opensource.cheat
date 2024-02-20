@@ -1,9 +1,14 @@
 % opensource
 
-# After cloning a forked open source project, prevent push to upstream remote
+# After cloning a forked open source project, prevent push to upstream remote, checkout a local branch to track the upstream, and then checkout a test branch
 git remote add upstream <upstream_repo_url>
 git remote set-url --push upstream no_push
 git remote -v
+git fetch upstream
+git checkout -b upstream-<upstream_default_branch> upstream/<upstream_default_branch>
+git checkout -b spike/test refs/heads/upstream-<upstream_default_branch>
+
+$ upstream_default_branch: git remote show upstream | grep "HEAD branch" | awk '{print $NF}' --- --prevent-extra
 
 # Use the prepare-commit-msg hook script in the parent folder
 ln -s (realpath ../prepare-commit-msg) .git/hooks/prepare-commit-msg

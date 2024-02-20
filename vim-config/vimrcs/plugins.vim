@@ -108,6 +108,9 @@ Plug 'junegunn/vim-easy-align'
 " Markdown table editor
 Plug 'dhruvasagar/vim-table-mode'
 
+" GitHub Copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 "}}}
