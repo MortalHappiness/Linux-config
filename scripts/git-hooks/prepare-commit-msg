@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# Git hook to generate commit message.
+# Features:
+# 1. Parse GitHub issue name or JIRA ticket name from git branch name.
+# 2. Add signoff message as a comment at the end.
+
+################################################################################
+# Variables
+################################################################################
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
+BRANCH_NAME_REGEX="\/(#[0-9]+|[A-Z]+-[0-9]+)-"
+FUNCION_OVERRIDE_SCRIPT="$SCRIPT_DIR/prepare-commit-msg-override.sh"
+
+################################################################################
+# Variables and Functions that can be overridden
+################################################################################
+
+function get_issue_or_ticket_number_message() {
+    #echo "Resolves: ${1}"
+    echo "#$SCRIPT_DIR"
+}
+
+
+################################################################################
+# Implementation
+################################################################################
+
+# Source the function override script if it exists
+if [ -f "$FUNCION_OVERRIDE_SCRIPT" ]; then
+    source "$FUNCION_OVERRIDE_SCRIPT"
+fi
+
+# Only proceed if it is a normal commit opened from the editor
+if [[ "$COMMIT_SOURCE" =~ ^(message|template|merge|squash)$ ]] || [ -n "$SHA1" ] || [ -z "$BRANCH_NAME" ]; then
+    exit 0
+fi
+
+# Parse issue or ticket number from branch name
+if [[ $BRANCH_NAME =~ $BRANCH_NAME_REGEX ]]; then
+    ISSUE_OR_TICKET_NUMBER=$(get_issue_or_ticket_number_message "${BASH_REMATCH[1]}")
+else
+    ISSUE_OR_TICKET_NUMBER="#XXX: Cannot parse issue or ticket number from branch name"
+fi
+
+# Generate the commit message
+read -d '' COMMIT_MESSAGE << EOF
+#type(scope): description
+
+${ISSUE_OR_TICKET_NUMBER}
+# ========================================
+# type:
+# - build
+# - chore
+# - ci
+# - docs
+# - feat
+# - fix
+# - perf
+# - refactor
+# - revert
+# - style
+# - test
+EOF
+
+# Write the final commit message to the commit message file
+echo "$COMMIT_MESSAGE" > "$COMMIT_MSG_FILE"

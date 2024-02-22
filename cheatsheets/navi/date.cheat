@@ -1,0 +1,4 @@
+% date
+
+# Current datetime as filename or id
+date +"%Y%m%d-%H%M%S"

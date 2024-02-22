@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# If the commit message is fixup! or squash! or Merge, exit without changing it.
+if grep -qE '^(fixup!|squash!|Merge)' "$1"; then
+    exit 0
+fi
+
+# Add a Signed-off-by line if one does not already exist.
+SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# Detect and abort duplicate Signed-off-by lines.
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
