@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
+COMMIT_MSG_FILE=$1
+
 # If the commit message is fixup! or squash! or Merge, exit without changing it.
-if grep -qE '^(fixup!|squash!|Merge)' "$1"; then
-    exit 0
-fi
+grep -qE '^(fixup!|squash!|Merge)' "$COMMIT_MSG_FILE" && exit 0
 
 # Add a Signed-off-by line if one does not already exist.
-SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
-grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+SIGN_OFF_BY_TRAILER=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+grep -qs "^$SIGN_OFF_BY_TRAILER" "$COMMIT_MSG_FILE" ||
+    git interpret-trailers --in-place --trailer "$SIGN_OFF_BY_TRAILER" "$COMMIT_MSG_FILE"
 
 # Detect and abort duplicate Signed-off-by lines.
-test "" = "$(grep '^Signed-off-by: ' "$1" |
+test "" = "$(grep '^Signed-off-by: ' "$COMMIT_MSG_FILE" |
 	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
 	echo >&2 Duplicate Signed-off-by lines.
 	exit 1
