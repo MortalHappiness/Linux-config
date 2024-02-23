@@ -23,8 +23,7 @@ FUNCION_OVERRIDE_SCRIPT="$SCRIPT_DIR/prepare-commit-msg-override.sh"
 ################################################################################
 
 function get_issue_or_ticket_number_message() {
-    #echo "Resolves: ${1}"
-    echo "#$SCRIPT_DIR"
+    echo "Resolves: ${1}"
 }
 
 
