@@ -118,7 +118,7 @@ hi Ignore cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 
 hi Error cterm=NONE ctermfg=231 ctermbg=160 gui=NONE guifg=#ffffff guibg=#d70000
 
-hi Todo cterm=bold ctermfg=NONE ctermbg=9 gui=bold guifg=NONE guibg=#ef2929
+hi Todo cterm=bold ctermfg=231 ctermbg=9 gui=bold guifg=#ffffff guibg=#ef2929
 
 " ========================================
 " Filetype specific syntax highlighting, including plugins

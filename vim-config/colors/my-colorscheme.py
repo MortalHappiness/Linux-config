@@ -146,7 +146,7 @@ hi Ignore cterm=NONE ctermfg=NONE ctermbg=NONE
 
 hi Error cterm=NONE ctermfg=$white ctermbg=160
 
-hi Todo cterm=bold ctermfg=NONE ctermbg=9
+hi Todo cterm=bold ctermfg=$white ctermbg=9
 
 " ========================================
 " Filetype specific syntax highlighting, including plugins

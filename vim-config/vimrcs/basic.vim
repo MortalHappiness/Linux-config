@@ -242,6 +242,12 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""
 "{{{
 
+" Always highlight TODO, FIXME, and XXX as Todo
+augroup my_highlight_todo
+  autocmd!
+  autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', '\<TODO\>\|\<FIXME\>\|\<XXX\>', -1)
+augroup END
+
 augroup my_syntax
   autocmd!
 
