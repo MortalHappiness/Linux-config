@@ -84,11 +84,8 @@ end
 # Personal tools
 
 # notes
-if functions -q notes
-  set -x NOTES_DIR $HOME/pCloudDrive/BACKUP/notes
-  if type -q md
-    set -x NOTES_MD_VIEWER md
-  end
+if type -q fzf-notes
+  alias notes="fzf-notes"
 end
 
 if functions -q __auto_source_venv

@@ -7,6 +7,14 @@ read -p "Use the prepare-commit-msg hook in the parent folder? (y/[n]): " USE_PR
 USE_PREPARE_COMMIT_MSG_HOOK=${USE_PREPARE_COMMIT_MSG_HOOK:-n}
 read -p "Use the commit-msg hook in the parent folder to signoff messages? (y/[n]): " USE_COMMIT_MSG_HOOK
 USE_COMMIT_MSG_HOOK=${USE_COMMIT_MSG_HOOK:-n}
+# If the "gh" command does not exist, print a warning message to ask the user
+# whether to proceed
+if ! command -v gh &> /dev/null; then
+  read -p "The 'gh' command does not exist. Proceed anyway? (y/[n]): " PROCEED
+  if [ $PROCEED != "y" ]; then
+    exit 1
+  fi
+fi
 echo
 
 git remote add upstream $UPSTREAM_REPO_URL
@@ -28,4 +36,8 @@ fi
 
 if [ $USE_COMMIT_MSG_HOOK = "y" ]; then
   ln -s (realpath ../commit-msg) .git/hooks/commit-msg
+fi
+
+if command -v gh &> /dev/null; then
+  gh repo set-default $UPSTREAM_REPO_URL
 fi

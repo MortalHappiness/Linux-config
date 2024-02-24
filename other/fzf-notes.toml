@@ -1,0 +1,6 @@
+[notes]
+folder = "/home/mortalhappiness/pCloudDrive/BACKUP/notes"
+
+[markdown]
+previewer = "glow -s dracula"
+viewer = "frogmouth"

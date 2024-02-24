@@ -1,0 +1,13 @@
+% project, opensource
+
+# Steps for initialze the parent folder for a multi-repo project
+~/scripts/opensource/steps_for_initialize_parent_folder_for_multi_repo_project.sh
+
+# Steps after cloning a forked project
+~/scripts/opensource/steps_after_cloned_a_forked_project.sh
+
+% project, personal
+# Steps for personal projects
+ln -s $(realpath ~/scripts/git-hooks/prepare-commit-msg) .git/hooks/prepare-commit-msg
+ln -s $(realpath ~/scripts/git-hooks/commit-msg) .git/hooks/commit-msg
+touch .git/hooks/prepare-commit-msg-override.sh

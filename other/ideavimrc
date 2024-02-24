@@ -72,6 +72,7 @@ map gd <Action>(GotoDeclaration)
 map gt <Action>(GotoTypeDeclaration)
 map gi <Action>(GotoImplementation)
 map gr <Action>(FindUsages)
+map gT <Action>(GotoTest)
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)
 
