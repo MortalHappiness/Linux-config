@@ -83,11 +83,6 @@ end
 # ========================================
 # Personal tools
 
-# notes
-if type -q fzf-notes
-  alias notes="fzf-notes"
-end
-
 if functions -q __auto_source_venv
   __auto_source_venv
 end

@@ -1,5 +1,6 @@
 [notes]
 folder = "/home/mortalhappiness/pCloudDrive/BACKUP/notes"
+searcher = "rg --no-heading --color=always --smart-case -m1 {q}"
 
 [markdown]
 previewer = "glow -s dracula"
