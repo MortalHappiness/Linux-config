@@ -1,10 +1,13 @@
 % docker
 
 # Keep Docker container running indefinitely
-docker run -d <image> tail -f /dev/null
+docker run --rm -d <image> tail -f /dev/null
 
 # Run a Ubuntu container with bash shell
-docker run -i -t ubuntu:latest /bin/bash
+docker run --rm -i -t ubuntu:latest /bin/bash
+
+# Run Docker container as current user
+docker run --rm --user (id -u):(id -g) <image> <command>
 
 % docker-registry
 

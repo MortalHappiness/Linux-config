@@ -9,5 +9,4 @@
 % project, personal
 # Steps for personal projects
 ln -s $(realpath ~/scripts/git-hooks/prepare-commit-msg) .git/hooks/prepare-commit-msg
-ln -s $(realpath ~/scripts/git-hooks/commit-msg) .git/hooks/commit-msg
 touch .git/hooks/prepare-commit-msg-override.sh

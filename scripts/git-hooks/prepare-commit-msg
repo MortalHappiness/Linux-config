@@ -22,6 +22,10 @@ FUNCION_OVERRIDE_SCRIPT="$SCRIPT_DIR/prepare-commit-msg-override.sh"
 # Variables and Functions that can be overridden
 ################################################################################
 
+function get_commit_header() {
+    echo "#type(scope): description"
+}
+
 function get_issue_or_ticket_number_message() {
     echo "Resolves: ${1}"
 }
@@ -41,6 +45,8 @@ if [[ "$COMMIT_SOURCE" =~ ^(message|template|merge|squash)$ ]] || [ -n "$SHA1" ]
     exit 0
 fi
 
+COMMIT_HEADER=$(get_commit_header)
+
 # Parse issue or ticket number from branch name
 if [[ $BRANCH_NAME =~ $BRANCH_NAME_REGEX ]]; then
     ISSUE_OR_TICKET_NUMBER=$(get_issue_or_ticket_number_message "${BASH_REMATCH[1]}")
@@ -50,7 +56,7 @@ fi
 
 # Generate the commit message
 read -d '' COMMIT_MESSAGE << EOF
-#type(scope): description
+${COMMIT_HEADER}
 
 ${ISSUE_OR_TICKET_NUMBER}
 # ========================================

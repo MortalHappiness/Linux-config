@@ -30,12 +30,12 @@ git checkout -b upstream-$UPSTREAM_DEFAULT_BRANCH upstream/$UPSTREAM_DEFAULT_BRA
 git checkout -b spike/test refs/heads/upstream-$UPSTREAM_DEFAULT_BRANCH
 
 if [ $USE_PREPARE_COMMIT_MSG_HOOK = "y" ]; then
-  ln -s (realpath ../prepare-commit-msg) .git/hooks/prepare-commit-msg
-  ln -s (realpath ../prepare-commit-msg-override.sh) .git/hooks/prepare-commit-msg-override.sh
+  ln -s $(realpath ../prepare-commit-msg-override.sh) .git/hooks/prepare-commit-msg-override.sh
+  ln -s $(realpath ../prepare-commit-msg) .git/hooks/prepare-commit-msg
 fi
 
 if [ $USE_COMMIT_MSG_HOOK = "y" ]; then
-  ln -s (realpath ../commit-msg) .git/hooks/commit-msg
+  ln -s $(realpath ../commit-msg) .git/hooks/commit-msg
 fi
 
 if command -v gh &> /dev/null; then
