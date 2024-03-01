@@ -19,13 +19,13 @@ if ! command -v dex > /dev/null; then
   exit 1
 fi
 
-if ! command -v wmctrl > /dev/null; then
-  notify-send "$SCRIPT_NAME" "wmctrl: command not found"
+if ! command -v xdotool > /dev/null; then
+  notify-send "$SCRIPT_NAME" "xdotool: command not found"
   exit 1
 fi
 
-if ! command -v xdotool > /dev/null; then
-  notify-send "$SCRIPT_NAME" "xdotool: command not found"
+if ! command -v wmctrl > /dev/null; then
+  notify-send "$SCRIPT_NAME" "wmctrl: command not found"
   exit 1
 fi
 
@@ -35,23 +35,24 @@ fi
 
 
 if [ -z "$1" ] || [ -z "$2" ]; then
-  notify-send "$SCRIPT_NAME" "Usage: $SCRIPT_NAME <app_path> <window_title>"
+  notify-send "$SCRIPT_NAME" "Usage: $SCRIPT_NAME <app_path> <window_class>"
   exit 1
 fi
 
 APP_PATH="$1"
-WINDOW_TITLE_SUBSTR="$2"
+WINDOW_CLASS="$2"
 
 ################################################################################
 # Main
 ################################################################################
 
+TARGET_WINDOW=$(xdotool search --onlyvisible --class "$WINDOW_CLASS" getwindowname)
 CURRENT_FOCUS=$(xdotool getwindowfocus getwindowname)
 
-if ! wmctrl -l | grep -q -F "$WINDOW_TITLE_SUBSTR"; then
+if [ -z "${TARGET_WINDOW}" ]; then
   dex "$APP_PATH"
-elif [[ "$CURRENT_FOCUS" != *"$WINDOW_TITLE_SUBSTR"* ]]; then
-  wmctrl -a "$WINDOW_TITLE_SUBSTR"
+elif [[ "$CURRENT_FOCUS" != "$TARGET_WINDOW" ]]; then
+  wmctrl -a "$TARGET_WINDOW"
 else
-  wmctrl -c "$WINDOW_TITLE_SUBSTR"
+  wmctrl -c "$TARGET_WINDOW"
 fi

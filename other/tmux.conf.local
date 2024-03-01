@@ -493,6 +493,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'akohlbecker/aw-watcher-tmux'
 
 # Override tmux-plugins/tmux-yank options
 set -g @copy_mode_yank 'Enter'
