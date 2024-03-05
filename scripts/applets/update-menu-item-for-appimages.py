@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
+import logging
+import os
 import re
 import subprocess
 
 from pathlib import Path, PurePath
 
-SEMVER_PATTERN = r"(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?"
+PATTERN = r"-(?!.*\/)[^\/]*\.AppImage"
 
 APPIMAGE_FOLDER = Path.home() / "apps"
 MENU_ITEM_FOLDER = Path.home() / ".local/share/applications"
@@ -17,9 +19,12 @@ def main():
     for app in APPIMAGE_FOLDER.iterdir():
         if app.suffix == ".AppImage":
             filename = str(app)
-            match = re.search(SEMVER_PATTERN, filename)
+            match = re.search(PATTERN, filename)
             if match:
                 appimages.append(filename)
+
+    for filename in appimages:
+        logging.debug(f"filename: {filename}")
 
     # Mapping from exec value to menu item path
     menu_item_exec_value_to_path: dict[str, Path] = {}
@@ -28,21 +33,17 @@ def main():
         if menu_item.suffix == ".desktop":
             with menu_item.open() as fin:
                 for line in fin:
-                    if line.startswith("Exec"):
+                    if line.startswith("Exec") and line.endswith(".AppImage\n"):
                         exec_value = line.split("=")[1].strip()
-                        exec_value_with_version_replaced = re.sub(SEMVER_PATTERN, "*", exec_value)
+                        exec_value_with_version_replaced = re.sub(PATTERN, "-*.AppImage", exec_value)
                         menu_item_exec_value_to_path[exec_value_with_version_replaced] = menu_item
 
+    for exec_value, menu_item_path in menu_item_exec_value_to_path.items():
+        logging.debug(f"exec_value: {exec_value}, menu_item_path: {menu_item_path}")
 
-    for k, v in menu_item_exec_value_to_path.items():
-        print(k, v)
-    print()
     # Update menu item
     for filename in appimages:
-        basename = PurePath(filename).stem
-        extension = PurePath(filename).suffix
-        basename_with_version_replaced = re.sub(SEMVER_PATTERN, "*", basename)
-        filename_with_version_replaced = f"{APPIMAGE_FOLDER}/{basename_with_version_replaced}{extension}"
+        filename_with_version_replaced = re.sub(PATTERN, "-*.AppImage", filename)
         menu_item_path = menu_item_exec_value_to_path[filename_with_version_replaced]
         lines: list[str] = []
         with menu_item_path.open() as fin:
@@ -57,6 +58,9 @@ def main():
 
 
 if __name__ == "__main__":
+    LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
+    logging.basicConfig(level=LOGLEVEL)
+
     script_name = PurePath(__file__).name
     message = "Successfully executed"
     try:

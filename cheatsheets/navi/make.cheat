@@ -1,0 +1,4 @@
+% make
+
+# Ignore a dependency in Makefile
+make -o <dependency> <target>

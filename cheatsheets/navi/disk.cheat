@@ -1,0 +1,5 @@
+% dist, dust
+
+# Analyze disk usage for a directory
+
+sudo dust --depth 1 --limit-filesystem <directory>
