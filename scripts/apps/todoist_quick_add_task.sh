@@ -21,7 +21,7 @@ fi
 # Main
 ################################################################################
 
-ITEM_CONTENT=$(zenity --entry --title="Quick Add Todoist Task" --text="Text name:" --window-icon=info --width=600)
+ITEM_CONTENT=$(zenity --entry --title="Quick Add Todoist Task" --text="Text name:" --window-icon=info --width=800)
 
 # If user cancels, exit
 if [ -z "$ITEM_CONTENT" ]; then
@@ -30,8 +30,7 @@ fi
 
 todoist quick -- "${ITEM_CONTENT}"
 
-if [ $? -eq 0 ]; then
-  notify-send "Todoist task added" "$ITEM_CONTENT"
-else
-  notify-send "Error adding Todoist task" "$ITEM_CONTENT"
+if [ $? -ne 0 ]; then
+  notify-send "$SCRIPT_NAME" "Error adding Todoist task: $ITEM_CONTENT"
+  exit 1
 fi
