@@ -1,0 +1,4 @@
+% network, lsof
+
+# List all listening ports on localhost
+sudo lsof -i -P -n | grep LISTEN

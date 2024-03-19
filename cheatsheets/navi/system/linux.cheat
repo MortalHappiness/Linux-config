@@ -1,4 +1,4 @@
-% system
+% system, linux
 
 # Show system infomation
 inxi -Fxzd

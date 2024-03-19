@@ -1,4 +1,7 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
+
+# Run the following command before use:
+#   secret-tool store --label='scripts: ClickUp API Token' type script app clickup
 
 SCRIPT_NAME=$(basename "$0")
 
@@ -6,7 +9,7 @@ SCRIPT_NAME=$(basename "$0")
 # Variables
 ################################################################################
 
-CLICKUP_API_TOKEN_1PASSWORD_REF='op://Personal/ClickUp/API Token'
+CLICKUP_API_TOKEN_SECRET_KEY_VALUES=('type' 'script' 'app' 'clickup')
 CLICKUP_LIST_ID='901800824924'
 CLICKUP_USER_ID='72798857'
 
@@ -25,8 +28,19 @@ if ! command -v jq > /dev/null; then
   exit 1
 fi
 
-if ! command -v op > /dev/null; then
-  notify-send "$SCRIPT_NAME" "op: command not found"
+if ! command -v secret-tool > /dev/null; then
+  notify-send "$SCRIPT_NAME" "secret-tool: command not found"
+  exit 1
+fi
+
+################################################################################
+# Get the ClickUp API Token
+################################################################################
+
+API_TOKEN=$(secret-tool lookup "${CLICKUP_API_TOKEN_SECRET_KEY_VALUES[@]}")
+
+if [ -z "$API_TOKEN" ]; then
+  notify-send "$SCRIPT_NAME" "ClickUp API Token not found"
   exit 1
 fi
 
@@ -41,7 +55,6 @@ if [ -z "$TASK_NAME" ]; then
   exit 0
 fi
 
-API_TOKEN=$(op read "${CLICKUP_API_TOKEN_1PASSWORD_REF}")
 REQUEST_BODY=$(jq -n --arg name "${TASK_NAME}" --arg assignees "${CLICKUP_USER_ID}" '{name: $name, assignees: [$assignees]}')
 
 curl -f -i -X POST \

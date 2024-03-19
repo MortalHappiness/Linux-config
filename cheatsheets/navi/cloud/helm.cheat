@@ -1,0 +1,4 @@
+% helm
+
+# helm install charts to a specific namespace
+helm install <chart_name> <chart_path> --namespace <namespace> --create-namespace

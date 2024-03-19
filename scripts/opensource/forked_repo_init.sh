@@ -28,6 +28,7 @@ echo "The default branch of the upstream repo is $UPSTREAM_DEFAULT_BRANCH"
 
 git checkout -b upstream-$UPSTREAM_DEFAULT_BRANCH upstream/$UPSTREAM_DEFAULT_BRANCH
 git checkout -b spike/test refs/heads/upstream-$UPSTREAM_DEFAULT_BRANCH
+git branch -d $UPSTREAM_DEFAULT_BRANCH
 
 if [ $USE_PREPARE_COMMIT_MSG_HOOK = "y" ]; then
   ln -s $(realpath ../prepare-commit-msg-override.sh) .git/hooks/prepare-commit-msg-override.sh

@@ -1,0 +1,4 @@
+% xclip
+
+# Use xclip to copy file content to clipboard
+xclip -sel clip < <file>

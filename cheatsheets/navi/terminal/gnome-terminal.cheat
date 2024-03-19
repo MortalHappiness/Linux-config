@@ -1,4 +1,4 @@
-% terminal
+% gnome-terminal
 
 # Execute a command in gnome-terminal
 gnome-terminal -- <command>
