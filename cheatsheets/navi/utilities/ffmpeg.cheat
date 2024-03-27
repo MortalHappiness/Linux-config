@@ -1,0 +1,4 @@
+% ffmpeg
+
+# Convert mkv to mp4
+ffmpeg -i <input_mkv> -codec copy <output_mp4>

@@ -71,10 +71,12 @@ map <Leader>rn <Action>(RenameElement)
 map gd <Action>(GotoDeclaration)
 map gt <Action>(GotoTypeDeclaration)
 map gi <Action>(GotoImplementation)
-map gr <Action>(FindUsages)
+map gr <Action>(GotoDeclaration)
 map gT <Action>(GotoTest)
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)
+map [m <Action>(MethodUp)
+map ]m <Action>(MethodDown)
 
 sethandler <C-h> a:vim
 sethandler <C-l> a:vim

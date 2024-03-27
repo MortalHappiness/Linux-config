@@ -1,13 +1,7 @@
 % gh, github-cli
 
-# View repo in browser
-gh repo view --web
-
 # List my pull request
 gh pr list --author "@me"
-
-# View pull request status in browser
-gh pr view --web
 
 # See pull request status for current branch
 gh pr status
@@ -32,6 +26,3 @@ gh issue list --assignee "@me"
 
 # List my issue for a specified repo
 gh issue list --repo <repo> --assignee "@me"
-
-# View issue in web for a specified repo
-gh issue view <issue_number> --repo <repo> --web

@@ -1,20 +1,32 @@
 % flyte
 
 # Start Kubernetes server
-flytectl demo start --dev --force
+flytectl demo start --dev --force --image "cr.flyte.org/flyteorg/flyte-sandbox-bundled:latest"
 
 # Start Kubernetes server (disable agent)
 flytectl demo start --disable-agent
+
+# Shutdown Kubernetes server
+flytectl demo teardown
 
 # Compile
 go mod tidy
 make compile
 
 # Start Flyte sandbox
-POD_NAMESPACE=flyte ./flyte start --config ../flyte-single-binary-local.yaml
+POD_NAMESPACE=flyte ./flyte start --config <config_file>
+
+$ config_file: find ../_common/configs -name "*.yaml"
+
+# Non-fast register tasks and workflows
+pyflyte register --non-fast --version (date +"%Y%m%d-%H%M%S") <python_file>
 
 # Install Spark operator
 helm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace
 
-# Non-fast register tasks and workflows
-pyflyte register --non-fast --version (date +"%Y%m%d-%H%M%S") <python_file>
+# Install Ray operator
+
+kubectl create -k "github.com/ray-project/kuberay/manifests/cluster-scope-resources?ref=<kuberay_version>&timeout=90s"
+kubectl apply -k "github.com/ray-project/kuberay/manifests/base?ref=<kuberay_version>&timeout=90s"
+
+$ kuberay_version: echo "v0.5.2"

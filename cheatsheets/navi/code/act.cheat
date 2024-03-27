@@ -1,0 +1,7 @@
+% gh, act
+
+# List workflows
+gh act -l
+
+# Run a specific job
+gh act -j <job_id>
