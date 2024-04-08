@@ -11,6 +11,9 @@ docker run --rm --user (id -u):(id -g) <image> <command>
 
 % docker-registry
 
+# Quick run a local docker registry
+docker run -d -p 5000:5000 --restart always --name registry registry:2
+
 $ registry_url: echo 'http://localhost:5000 http://host.docker.internal:5000' | tr ' ' '\n'
 
 # Run a docker registry ui

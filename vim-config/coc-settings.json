@@ -18,6 +18,8 @@
     "prisma"
   ],
 
+  "inlayHint.enable": false,
+
   // coc-pyright
   "python.formatting.autopep8Path": "/usr/bin/autopep8",
 

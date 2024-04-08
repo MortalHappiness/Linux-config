@@ -23,14 +23,38 @@ FUNCION_OVERRIDE_SCRIPT="$SCRIPT_DIR/prepare-commit-msg-override.sh"
 # Variables and Functions that can be overridden
 ################################################################################
 
+read -d '' BOTTOM_COMMENT << EOF
+# type:
+# - build
+# - chore
+# - ci
+# - docs
+# - feat
+# - fix
+# - perf
+# - refactor
+# - revert
+# - style
+# - test
+EOF
+
 function get_commit_header() {
-    echo "#type(scope): description"
+    echo "type(scope): description"
 }
 
 function get_issue_or_ticket_number_message() {
-    echo "Resolves: ${1}"
+    local issue_or_ticket_no=$1
+    if [[ "${issue_or_ticket_no:0:1}" == "#" ]]; then
+        # Assume repo root is the repo name on GitHub
+        # And parent directory is the organization name
+        local repo_root=$(git rev-parse --show-toplevel)
+        local repo_parent_dir=$(dirname "${repo_root}")
+        local repo_name=$(basename "${repo_root}")
+        local org_name=$(basename "${repo_parent_dir}")
+        issue_or_ticket_no="${org_name}/${repo_name}${issue_or_ticket_no}"
+    fi
+    echo "Resolves: ${issue_or_ticket_no}"
 }
-
 
 ################################################################################
 # Implementation
@@ -50,29 +74,18 @@ COMMIT_HEADER=$(get_commit_header)
 
 # Parse issue or ticket number from branch name
 if [[ $BRANCH_NAME =~ $BRANCH_NAME_REGEX ]]; then
-    ISSUE_OR_TICKET_NUMBER=$(get_issue_or_ticket_number_message "${BASH_REMATCH[1]}")
+    ISSUE_OR_TICKET_NUMBER_MSG=$(get_issue_or_ticket_number_message "${BASH_REMATCH[1]}")
 else
-    ISSUE_OR_TICKET_NUMBER="#XXX: Cannot parse issue or ticket number from branch name"
+    ISSUE_OR_TICKET_NUMBER_MSG="#XXX: Cannot parse issue or ticket number from branch name"
 fi
 
 # Generate the commit message
 read -d '' COMMIT_MESSAGE << EOF
 ${COMMIT_HEADER}
 
-${ISSUE_OR_TICKET_NUMBER}
+${ISSUE_OR_TICKET_NUMBER_MSG}
 # ========================================
-# type:
-# - build
-# - chore
-# - ci
-# - docs
-# - feat
-# - fix
-# - perf
-# - refactor
-# - revert
-# - style
-# - test
+${BOTTOM_COMMENT}
 EOF
 
 # Write the final commit message to the commit message file
