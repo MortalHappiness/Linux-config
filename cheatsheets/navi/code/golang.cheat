@@ -2,3 +2,7 @@
 
 # Compile a golang script to a statically-linked executable
 CGO_ENABLED=0 go build -o <executable_name> -a -ldflags '-extldflags "-static"' <script_name>
+
+# Run tests
+cd <component>; go test ./...; cd -
+

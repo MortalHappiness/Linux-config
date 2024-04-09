@@ -15,9 +15,6 @@ POD_NAMESPACE=flyte ./flyte start --config <config_file>
 
 $ config_file: find ../_common/configs -name "*.yaml"
 
-# Run tests
-cd <component>; go test ./...; cd -
-
 # Non-fast register tasks and workflows
 pyflyte register --non-fast --version (date +"%Y%m%d-%H%M%S") <python_file>
 

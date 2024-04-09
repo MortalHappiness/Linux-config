@@ -26,3 +26,14 @@ gh issue list --assignee "@me"
 
 # List my issue for a specified repo
 gh issue list --repo <repo> --assignee "@me"
+
+% gh, act
+
+# List all workflows
+gh act -l
+
+# Run single GitHub action job locally
+gh act -j <job_id> -W .github/workflows/<workflow_filename>
+
+# Run single GitHub action job locally with inputs
+gh act -j <job_id> -W .github/workflows/<workflow_filename> --input <input_key>=<input_value>

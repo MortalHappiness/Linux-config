@@ -1,0 +1,4 @@
+% kuberay
+
+# Run tests
+make -C ray-operator test
