@@ -6,11 +6,11 @@ flytectl demo start --dev --force --image "cr.flyte.org/flyteorg/flyte-sandbox-b
 # Shutdown Kubernetes server
 flytectl demo teardown
 
-# Compile
+# Compile (in flyte folder)
 make go-tidy
 make compile
 
-# Start Flyte single-binary
+# Start Flyte single-binary (in flyte folder)
 POD_NAMESPACE=flyte ./flyte start --config <config_file>
 
 $ config_file: find ../_common/configs -name "*.yaml"
@@ -23,3 +23,8 @@ helm install spark-operator spark-operator/spark-operator --namespace spark-oper
 
 # Install Ray operator
 helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --version 1.1.0 --create-namespace
+
+# Build flytekit image (in flyteorg folder)
+docker buildx build -t localhost:30000/flytekit:dev --file <dockerfile> --push .
+
+$ dockerfile: find _common/docker -name "Dockerfile.*"
