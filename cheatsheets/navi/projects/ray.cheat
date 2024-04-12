@@ -1,0 +1,4 @@
+% ray
+
+# Build documentation (in doc folder)
+make develop

@@ -39,3 +39,6 @@ curl <registry_url>/v2/_catalog
 
 # Show all image tags in a repository
 curl <registry_url>/v2/<repository_name>/tags/list
+
+# System Prune
+docker system prune --all --volumes

@@ -3,7 +3,7 @@
 # Start development Kubernetes server
 flytectl demo start --dev --force --image "cr.flyte.org/flyteorg/flyte-sandbox-bundled:latest"
 
-# Shutdown Kubernetes server
+# Shutdown development Kubernetes server
 flytectl demo teardown
 
 # Compile (in flyte folder)
@@ -28,3 +28,6 @@ helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --
 docker buildx build -t localhost:30000/flytekit:dev --file <dockerfile> --push .
 
 $ dockerfile: find _common/docker -name "Dockerfile.*"
+
+# Build documentation
+make dev-docs
