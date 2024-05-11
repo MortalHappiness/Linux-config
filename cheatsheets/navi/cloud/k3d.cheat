@@ -3,15 +3,14 @@
 # Create a k3d cluster
 k3d cluster create <cluster_name>
 
-# Create a k3d cluster with loadbalancer exposed
-k3d cluster create --api-port 6550 -p "<localhost_port>:80@loadbalancer" <cluster_name>
-
+# Create a k3d cluster without traefik
+k3d cluster create --k3s-arg "--disable=traefik@server:*"
 
 # Create a k3d cluster without traefik and servicelb
-k3d cluster create --k3s-arg "--disable=traefik@server:*" --k3s-arg "--disable=servicelb@server:*" <cluster_name>
+k3d cluster create --k3s-arg "--disable=traefik@server:*" --k3s-arg "--disable=servicelb@server:*"
 
 # List k3d clusters
 k3d cluster list
 
 # Delete a k3d cluster
-k3d cluster delete <cluster_name>
+k3d cluster delete

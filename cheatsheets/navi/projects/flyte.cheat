@@ -18,14 +18,14 @@ $ config_file: find ../_common/configs -name "*.yaml"
 # Non-fast register tasks and workflows
 pyflyte register --non-fast --version (date +"%Y%m%d-%H%M%S") <python_file>
 
-# Install flyte dependency chart
+# Install flyte local dependency helm chart
 helm install -n flyte --create-namespace flyte-deps flyte/flyte-deps -f charts/flyte-deps/values-sandbox.yaml
 
-# Install production helm chart
+# Install local flyte-core helm chart
 helm install -n flyte -f charts/flyte-core/values-sandbox.yaml --create-namespace flyte ./charts/flyte-core
 
-# Upgrade production helm chart (and wait for complete)
-helm upgrade -n flyte -f <values_yaml> flyte ./charts/flyte-core --wait
+# Install production helm chart
+helm install -n flyte -f charts/flyte-core/values-sandbox.yaml --create-namespace --version <version> flyte flyte/flyte-core
 
 # Install Spark operator
 helm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace

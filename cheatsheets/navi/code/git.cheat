@@ -8,3 +8,6 @@ git clone https://<token>@github.com/<owner>/<repo_name>.git
 
 # Commit without change codes
 git commit --amend --no-edit
+
+# Sign-off the last commit
+git commit --amend --no-edit --signoff

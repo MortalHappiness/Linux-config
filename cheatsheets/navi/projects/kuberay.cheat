@@ -1,4 +1,16 @@
 % kuberay
 
-# Run tests
+# Install CRDs
+make -C ray-operator install
+
+# Compile the KubeRay operator
+make -C ray-operator build
+
+# Run the KubeRay operator outside the cluster
+./ray-operator/bin/manager -leader-election-namespace default -use-kubernetes-proxy
+
+# Run unit tests
 make -C ray-operator test
+
+# Run end-to-end tests
+make -C ray-operator test-e2e

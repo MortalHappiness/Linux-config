@@ -6,3 +6,5 @@ CGO_ENABLED=0 go build -o <executable_name> -a -ldflags '-extldflags "-static"' 
 # Run tests
 cd <component>; go test ./...; cd -
 
+# Clean test cache
+go clean -testcache
