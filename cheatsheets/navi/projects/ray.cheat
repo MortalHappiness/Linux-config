@@ -2,3 +2,8 @@
 
 # Build documentation (in doc folder)
 make develop
+
+
+# Install Ray operator
+helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --version 1.1.1 --create-namespace
+
