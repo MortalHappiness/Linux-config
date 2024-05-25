@@ -36,6 +36,10 @@ if type -q rg
   alias grep="rg"
 end
 
+if type -q lazygit
+  alias lg="lazygit"
+end
+
 # Markdown editor
 if type -q frogmouth
   alias md="frogmouth"

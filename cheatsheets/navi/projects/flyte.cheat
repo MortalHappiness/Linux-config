@@ -31,7 +31,7 @@ helm install -n flyte -f charts/flyte-core/values-sandbox.yaml --create-namespac
 helm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace
 
 # Install Kubeflow training-operator
-kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone"
+kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone?ref=v1.7.0"
 
 # Build flytekit image (in flyteorg folder)
 docker buildx build -t localhost:30000/flytekit:dev --file <dockerfile> --push .
