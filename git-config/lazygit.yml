@@ -3,6 +3,7 @@ git:
   paging:
     colorArg: always
     pager: diff-so-fancy
+  overrideGpg: true
 gui:
   sidePanelWidth: 0.2 # More space to show things side-by-side
   branchColors:
