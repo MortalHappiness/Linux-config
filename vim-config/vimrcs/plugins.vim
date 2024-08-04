@@ -111,9 +111,6 @@ Plug 'dhruvasagar/vim-table-mode'
 " GitHub Copilot
 Plug 'github/copilot.vim'
 
-" ActivityWatch
-Plug 'ActivityWatch/aw-watcher-vim'
-
 call plug#end()
 
 "}}}

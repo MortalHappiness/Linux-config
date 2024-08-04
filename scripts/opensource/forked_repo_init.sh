@@ -5,7 +5,7 @@ set -eo pipefail
 read -p "Upstream repo URL: " UPSTREAM_REPO_URL
 read -p "Use the prepare-commit-msg hook in the parent folder? (y/[n]): " USE_PREPARE_COMMIT_MSG_HOOK
 USE_PREPARE_COMMIT_MSG_HOOK=${USE_PREPARE_COMMIT_MSG_HOOK:-n}
-read -p "Use the commit-msg hook in the parent folder to signoff messages? (y/[n]): " USE_COMMIT_MSG_HOOK
+read -p "Use the commit-msg hook in the home directory to signoff messages? (y/[n]): " USE_COMMIT_MSG_HOOK
 USE_COMMIT_MSG_HOOK=${USE_COMMIT_MSG_HOOK:-n}
 # If the "gh" command does not exist, print a warning message to ask the user
 # whether to proceed
