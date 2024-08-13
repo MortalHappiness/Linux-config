@@ -12,11 +12,19 @@ asdf plugin update --all
 
 log "Updating each plugin reference to the latest revision..."
 
-# TODO: Maybe refactor this shit, ew.
+# Update the versions, adding "extended_" prefix for Hugo if necessary
 cat ~/.tool-versions \
 | awk '{print $1}' \
-| xargs -I {} bash -c 'echo {} $(asdf latest {})' > ~/.tool-versions.new; \
-cp ~/.tool-versions ~/.tool-versions.bk; \
+| xargs -I {} bash -c '
+    plugin={}
+    version=$(asdf latest $plugin)
+    if [ "$plugin" == "hugo" ]; then
+        version="extended_$version"
+    fi
+    echo $plugin $version
+' > ~/.tool-versions.new
+
+cp ~/.tool-versions ~/.tool-versions.bk
 mv ~/.tool-versions.new ~/.tool-versions
 
 log "Old revision versions:"
