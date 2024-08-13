@@ -1,0 +1,4 @@
+% apt
+
+# Show local package install via deb directly
+apt list --installed | grep 'local]'

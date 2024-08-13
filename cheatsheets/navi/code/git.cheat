@@ -11,3 +11,15 @@ git commit --amend --no-edit
 
 # Sign-off the last commit
 git commit --amend --no-edit --signoff
+
+# Add submodule
+git submodule add <repository> <path>
+
+# Initialize submodules
+git submodule update --init --recursive
+
+# Sync updates from submodule
+git submodule update --remote --merge
+
+# Clone repository with submodules
+git clone --resurse-submodules <repository>
