@@ -18,7 +18,7 @@ md_version = '1.0'
 md_name = 'Local Bookmark'
 md_description = 'Open locally defined URLs  in browser'
 md_license = "MIT"
-md_url = 'https://github.com/albertlauncher/python/local_bookmark'
+md_url = 'https://github.com/MortalHappiness/Linux-config/tree/master/other/albert/local_bookmark'
 md_authors = "@MortalHappiness"
 md_lib_dependencies = ["thefuzz"]
 
