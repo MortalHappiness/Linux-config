@@ -53,7 +53,7 @@ function get_issue_or_ticket_number_message() {
         local org_name=$(basename "${repo_parent_dir}")
         issue_or_ticket_no="${org_name}/${repo_name}${issue_or_ticket_no}"
     fi
-    echo "Resolves: ${issue_or_ticket_no}"
+    echo "Closes: ${issue_or_ticket_no}"
 }
 
 ################################################################################

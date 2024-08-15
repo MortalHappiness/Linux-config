@@ -22,11 +22,8 @@ let g:fzf_buffers_jump = 1
 " ========================================
 " Mappings
 
-" Files in current directory
-nnoremap <Leader>f :Files<CR>
-
-" Files in git repository (without files specified in .gitignore)
-nnoremap <Leader>g :GFiles<CR>
+nnoremap <Leader>f :GFiles<CR>
+nnoremap <Leader>g :Rg<CR>
 
 " Buffers
 nnoremap <Leader>b :Buffers<CR>
