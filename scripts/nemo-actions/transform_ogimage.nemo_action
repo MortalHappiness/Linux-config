@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Transform ogimage
+Comment=Resize the image to width 1200 and generate multiple sized images
+Exec=<action_scripts/transform_ogimage.sh %F>
+Icon-Name=image-x-generic-symbolic
+Selection=s
+Extensions=jpg;jpeg;png;webp;
+EscapeSpaces=true
+Dependencies=convert

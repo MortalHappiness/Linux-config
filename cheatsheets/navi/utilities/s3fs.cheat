@@ -1,0 +1,4 @@
+% s3fs
+
+# Mount R2 bucket
+s3fs <bucket> <mount-path> -o passwd_file=$HOME/.passwd-s3fs -o url=<r2-url> -o use_path_request_style

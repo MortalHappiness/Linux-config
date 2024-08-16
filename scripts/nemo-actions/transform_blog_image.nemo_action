@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Transform blog image
+Comment=Resize image to width 960 and transform to webp
+Exec=<action_scripts/transform_blog_image.sh %F>
+Icon-Name=image-x-generic-symbolic
+Selection=s
+Extensions=jpg;jpeg;png;webp;
+EscapeSpaces=true
+Dependencies=convert
