@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Get R2 Bucket Link
+Comment=Get the link of the image on my R2 static bucket
+Exec=<action_scripts/get_r2_bucket_link.sh %F>
+Icon-Name=edit-copy-symbolic
+Selection=s
+Extensions=any;
+EscapeSpaces=true
+Dependencies=xclip
