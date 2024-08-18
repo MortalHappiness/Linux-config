@@ -20,10 +20,18 @@ let g:fzf_preview_window = ''
 let g:fzf_buffers_jump = 1
 
 " ========================================
+" Commands
+
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep(
+      \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+" ========================================
 " Mappings
 
 nnoremap <Leader>f :GFiles<CR>
-nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>g :GGrep<CR>
 
 " Buffers
 nnoremap <Leader>b :Buffers<CR>
