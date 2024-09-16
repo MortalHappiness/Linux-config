@@ -1,17 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""
 " Author: Chi-Sheng Liu
-"
-" Sections:
-"    -> General
-"    -> Interface
-"    -> Text_related
-"    -> Syntax_related
-"    -> Mappings
-"    -> Commands
-"    -> Helper_functions
-"    -> Packages
-"
-"""""""""""""""""""""""""""""""""""""""""}}}
+""""""""""""""""""""""""""""""""""""""""
 
 set encoding=utf-8
 scriptencoding utf-8
@@ -88,6 +77,11 @@ while c <= 'z'
 endw
 set timeout ttimeoutlen=50
 
+" Set shell to sh to prevent compatibility issues
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Interface
@@ -99,6 +93,9 @@ syntax enable
 
 " Number of colors
 set t_Co=256
+
+" Colorscheme
+colorscheme my-colorscheme
 
 " Text width
 set textwidth=80

@@ -18,6 +18,16 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias vi='vim'
 
+
+if [ -d "$HOME/.asdf" ]; then
+    . "$HOME/.asdf/asdf.sh"
+    . "$HOME/.asdf/completions/asdf.bash"
+fi
+
+if command -v lazygit &> /dev/null; then
+    alias lg='lazygit'
+fi
+
 # common settings with programs
 ulimit -S -c 0	# core dumpsize
 umask 022
