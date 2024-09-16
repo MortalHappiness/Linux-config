@@ -3,3 +3,8 @@
 # Build documentation (in doc folder)
 make develop
 
+# Start a Ray head node
+ray start --head --include-dashboard=True
+
+# Shutdown Ray cluster
+ray stop

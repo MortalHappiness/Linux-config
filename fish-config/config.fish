@@ -40,11 +40,6 @@ if type -q lazygit
   alias lg="lazygit"
 end
 
-# Markdown editor
-if type -q frogmouth
-  alias md="frogmouth"
-end
-
 # ========================================
 # External tools
 
