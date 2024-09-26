@@ -2,8 +2,7 @@
 #
 # Git hook to generate commit message.
 # Features:
-# 1. Parse GitHub issue name or JIRA ticket name from git branch name.
-# 2. Add signoff message as a comment at the end.
+# - Parse GitHub issue name or JIRA ticket name from git branch name.
 
 ################################################################################
 # Variables

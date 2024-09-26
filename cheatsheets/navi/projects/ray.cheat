@@ -6,5 +6,11 @@ make develop
 # Start a Ray head node
 ray start --head --include-dashboard=True
 
+# Start a Ray head node (blocking)
+ray start --head --include-dashboard=True --block
+
+# Submit a Python script
+ray job submit -- python <filename>
+
 # Shutdown Ray cluster
 ray stop
