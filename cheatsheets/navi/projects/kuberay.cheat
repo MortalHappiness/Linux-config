@@ -16,8 +16,8 @@ make -C ray-operator test
 make -C ray-operator test-e2e
 
 # Install KubeRay operator
-helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --version 1.2.1 --create-namespace
+helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --version 1.2.2 --create-namespace
 
 # Install Ray Cluster
-helm install ray-cluster kuberay/ray-cluster --version 1.2.1
+helm install ray-cluster kuberay/ray-cluster --version 1.2.2
 

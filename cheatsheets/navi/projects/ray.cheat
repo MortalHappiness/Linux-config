@@ -1,6 +1,9 @@
 % ray
 
-# Build documentation (in doc folder)
+# Build / compile with bazel
+bazel build -c fastbuild //:ray_pkg
+
+# Build documentation (full build) (in doc folder)
 make develop
 
 # Start a Ray head node
@@ -9,8 +12,11 @@ ray start --head --include-dashboard=True
 # Start a Ray head node (blocking)
 ray start --head --include-dashboard=True --block
 
+# Execute python script via Ray client
+RAY_ADDRESS='ray://localhost:10001' python <filename>
+
 # Submit a Python script
-ray job submit -- python <filename>
+ray job submit --address http://localhost:8265 --working-dir . -- python <filename>
 
 # Shutdown Ray cluster
 ray stop

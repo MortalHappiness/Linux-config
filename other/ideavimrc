@@ -52,16 +52,27 @@ sethandler <C-a> a:vim
 sethandler <C-x> a:vim
 
 sethandler <F5> a:vim
-
-sethandler <C-e> a:ide
-
+sethandler <F6> a:vim
 sethandler <F7> a:ide
 sethandler <F8> a:ide
 sethandler <F9> a:ide
+sethandler <F10> a:vim
+
+sethandler <C-e> a:ide
+
+sethandler <C-h> a:vim
+sethandler <C-l> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+
+sethandler <C-S-e> a:vim
 
 """ Mappings --------------------------------
 
 map <F5> <Action>(Run)
+map <F6> <Action>(Debug)
+map <F10> <Action>(Stop)
+
 map Q <Action>(ReformatCode)
 
 map <C-O> <Action>(Back)
@@ -78,10 +89,8 @@ map [g <Action>(GotoPreviousError)
 map [m <Action>(MethodUp)
 map ]m <Action>(MethodDown)
 
-sethandler <C-h> a:vim
-sethandler <C-l> a:vim
-sethandler <C-j> a:vim
-sethandler <C-k> a:vim
+map <C-S-e> <Action>(SelectInProjectView)
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
