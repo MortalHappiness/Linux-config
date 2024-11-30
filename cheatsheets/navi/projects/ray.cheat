@@ -20,3 +20,6 @@ ray job submit --address http://localhost:8265 --working-dir . -- python <filena
 
 # Shutdown Ray cluster
 ray stop
+
+# See Ray log
+cd /tmp/ray/session_latest/logs/
