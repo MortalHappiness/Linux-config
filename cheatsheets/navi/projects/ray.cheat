@@ -19,7 +19,13 @@ RAY_ADDRESS='ray://localhost:10001' python <filename>
 ray job submit --address http://localhost:8265 --working-dir . -- python <filename>
 
 # Shutdown Ray cluster
-ray stop
+ray stop --force
 
 # See Ray log
 cd /tmp/ray/session_latest/logs/
+
+# Run single test
+bazel test <target> --test_verbose_timeout_warnings --cache_test_results=no
+
+# Run single python test
+bazel test //python/ray/tests:<filename> --test_verbose_timeout_warnings --cache_test_results=no
